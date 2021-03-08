@@ -1,0 +1,14 @@
+D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\bin\Debug\Negosud Plateforme.exe.config
+D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\bin\Debug\Negosud Plateforme.exe
+D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\bin\Debug\Negosud Plateforme.pdb
+D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud Plateforme.csprojAssemblyReference.cache
+D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud_Plateforme.Negosud.resources
+D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud_Plateforme.Properties.Resources.resources
+D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud Plateforme.csproj.GenerateResource.cache
+D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud Plateforme.csproj.CoreCompileInputs.cache
+D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud Plateforme.exe
+D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud Plateforme.pdb
+D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\bin\Debug\MetroSet UI.dll
+D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud_Plateforme.AjoutClient.resources
+D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud Plateforme.csproj.CopyComplete
+D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud_Plateforme.AjoutProduit.resources

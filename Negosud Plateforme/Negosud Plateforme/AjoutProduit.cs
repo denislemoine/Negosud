@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Negosud_Plateforme
 {
-    public partial class Form1 : Form
+    public partial class AjoutProduit : Form
     {
-        public Form1()
+        public AjoutProduit()
         {
             InitializeComponent();
+        }
+
+        private void metroSetLabel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
