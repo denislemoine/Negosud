@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\dev\\negosud\\NegosudCore\\NegoduxAPI\\NegoduxAPI.csproj": {}
+    "D:\\DEV\\Negosud\\NegosudCore\\NegoduxAPI\\NegoduxAPI.csproj": {}
   },
   "projects": {
-    "C:\\dev\\negosud\\NegosudCore\\NegoduxAPI\\NegoduxAPI.csproj": {
+    "D:\\DEV\\Negosud\\NegosudCore\\NegoduxAPI\\NegoduxAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\negosud\\NegosudCore\\NegoduxAPI\\NegoduxAPI.csproj",
+        "projectUniqueName": "D:\\DEV\\Negosud\\NegosudCore\\NegoduxAPI\\NegoduxAPI.csproj",
         "projectName": "NegoduxAPI",
-        "projectPath": "C:\\dev\\negosud\\NegosudCore\\NegoduxAPI\\NegoduxAPI.csproj",
-        "packagesPath": "C:\\Users\\Paulo\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\negosud\\NegosudCore\\NegoduxAPI\\obj\\",
+        "projectPath": "D:\\DEV\\Negosud\\NegosudCore\\NegoduxAPI\\NegoduxAPI.csproj",
+        "packagesPath": "C:\\Users\\tooni\\.nuget\\packages\\",
+        "outputPath": "D:\\DEV\\Negosud\\NegosudCore\\NegoduxAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Paulo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tooni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +44,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[5.0.3, )"

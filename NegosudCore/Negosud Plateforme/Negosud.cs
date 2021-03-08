@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace Negosud_Plateforme
 {
@@ -32,6 +31,7 @@ namespace Negosud_Plateforme
         {
             panel_Gestion_Client.Visible = true;
             panel_Gestion_Produits.Visible = false;
+            appel_Api();
 
         }
 
@@ -43,6 +43,7 @@ namespace Negosud_Plateforme
         private void Btn_Ajout_Client_Click(object sender, EventArgs e)
         {
             ajoutClient.Show();
+
         }
 
         private void Btn_Ajout_Produit_Click(object sender, EventArgs e)
@@ -55,6 +56,28 @@ namespace Negosud_Plateforme
         {
             panel_Gestion_Client.Visible = false;
             panel_Gestion_Produits.Visible = true;
+        }
+
+        private void appel_Api()
+        {
+            var url = "http://localhost:58841/api/Clients";
+            var webRequest = (HttpWebRequest)WebRequest.Create(url);
+            var webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+            if ((webResponse.StatusCode == HttpStatusCode.OK))
+            {
+                var reader = new StreamReader(webResponse.GetResponseStream());
+                string s = reader.ReadToEnd();
+                var arr = JsonConvert.DeserializeObject<List<ClientDto>>(s);
+                var list = new BindingList<ClientDto>(arr);
+                var data = new BindingSource(list, null);
+                dataGridView_Client.DataSource = data;
+
+            }
+            else
+            {
+                MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
+            }
         }
     }
 }

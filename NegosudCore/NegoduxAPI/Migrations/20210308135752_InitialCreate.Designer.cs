@@ -10,7 +10,7 @@ using NegoduxAPI.Data;
 namespace NegoduxAPI.Migrations
 {
     [DbContext(typeof(NegoduxAPIContext))]
-    [Migration("20210308120743_InitialCreate")]
+    [Migration("20210308135752_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -36,6 +36,9 @@
     <Reference Include="MetroSet UI, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroSet_UI.2.0.0\lib\net45\MetroSet UI.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -62,6 +65,7 @@
     <Compile Include="AjoutProduit.Designer.cs">
       <DependentUpon>AjoutProduit.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientDto.cs" />
     <Compile Include="Negosud.cs">
       <SubType>Form</SubType>
     </Compile>
