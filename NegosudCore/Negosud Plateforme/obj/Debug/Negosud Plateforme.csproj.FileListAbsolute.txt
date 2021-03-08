@@ -12,17 +12,3 @@ D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\bin\Debug\MetroSet UI.dll
 D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud_Plateforme.AjoutClient.resources
 D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud Plateforme.csproj.CopyComplete
 D:\DEV\Negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud_Plateforme.AjoutProduit.resources
-C:\dev\negosud\Negosud Plateforme\Negosud Plateforme\bin\Debug\Negosud Plateforme.exe.config
-C:\dev\negosud\Negosud Plateforme\Negosud Plateforme\bin\Debug\Negosud Plateforme.exe
-C:\dev\negosud\Negosud Plateforme\Negosud Plateforme\bin\Debug\Negosud Plateforme.pdb
-C:\dev\negosud\Negosud Plateforme\Negosud Plateforme\bin\Debug\MetroSet UI.dll
-C:\dev\negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud Plateforme.csprojAssemblyReference.cache
-C:\dev\negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud_Plateforme.AjoutClient.resources
-C:\dev\negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud_Plateforme.AjoutProduit.resources
-C:\dev\negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud_Plateforme.Negosud.resources
-C:\dev\negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud_Plateforme.Properties.Resources.resources
-C:\dev\negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud Plateforme.csproj.GenerateResource.cache
-C:\dev\negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud Plateforme.csproj.CoreCompileInputs.cache
-C:\dev\negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud Plateforme.csproj.CopyComplete
-C:\dev\negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud Plateforme.exe
-C:\dev\negosud\Negosud Plateforme\Negosud Plateforme\obj\Debug\Negosud Plateforme.pdb
