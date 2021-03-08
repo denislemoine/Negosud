@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using NegoduxAPI.Data;
 
 namespace NegoduxAPI
 {
@@ -31,6 +33,9 @@ namespace NegoduxAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NegoduxAPI", Version = "v1" });
             });
+
+            services.AddDbContext<NegoduxAPIContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("NegoduxAPIContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
