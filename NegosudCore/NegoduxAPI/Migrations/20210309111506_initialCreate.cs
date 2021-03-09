@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NegoduxAPI.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,13 +30,10 @@ namespace NegoduxAPI.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IdProduit = table.Column<long>(type: "bigint", nullable: false),
-                    IdFamille = table.Column<long>(type: "bigint", nullable: false),
                     IdClient = table.Column<long>(type: "bigint", nullable: false),
-                    PrixTotal = table.Column<int>(type: "int", nullable: false),
+                    PrixTotal = table.Column<float>(type: "real", nullable: false),
                     DateCommande = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    Quantite = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -50,7 +47,7 @@ namespace NegoduxAPI.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Libele = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Libelle = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -82,11 +79,11 @@ namespace NegoduxAPI.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IdFournisseur = table.Column<long>(type: "bigint", nullable: false),
                     IdFamille = table.Column<long>(type: "bigint", nullable: false),
                     Nom = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Millesime = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Prix = table.Column<float>(type: "real", nullable: false),
+                    PrixFournisseur = table.Column<float>(type: "real", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Domaine = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UrlPhoto = table.Column<string>(type: "nvarchar(max)", nullable: true),

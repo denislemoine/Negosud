@@ -10,8 +10,8 @@ using NegoduxAPI.Data;
 namespace NegoduxAPI.Migrations
 {
     [DbContext(typeof(NegoduxAPIContext))]
-    [Migration("20210308135752_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210309111506_initialCreate")]
+    partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,20 +61,11 @@ namespace NegoduxAPI.Migrations
                     b.Property<long>("IdClient")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("IdFamille")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("IdProduit")
-                        .HasColumnType("bigint");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int>("PrixTotal")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantite")
-                        .HasColumnType("int");
+                    b.Property<float>("PrixTotal")
+                        .HasColumnType("real");
 
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
@@ -94,7 +85,7 @@ namespace NegoduxAPI.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Libele")
+                    b.Property<string>("Libelle")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -154,9 +145,6 @@ namespace NegoduxAPI.Migrations
                     b.Property<long>("IdFamille")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("IdFournisseur")
-                        .HasColumnType("bigint");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -167,6 +155,9 @@ namespace NegoduxAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Prix")
+                        .HasColumnType("real");
+
+                    b.Property<float>("PrixFournisseur")
                         .HasColumnType("real");
 
                     b.Property<string>("UrlPhoto")

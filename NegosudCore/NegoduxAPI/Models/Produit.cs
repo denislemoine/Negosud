@@ -8,11 +8,11 @@ namespace NegoduxAPI.Models
     public class Produit
     {
         public long Id { get; set; }
-        public long IdFournisseur { get; set; }
         public long IdFamille { get; set; }
         public string Nom { get; set; }
         public string Millesime { get; set; }
         public float Prix { get; set; }
+        public float PrixFournisseur { get; set; }
         public string Description { get; set; }
         public string Domaine { get; set; }
         public string UrlPhoto { get; set; }

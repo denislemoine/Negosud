@@ -8,7 +8,7 @@ namespace NegoduxAPI.Models
     public class Famille
     {
         public long Id { get; set; }
-        public string Libele { get; set; }
+        public string Libelle { get; set; }
         public bool IsActive { get; set; }
     }
 }

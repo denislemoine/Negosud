@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace NegoduxAPI.Models
 {
-    public class Commande
+    public class CommandeInterne
     {
-        public long Id { get; set; }
-        public long IdClient { get; set; }
+        public int Id { get; set; }
         public float PrixTotal { get; set; }
         public DateTime DateCommande { get; set; }
         public bool IsActive { get; set; }
