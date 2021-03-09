@@ -17,8 +17,6 @@ namespace Negosud_Plateforme
         public Negosud()
         {
             InitializeComponent();
-
-
         }
 
         private void Negosud_Load(object sender, EventArgs e)
@@ -134,7 +132,7 @@ namespace Negosud_Plateforme
                     var arr = JsonConvert.DeserializeObject<List<FamilleDto>>(s);
                     var list = new BindingList<FamilleDto>(arr);
                     var data = new BindingSource(list, null);
-                    dataGridView_Client.DataSource = data;
+                    dataGridView_Familles.DataSource = data;
 
                 }
                 else
@@ -154,7 +152,7 @@ namespace Negosud_Plateforme
                     var arr = JsonConvert.DeserializeObject<List<FournisseurDto>>(s);
                     var list = new BindingList<FournisseurDto>(arr);
                     var data = new BindingSource(list, null);
-                    dataGridView_Client.DataSource = data;
+                    dataGridView_Fournisseurs.DataSource = data;
 
                 }
                 else
