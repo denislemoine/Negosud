@@ -7,6 +7,7 @@ namespace NegoduxAPI.Models
 {
     public class CommandeInterneProduit
     {
+        public long Id { get; set; }
         public int IdCommandeInterne { get; set; }
         public int IdProduit { get; set; }
         public int Quantite { get; set; }
