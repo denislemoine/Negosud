@@ -45,11 +45,13 @@ namespace Negosud_Plateforme
             this.panel_Gestion_Fournisseur = new System.Windows.Forms.Panel();
             this.panel_Gestion_Familles = new System.Windows.Forms.Panel();
             this.panel_Gestion_Produits = new System.Windows.Forms.Panel();
-            this.dataGridView_Produits = new System.Windows.Forms.DataGridView();
             this.Btn_Ajout_Produit = new MetroSet_UI.Controls.MetroSetButton();
+            this.dataGridView_Produits = new System.Windows.Forms.DataGridView();
+            this.metroSetButton1 = new MetroSet_UI.Controls.MetroSetButton();
             this.menuStrip1.SuspendLayout();
             this.panel_Gestion_Client.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Client)).BeginInit();
+            this.panel_Gestion_Fournisseur.SuspendLayout();
             this.panel_Gestion_Produits.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Produits)).BeginInit();
             this.SuspendLayout();
@@ -99,7 +101,7 @@ namespace Negosud_Plateforme
             // produitsToolStripMenuItem1
             // 
             this.produitsToolStripMenuItem1.Name = "produitsToolStripMenuItem1";
-            this.produitsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.produitsToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
             this.produitsToolStripMenuItem1.Text = "Produits";
             this.produitsToolStripMenuItem1.Click += new System.EventHandler(this.produitsToolStripMenuItem1_Click);
             // 
@@ -181,9 +183,11 @@ namespace Negosud_Plateforme
             // panel_Gestion_Fournisseur
             // 
             this.panel_Gestion_Fournisseur.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel_Gestion_Fournisseur.Location = new System.Drawing.Point(1025, 50);
+            this.panel_Gestion_Fournisseur.Controls.Add(this.panel_Gestion_Produits);
+            this.panel_Gestion_Fournisseur.Controls.Add(this.metroSetButton1);
+            this.panel_Gestion_Fournisseur.Location = new System.Drawing.Point(0, 57);
             this.panel_Gestion_Fournisseur.Name = "panel_Gestion_Fournisseur";
-            this.panel_Gestion_Fournisseur.Size = new System.Drawing.Size(397, 200);
+            this.panel_Gestion_Fournisseur.Size = new System.Drawing.Size(1094, 681);
             this.panel_Gestion_Fournisseur.TabIndex = 2;
             this.panel_Gestion_Fournisseur.Visible = false;
             // 
@@ -201,20 +205,11 @@ namespace Negosud_Plateforme
             this.panel_Gestion_Produits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.panel_Gestion_Produits.Controls.Add(this.Btn_Ajout_Produit);
             this.panel_Gestion_Produits.Controls.Add(this.dataGridView_Produits);
-            this.panel_Gestion_Produits.Location = new System.Drawing.Point(21, 27);
+            this.panel_Gestion_Produits.Location = new System.Drawing.Point(903, 111);
             this.panel_Gestion_Produits.Name = "panel_Gestion_Produits";
             this.panel_Gestion_Produits.Size = new System.Drawing.Size(996, 589);
             this.panel_Gestion_Produits.TabIndex = 4;
             this.panel_Gestion_Produits.Visible = false;
-            // 
-            // dataGridView_Produits
-            // 
-            this.dataGridView_Produits.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView_Produits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Produits.Location = new System.Drawing.Point(9, 15);
-            this.dataGridView_Produits.Name = "dataGridView_Produits";
-            this.dataGridView_Produits.Size = new System.Drawing.Size(735, 486);
-            this.dataGridView_Produits.TabIndex = 5;
             // 
             // Btn_Ajout_Produit
             // 
@@ -243,12 +238,46 @@ namespace Negosud_Plateforme
             this.Btn_Ajout_Produit.ThemeName = "MetroDark";
             this.Btn_Ajout_Produit.Click += new System.EventHandler(this.Btn_Ajout_Produit_Click);
             // 
+            // dataGridView_Produits
+            // 
+            this.dataGridView_Produits.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridView_Produits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Produits.Location = new System.Drawing.Point(21, 35);
+            this.dataGridView_Produits.Name = "dataGridView_Produits";
+            this.dataGridView_Produits.Size = new System.Drawing.Size(735, 486);
+            this.dataGridView_Produits.TabIndex = 5;
+            // 
+            // metroSetButton1
+            // 
+            this.metroSetButton1.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.metroSetButton1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.metroSetButton1.DisabledForeColor = System.Drawing.Color.Gray;
+            this.metroSetButton1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroSetButton1.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.metroSetButton1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.metroSetButton1.HoverTextColor = System.Drawing.Color.White;
+            this.metroSetButton1.IsDerivedStyle = true;
+            this.metroSetButton1.Location = new System.Drawing.Point(60, 28);
+            this.metroSetButton1.Name = "metroSetButton1";
+            this.metroSetButton1.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.metroSetButton1.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.metroSetButton1.NormalTextColor = System.Drawing.Color.White;
+            this.metroSetButton1.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.metroSetButton1.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.metroSetButton1.PressTextColor = System.Drawing.Color.White;
+            this.metroSetButton1.Size = new System.Drawing.Size(118, 45);
+            this.metroSetButton1.Style = MetroSet_UI.Enums.Style.Custom;
+            this.metroSetButton1.StyleManager = null;
+            this.metroSetButton1.TabIndex = 6;
+            this.metroSetButton1.Text = "Ajout Produit";
+            this.metroSetButton1.ThemeAuthor = "Narwin";
+            this.metroSetButton1.ThemeName = "MetroDark";
+            // 
             // Negosud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1318, 750);
-            this.Controls.Add(this.panel_Gestion_Produits);
             this.Controls.Add(this.panel_Gestion_Familles);
             this.Controls.Add(this.panel_Gestion_Fournisseur);
             this.Controls.Add(this.panel_Gestion_Client);
@@ -261,6 +290,7 @@ namespace Negosud_Plateforme
             this.menuStrip1.PerformLayout();
             this.panel_Gestion_Client.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Client)).EndInit();
+            this.panel_Gestion_Fournisseur.ResumeLayout(false);
             this.panel_Gestion_Produits.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Produits)).EndInit();
             this.ResumeLayout(false);
@@ -288,6 +318,7 @@ namespace Negosud_Plateforme
         private MetroSet_UI.Controls.MetroSetButton Btn_Ajout_Client;
         private MetroSet_UI.Controls.MetroSetButton Btn_Ajout_Produit;
         private System.Windows.Forms.DataGridView dataGridView_Produits;
+        private MetroSet_UI.Controls.MetroSetButton metroSetButton1;
     }
 }
 
