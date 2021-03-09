@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DEV\\Negosud\\NegosudCore\\NegosudWeb\\NegosudWeb.fsproj": {}
+    "C:\\dev\\negosud\\NegosudCore\\NegosudWeb\\NegosudWeb.fsproj": {}
   },
   "projects": {
-    "D:\\DEV\\Negosud\\NegosudCore\\NegosudWeb\\NegosudWeb.fsproj": {
+    "C:\\dev\\negosud\\NegosudCore\\NegosudWeb\\NegosudWeb.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DEV\\Negosud\\NegosudCore\\NegosudWeb\\NegosudWeb.fsproj",
+        "projectUniqueName": "C:\\dev\\negosud\\NegosudCore\\NegosudWeb\\NegosudWeb.fsproj",
         "projectName": "NegosudWeb",
-        "projectPath": "D:\\DEV\\Negosud\\NegosudCore\\NegosudWeb\\NegosudWeb.fsproj",
-        "packagesPath": "C:\\Users\\tooni\\.nuget\\packages\\",
-        "outputPath": "D:\\DEV\\Negosud\\NegosudCore\\NegosudWeb\\obj\\",
+        "projectPath": "C:\\dev\\negosud\\NegosudCore\\NegosudWeb\\NegosudWeb.fsproj",
+        "packagesPath": "C:\\Users\\Paulo\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\negosud\\NegosudCore\\NegosudWeb\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\tooni\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Paulo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
