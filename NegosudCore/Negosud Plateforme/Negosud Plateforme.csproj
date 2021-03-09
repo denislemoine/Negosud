@@ -66,12 +66,15 @@
       <DependentUpon>AjoutProduit.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientDto.cs" />
+    <Compile Include="FamilleDto.cs" />
+    <Compile Include="FournisseurDto.cs" />
     <Compile Include="Negosud.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Negosud.Designer.cs">
       <DependentUpon>Negosud.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProduitDto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AjoutClient.resx">
