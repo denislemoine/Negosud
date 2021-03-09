@@ -7364,19 +7364,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Paulo\\.nuget\\packages\\": {}
+    "C:\\Users\\samso\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\dev\\negosud\\NegosudCore\\NegoduxAPI\\NegoduxAPI.csproj",
+      "projectUniqueName": "C:\\Users\\samso\\Documents\\GitHub\\Negosud\\NegosudCore\\NegoduxAPI\\NegoduxAPI.csproj",
       "projectName": "NegoduxAPI",
-      "projectPath": "C:\\dev\\negosud\\NegosudCore\\NegoduxAPI\\NegoduxAPI.csproj",
-      "packagesPath": "C:\\Users\\Paulo\\.nuget\\packages\\",
-      "outputPath": "C:\\dev\\negosud\\NegosudCore\\NegoduxAPI\\obj\\",
+      "projectPath": "C:\\Users\\samso\\Documents\\GitHub\\Negosud\\NegosudCore\\NegoduxAPI\\NegoduxAPI.csproj",
+      "packagesPath": "C:\\Users\\samso\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\samso\\Documents\\GitHub\\Negosud\\NegosudCore\\NegoduxAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Paulo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\samso\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
