@@ -31,8 +31,34 @@ namespace Negosud_Plateforme
         {
             panel_Gestion_Client.Visible = true;
             panel_Gestion_Produits.Visible = false;
-            appel_Api();
+            panel_Gestion_Fournisseur.Visible = false;
+            panel_Gestion_Familles.Visible = false;
+            appel_Api("http://localhost:58841/api/Clients");
 
+        }
+        private void familleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel_Gestion_Client.Visible = false;
+            panel_Gestion_Produits.Visible = false;
+            panel_Gestion_Fournisseur.Visible = false;
+            panel_Gestion_Familles.Visible = true;
+            appel_Api("http://localhost:58841/api/Familles");
+        }
+        private void fournisseursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel_Gestion_Client.Visible = false;
+            panel_Gestion_Produits.Visible = false;
+            panel_Gestion_Fournisseur.Visible = true;
+            panel_Gestion_Familles.Visible = false;
+            appel_Api("http://localhost:58841/api/Fournisseurs");
+        }
+        private void produitsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            panel_Gestion_Client.Visible = false;
+            panel_Gestion_Produits.Visible = true;
+            panel_Gestion_Fournisseur.Visible = false;
+            panel_Gestion_Familles.Visible = false;
+            appel_Api("http://localhost:58841/api/Produits");
         }
 
         private void dataGridView_Client_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -49,18 +75,12 @@ namespace Negosud_Plateforme
         private void Btn_Ajout_Produit_Click(object sender, EventArgs e)
         {
             ajoutProduit.Show();
-
         }
 
-        private void produitsToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            panel_Gestion_Client.Visible = false;
-            panel_Gestion_Produits.Visible = true;
-        }
 
-        private void appel_Api()
+        private void appel_Api(string url)
         {
-            var url = "http://localhost:58841/api/Clients";
+            
             var webRequest = (HttpWebRequest)WebRequest.Create(url);
             var webResponse = (HttpWebResponse)webRequest.GetResponse();
 
@@ -79,5 +99,7 @@ namespace Negosud_Plateforme
                 MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
             }
         }
+
+  
     }
 }
