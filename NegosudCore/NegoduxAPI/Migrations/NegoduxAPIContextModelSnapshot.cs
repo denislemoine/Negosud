@@ -73,6 +73,72 @@ namespace NegoduxAPI.Migrations
                     b.ToTable("Commande");
                 });
 
+            modelBuilder.Entity("NegoduxAPI.Models.CommandeInterne", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCommande")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<float>("PrixTotal")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CommandeInterne");
+                });
+
+            modelBuilder.Entity("NegoduxAPI.Models.CommandeInterneProduit", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IdCommandeInterne")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdProduit")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantite")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CommandeInterneProduit");
+                });
+
+            modelBuilder.Entity("NegoduxAPI.Models.CommandeProduit", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IdCommande")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdProduit")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantite")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CommandeProduit");
+                });
+
             modelBuilder.Entity("NegoduxAPI.Models.Famille", b =>
                 {
                     b.Property<long>("Id")
@@ -164,6 +230,24 @@ namespace NegoduxAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Produit");
+                });
+
+            modelBuilder.Entity("NegoduxAPI.Models.ProduitFournisseur", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IdFournisseur")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdProduit")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProduitFournisseur");
                 });
 
             modelBuilder.Entity("NegoduxAPI.Models.Stock", b =>

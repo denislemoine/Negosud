@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NegoduxAPI.Migrations
 {
-    public partial class initialCreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,6 +39,52 @@ namespace NegoduxAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Commande", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CommandeInterne",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PrixTotal = table.Column<float>(type: "real", nullable: false),
+                    DateCommande = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CommandeInterne", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CommandeInterneProduit",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdCommandeInterne = table.Column<int>(type: "int", nullable: false),
+                    IdProduit = table.Column<int>(type: "int", nullable: false),
+                    Quantite = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CommandeInterneProduit", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CommandeProduit",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdCommande = table.Column<int>(type: "int", nullable: false),
+                    IdProduit = table.Column<int>(type: "int", nullable: false),
+                    Quantite = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CommandeProduit", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -97,6 +143,20 @@ namespace NegoduxAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProduitFournisseur",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdProduit = table.Column<int>(type: "int", nullable: false),
+                    IdFournisseur = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProduitFournisseur", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Stock",
                 columns: table => new
                 {
@@ -121,6 +181,15 @@ namespace NegoduxAPI.Migrations
                 name: "Commande");
 
             migrationBuilder.DropTable(
+                name: "CommandeInterne");
+
+            migrationBuilder.DropTable(
+                name: "CommandeInterneProduit");
+
+            migrationBuilder.DropTable(
+                name: "CommandeProduit");
+
+            migrationBuilder.DropTable(
                 name: "Famille");
 
             migrationBuilder.DropTable(
@@ -128,6 +197,9 @@ namespace NegoduxAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Produit");
+
+            migrationBuilder.DropTable(
+                name: "ProduitFournisseur");
 
             migrationBuilder.DropTable(
                 name: "Stock");

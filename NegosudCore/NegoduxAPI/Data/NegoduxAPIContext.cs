@@ -25,5 +25,13 @@ namespace NegoduxAPI.Data
         public DbSet<NegoduxAPI.Models.Produit> Produit { get; set; }
 
         public DbSet<NegoduxAPI.Models.Stock> Stock { get; set; }
+
+        public DbSet<NegoduxAPI.Models.CommandeInterne> CommandeInterne { get; set; }
+
+        public DbSet<NegoduxAPI.Models.CommandeInterneProduit> CommandeInterneProduit { get; set; }
+
+        public DbSet<NegoduxAPI.Models.CommandeProduit> CommandeProduit { get; set; }
+
+        public DbSet<NegoduxAPI.Models.ProduitFournisseur> ProduitFournisseur { get; set; }
     }
 }
