@@ -17,13 +17,11 @@ namespace Negosud_Plateforme
         public Negosud()
         {
             InitializeComponent();
-
-
         }
 
         private void Negosud_Load(object sender, EventArgs e)
         {
-          
+
 
         }
 
@@ -80,26 +78,90 @@ namespace Negosud_Plateforme
 
         private void appel_Api(string url)
         {
-            
-            var webRequest = (HttpWebRequest)WebRequest.Create(url);
-            var webResponse = (HttpWebResponse)webRequest.GetResponse();
 
-            if ((webResponse.StatusCode == HttpStatusCode.OK))
+            if (url == "http://localhost:58841/api/Clients")
             {
-                var reader = new StreamReader(webResponse.GetResponseStream());
-                string s = reader.ReadToEnd();
-                var arr = JsonConvert.DeserializeObject<List<ClientDto>>(s);
-                var list = new BindingList<ClientDto>(arr);
-                var data = new BindingSource(list, null);
-                dataGridView_Client.DataSource = data;
+                var webRequest = (HttpWebRequest)WebRequest.Create(url);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+                if ((webResponse.StatusCode == HttpStatusCode.OK))
+                {
+                    var reader = new StreamReader(webResponse.GetResponseStream());
+                    string s = reader.ReadToEnd();
+                    var arr = JsonConvert.DeserializeObject<List<ClientDto>>(s);
+                    var list = new BindingList<ClientDto>(arr);
+                    var data = new BindingSource(list, null);
+                    dataGridView_Client.DataSource = data;
+
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
+                }
+            }
+            else if (url == "http://localhost:58841/api/Produits")
+            {
+                var webRequest = (HttpWebRequest)WebRequest.Create(url);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+                if ((webResponse.StatusCode == HttpStatusCode.OK))
+                {
+                    var reader = new StreamReader(webResponse.GetResponseStream());
+                    string s = reader.ReadToEnd();
+                    var arr = JsonConvert.DeserializeObject<List<ProduitDto>>(s);
+                    var list = new BindingList<ProduitDto>(arr);
+                    var data = new BindingSource(list, null);
+                    dataGridView_Produits.DataSource = data;
+
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
+                }
 
             }
-            else
+            else if (url == "http://localhost:58841/api/Familles")
             {
-                MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
+                var webRequest = (HttpWebRequest)WebRequest.Create(url);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+                if ((webResponse.StatusCode == HttpStatusCode.OK))
+                {
+                    var reader = new StreamReader(webResponse.GetResponseStream());
+                    string s = reader.ReadToEnd();
+                    var arr = JsonConvert.DeserializeObject<List<FamilleDto>>(s);
+                    var list = new BindingList<FamilleDto>(arr);
+                    var data = new BindingSource(list, null);
+                    dataGridView_Familles.DataSource = data;
+
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
+                }
             }
+            else if (url == "http://localhost:58841/api/Fournisseurs")
+            {
+                var webRequest = (HttpWebRequest)WebRequest.Create(url);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+                if ((webResponse.StatusCode == HttpStatusCode.OK))
+                {
+                    var reader = new StreamReader(webResponse.GetResponseStream());
+                    string s = reader.ReadToEnd();
+                    var arr = JsonConvert.DeserializeObject<List<FournisseurDto>>(s);
+                    var list = new BindingList<FournisseurDto>(arr);
+                    var data = new BindingSource(list, null);
+                    dataGridView_Fournisseurs.DataSource = data;
+
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
+                }
+            }
+
+
         }
-
-  
     }
 }
