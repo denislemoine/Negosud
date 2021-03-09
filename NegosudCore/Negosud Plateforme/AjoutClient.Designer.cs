@@ -105,6 +105,7 @@ namespace Negosud_Plateforme
             this.TxtBox_Nom_Client.Name = "TxtBox_Nom_Client";
             this.TxtBox_Nom_Client.Size = new System.Drawing.Size(100, 26);
             this.TxtBox_Nom_Client.TabIndex = 5;
+            this.TxtBox_Nom_Client.TextChanged += new System.EventHandler(this.TxtBox_Nom_Client_TextChanged);
             // 
             // TxtBox_Email_Client
             // 
@@ -115,6 +116,7 @@ namespace Negosud_Plateforme
             this.TxtBox_Email_Client.Name = "TxtBox_Email_Client";
             this.TxtBox_Email_Client.Size = new System.Drawing.Size(100, 26);
             this.TxtBox_Email_Client.TabIndex = 6;
+            this.TxtBox_Email_Client.TextChanged += new System.EventHandler(this.TxtBox_Email_Client_TextChanged);
             // 
             // TxtBox_Adresse_Client
             // 
@@ -125,6 +127,7 @@ namespace Negosud_Plateforme
             this.TxtBox_Adresse_Client.Name = "TxtBox_Adresse_Client";
             this.TxtBox_Adresse_Client.Size = new System.Drawing.Size(327, 26);
             this.TxtBox_Adresse_Client.TabIndex = 8;
+            this.TxtBox_Adresse_Client.TextChanged += new System.EventHandler(this.TxtBox_Adresse_Client_TextChanged);
             // 
             // Label_Adresse_Client
             // 
@@ -149,6 +152,7 @@ namespace Negosud_Plateforme
             this.TxtBox_Tel_Client.Name = "TxtBox_Tel_Client";
             this.TxtBox_Tel_Client.Size = new System.Drawing.Size(135, 26);
             this.TxtBox_Tel_Client.TabIndex = 10;
+            this.TxtBox_Tel_Client.TextChanged += new System.EventHandler(this.TxtBox_Tel_Client_TextChanged);
             // 
             // Label_Tel_Client
             // 
@@ -179,6 +183,7 @@ namespace Negosud_Plateforme
             this.button_Ajout_Client.TabIndex = 11;
             this.button_Ajout_Client.Text = "Ajout";
             this.button_Ajout_Client.UseVisualStyleBackColor = false;
+            this.button_Ajout_Client.Click += new System.EventHandler(this.button_Ajout_Client_Click);
             // 
             // AjoutClient
             // 
