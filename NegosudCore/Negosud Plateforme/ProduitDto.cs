@@ -8,13 +8,23 @@ namespace Negosud_Plateforme
 {
     class ProduitDto
     {
-        public long Id { get; set; }
+        public long id { get; set; }
+        public long idFamille { get; set; }
         public string nom { get; set; }
-        public string mail { get; set; }
-        public string Adresse { get; set; }
-        public string tel { get; set; }
+        public string millesime { get; set; }
+        public int prix { get; set; }
+        public int prixFournisseur { get; set; }
+        public string description { get; set; }
+        public string domaine { get; set; }
+        public string urlPhoto { get; set; }
+        public string contenant { get; set; }
+
         public bool isActive { get; set; }
+        public bool commandeAuto { get; set; }
     }
+
+
+ 
 
     class Datalist_Produits
     {

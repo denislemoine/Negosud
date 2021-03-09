@@ -229,6 +229,7 @@ namespace Negosud_Plateforme
             this.Btn_Ajour_Fournisseur.Text = "Ajout Fournisseur";
             this.Btn_Ajour_Fournisseur.ThemeAuthor = "Narwin";
             this.Btn_Ajour_Fournisseur.ThemeName = "MetroDark";
+            this.Btn_Ajour_Fournisseur.Click += new System.EventHandler(this.Btn_Ajour_Fournisseur_Click);
             // 
             // dataGridView_Fournisseurs
             // 
@@ -290,7 +291,7 @@ namespace Negosud_Plateforme
             this.panel_Gestion_Produits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.panel_Gestion_Produits.Controls.Add(this.Btn_Ajout_Produit);
             this.panel_Gestion_Produits.Controls.Add(this.dataGridView_Produits);
-            this.panel_Gestion_Produits.Location = new System.Drawing.Point(42, 68);
+            this.panel_Gestion_Produits.Location = new System.Drawing.Point(0, 237);
             this.panel_Gestion_Produits.Name = "panel_Gestion_Produits";
             this.panel_Gestion_Produits.Size = new System.Drawing.Size(991, 589);
             this.panel_Gestion_Produits.TabIndex = 4;
@@ -337,7 +338,7 @@ namespace Negosud_Plateforme
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.panel1.Controls.Add(this.metroSetButton1);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(164, 81);
+            this.panel1.Location = new System.Drawing.Point(988, 688);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(991, 589);
             this.panel1.TabIndex = 5;

@@ -163,5 +163,10 @@ namespace Negosud_Plateforme
 
 
         }
+
+        private void Btn_Ajour_Fournisseur_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
