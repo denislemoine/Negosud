@@ -66,6 +66,12 @@
     <Compile Include="AjoutFamille.Designer.cs">
       <DependentUpon>AjoutFamille.cs</DependentUpon>
     </Compile>
+    <Compile Include="AjoutFournisseur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AjoutFournisseur.Designer.cs">
+      <DependentUpon>AjoutFournisseur.cs</DependentUpon>
+    </Compile>
     <Compile Include="AjoutProduit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AjoutFamille.resx">
       <DependentUpon>AjoutFamille.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AjoutFournisseur.resx">
+      <DependentUpon>AjoutFournisseur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AjoutProduit.resx">
       <DependentUpon>AjoutProduit.cs</DependentUpon>
