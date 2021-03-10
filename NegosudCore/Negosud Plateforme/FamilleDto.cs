@@ -9,7 +9,7 @@ namespace Negosud_Plateforme
     class FamilleDto
     {
         public long Id { get; set; }
-        public string libele { get; set; }
+        public string libelle { get; set; }
         public bool isActive { get; set; }
     }
 

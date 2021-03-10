@@ -169,9 +169,8 @@ namespace Negosud_Plateforme
 
         private void button_Suppr_Click(object sender, EventArgs e)
         {
-            dataGridView_Familles.CurrentCell = dataGridView_Familles.Rows[1].Cells[0];
-            dataGridView_Familles.Rows[1].Selected = true;
-            MessageBox.Show(dataGridView_Familles.SelectedRows.ToString());
+           
+         
 
         }
     }

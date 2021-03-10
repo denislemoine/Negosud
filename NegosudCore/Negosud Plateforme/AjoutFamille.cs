@@ -55,7 +55,7 @@ namespace Negosud_Plateforme
             var jsonData = new FamilleDto()
             {
 
-                libele = libeleFamille,
+                libelle = libeleFamille,
                 isActive = true,
 
             };
