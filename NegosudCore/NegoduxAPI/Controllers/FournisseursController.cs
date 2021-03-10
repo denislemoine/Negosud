@@ -25,7 +25,7 @@ namespace NegoduxAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Fournisseur>>> GetFournisseur()
         {
-            return await _context.Fournisseur.ToListAsync();
+            return await _context.Fournisseur.Where(result => result.IsActive == true).ToListAsync();
         }
 
         // GET: api/Fournisseurs/5

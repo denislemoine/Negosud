@@ -25,7 +25,7 @@ namespace NegoduxAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Famille>>> GetFamille()
         {
-            return await _context.Famille.ToListAsync();
+            return await _context.Famille.Where(result => result.IsActive == true).ToListAsync();
         }
 
         // GET: api/Familles/5

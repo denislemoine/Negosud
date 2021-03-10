@@ -25,7 +25,7 @@ namespace NegoduxAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Produit>>> GetProduit()
         {
-            return await _context.Produit.ToListAsync();
+            return await _context.Produit.Where(result => result.IsActive == true).ToListAsync();
         }
 
         // GET: api/Produits/5
