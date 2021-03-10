@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
+using NegosudWeb.Models;
 
 namespace NegosudWeb.Controllers
 {
@@ -23,7 +24,12 @@ namespace NegosudWeb.Controllers
             }
 
             var content = await response.Content.ReadAsStringAsync();
-            ViewBag.Produits = content;
+            JArray product2 = JArray.Parse(content);
+            List<ProductItems> listProduct = product2.ToObject<List<ProductItems>>();
+            //ProductItems product = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<ProductItems>(content);
+
+            ViewBag.Produits = listProduct;
+
 
             return View();
         }
@@ -32,4 +38,5 @@ namespace NegosudWeb.Controllers
 
 
     }
+    
 }
