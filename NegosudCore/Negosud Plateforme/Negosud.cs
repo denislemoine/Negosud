@@ -17,6 +17,7 @@ namespace Negosud_Plateforme
         AjoutClient ajoutClient = new AjoutClient();
         AjoutProduit ajoutProduit = new AjoutProduit();
         AjoutFamille ajoutFamille = new AjoutFamille();
+        AjoutFournisseur ajoutFournisseur = new AjoutFournisseur();
 
         private HttpWebRequest webRequest;
 
@@ -302,6 +303,11 @@ namespace Negosud_Plateforme
         private void tabPage_Commandes_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Btn_Ajour_Fournisseur_Click(object sender, EventArgs e)
+        {
+            this.ajoutFournisseur.Show();
         }
     }
 }

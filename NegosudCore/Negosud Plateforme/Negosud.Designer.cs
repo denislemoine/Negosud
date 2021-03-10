@@ -57,6 +57,8 @@ namespace Negosud_Plateforme
             this.tabPage_Clients = new System.Windows.Forms.TabPage();
             this.label_Clients = new System.Windows.Forms.Label();
             this.tabPage_Commandes = new System.Windows.Forms.TabPage();
+            this.Btn_Ajout_Commande = new MetroSet_UI.Controls.MetroSetButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label_Commandes = new System.Windows.Forms.Label();
             this.tabPage_Familles = new System.Windows.Forms.TabPage();
             this.button_modif = new System.Windows.Forms.Button();
@@ -64,8 +66,6 @@ namespace Negosud_Plateforme
             this.button_Suppr_Famille = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Btn_Ajout_Commande = new MetroSet_UI.Controls.MetroSetButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Client)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Fournisseurs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Familles)).BeginInit();
@@ -76,8 +76,8 @@ namespace Negosud_Plateforme
             this.tabPage_Fournisseurs.SuspendLayout();
             this.tabPage_Clients.SuspendLayout();
             this.tabPage_Commandes.SuspendLayout();
-            this.tabPage_Familles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage_Familles.SuspendLayout();
             this.SuspendLayout();
             // 
             // Btn_Ajout_Client
@@ -141,6 +141,7 @@ namespace Negosud_Plateforme
             this.Btn_Ajour_Fournisseur.Text = "Ajout Fournisseur";
             this.Btn_Ajour_Fournisseur.ThemeAuthor = "Narwin";
             this.Btn_Ajour_Fournisseur.ThemeName = "MetroDark";
+            this.Btn_Ajour_Fournisseur.Click += new System.EventHandler(this.Btn_Ajour_Fournisseur_Click);
             // 
             // dataGridView_Fournisseurs
             // 
@@ -410,6 +411,41 @@ namespace Negosud_Plateforme
             this.tabPage_Commandes.UseVisualStyleBackColor = true;
             this.tabPage_Commandes.Click += new System.EventHandler(this.tabPage_Commandes_Click);
             // 
+            // Btn_Ajout_Commande
+            // 
+            this.Btn_Ajout_Commande.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.Btn_Ajout_Commande.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.Btn_Ajout_Commande.DisabledForeColor = System.Drawing.Color.Gray;
+            this.Btn_Ajout_Commande.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ajout_Commande.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.Btn_Ajout_Commande.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.Btn_Ajout_Commande.HoverTextColor = System.Drawing.Color.White;
+            this.Btn_Ajout_Commande.IsDerivedStyle = true;
+            this.Btn_Ajout_Commande.Location = new System.Drawing.Point(32, 87);
+            this.Btn_Ajout_Commande.Name = "Btn_Ajout_Commande";
+            this.Btn_Ajout_Commande.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.Btn_Ajout_Commande.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.Btn_Ajout_Commande.NormalTextColor = System.Drawing.Color.White;
+            this.Btn_Ajout_Commande.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.Btn_Ajout_Commande.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.Btn_Ajout_Commande.PressTextColor = System.Drawing.Color.White;
+            this.Btn_Ajout_Commande.Size = new System.Drawing.Size(118, 45);
+            this.Btn_Ajout_Commande.Style = MetroSet_UI.Enums.Style.Custom;
+            this.Btn_Ajout_Commande.StyleManager = null;
+            this.Btn_Ajout_Commande.TabIndex = 9;
+            this.Btn_Ajout_Commande.Text = "Ajout Commande";
+            this.Btn_Ajout_Commande.ThemeAuthor = "Narwin";
+            this.Btn_Ajout_Commande.ThemeName = "MetroDark";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 210);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1274, 495);
+            this.dataGridView1.TabIndex = 8;
+            // 
             // label_Commandes
             // 
             this.label_Commandes.AutoSize = true;
@@ -495,41 +531,6 @@ namespace Negosud_Plateforme
             this.imageList1.Images.SetKeyName(3, "commande.png");
             this.imageList1.Images.SetKeyName(4, "type.jpg");
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 210);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1274, 495);
-            this.dataGridView1.TabIndex = 8;
-            // 
-            // Btn_Ajout_Commande
-            // 
-            this.Btn_Ajout_Commande.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.Btn_Ajout_Commande.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.Btn_Ajout_Commande.DisabledForeColor = System.Drawing.Color.Gray;
-            this.Btn_Ajout_Commande.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Ajout_Commande.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.Btn_Ajout_Commande.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.Btn_Ajout_Commande.HoverTextColor = System.Drawing.Color.White;
-            this.Btn_Ajout_Commande.IsDerivedStyle = true;
-            this.Btn_Ajout_Commande.Location = new System.Drawing.Point(32, 87);
-            this.Btn_Ajout_Commande.Name = "Btn_Ajout_Commande";
-            this.Btn_Ajout_Commande.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.Btn_Ajout_Commande.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.Btn_Ajout_Commande.NormalTextColor = System.Drawing.Color.White;
-            this.Btn_Ajout_Commande.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.Btn_Ajout_Commande.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.Btn_Ajout_Commande.PressTextColor = System.Drawing.Color.White;
-            this.Btn_Ajout_Commande.Size = new System.Drawing.Size(118, 45);
-            this.Btn_Ajout_Commande.Style = MetroSet_UI.Enums.Style.Custom;
-            this.Btn_Ajout_Commande.StyleManager = null;
-            this.Btn_Ajout_Commande.TabIndex = 9;
-            this.Btn_Ajout_Commande.Text = "Ajout Commande";
-            this.Btn_Ajout_Commande.ThemeAuthor = "Narwin";
-            this.Btn_Ajout_Commande.ThemeName = "MetroDark";
-            // 
             // Negosud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -553,9 +554,9 @@ namespace Negosud_Plateforme
             this.tabPage_Clients.PerformLayout();
             this.tabPage_Commandes.ResumeLayout(false);
             this.tabPage_Commandes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage_Familles.ResumeLayout(false);
             this.tabPage_Familles.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
