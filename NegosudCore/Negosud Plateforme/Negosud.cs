@@ -7,6 +7,8 @@ using Newtonsoft.Json.Linq;
 using System.ComponentModel;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text;
+using System.Web.Script.Serialization;
 
 namespace Negosud_Plateforme
 {
@@ -15,6 +17,11 @@ namespace Negosud_Plateforme
         AjoutClient ajoutClient = new AjoutClient();
         AjoutProduit ajoutProduit = new AjoutProduit();
         AjoutFamille ajoutFamille = new AjoutFamille();
+        private HttpWebRequest webRequest;
+
+        string id;
+        string libel;
+        string IsActiv;
 
         public string CelluleProduitValue { get; private set; }
 
@@ -28,7 +35,6 @@ namespace Negosud_Plateforme
 
 
         }
-
 
 
         private void Btn_Ajout_Client_Click(object sender, EventArgs e)
@@ -150,6 +156,8 @@ namespace Negosud_Plateforme
         private void tabPage_Familles_Click(object sender, EventArgs e)
         {
             appel_Api("http://localhost:58841/api/Familles");
+            this.dataGridView_Familles.Columns["IsActive"].Visible = false;
+          
         }
 
         private void button_load_Click(object sender, EventArgs e)
@@ -169,9 +177,102 @@ namespace Negosud_Plateforme
 
         private void button_Suppr_Click(object sender, EventArgs e)
         {
-           
-         
+            MessageBox.Show(IsActiv);
+
+            if (dataGridView_Familles.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView_Familles.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dataGridView_Familles.Rows[selectedrowindex];
+
+                id = Convert.ToString(selectedRow.Cells["Id"].Value);
+                libel = Convert.ToString(selectedRow.Cells["Libelle"].Value);
+                IsActiv = Convert.ToString(selectedRow.Cells["IsActive"].Value);
+
+            }
+
+            string url = "http://localhost:58841/api/Familles/" + id;
+
+            string requestParams = JsonFamillesSuppr();
+
+            webRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            webRequest.Method = "PUT";
+            webRequest.ContentType = "application/json";
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(requestParams);
+            webRequest.ContentLength = byteArray.Length;
+            using (Stream requestStream = webRequest.GetRequestStream())
+            {
+                requestStream.Write(byteArray, 0, byteArray.Length);
+            }
 
         }
+
+        private void button_Modifier_Click(object sender, EventArgs e)
+        {
+
+           
+
+            if (dataGridView_Familles.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView_Familles.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dataGridView_Familles.Rows[selectedrowindex];
+
+                id = Convert.ToString(selectedRow.Cells["Id"].Value);
+                libel = Convert.ToString(selectedRow.Cells["Libelle"].Value);
+                IsActiv = Convert.ToString(selectedRow.Cells["IsActive"].Value);
+
+            }
+
+            string url = "http://localhost:58841/api/Familles/" + id;
+            string requestParams = JsonFamilleModif();
+
+            webRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            webRequest.Method = "PUT";
+            webRequest.ContentType = "application/json";
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(requestParams);
+            webRequest.ContentLength = byteArray.Length;
+            using (Stream requestStream = webRequest.GetRequestStream())
+            {
+                requestStream.Write(byteArray, 0, byteArray.Length);
+            }
+
+        }
+        public string JsonFamilleModif()
+        {
+            JavaScriptSerializer ser = new JavaScriptSerializer();
+
+            var jsonData = new FamilleDto()
+            {
+                Id = Convert.ToInt64(id),
+                libelle = libel,
+                isActive = bool.Parse(IsActiv),
+
+            };
+
+            var result = ser.Serialize(jsonData);
+            return result;
+        }
+        public string JsonFamillesSuppr()
+        {
+            JavaScriptSerializer ser = new JavaScriptSerializer();
+
+            var jsonData = new FamilleDto()
+            {
+                Id = Convert.ToInt64(id),
+                libelle = libel,
+                isActive = bool.Parse("false"),
+
+            };
+
+            var result = ser.Serialize(jsonData);
+            return result;
+        }
+
+
     }
 }

@@ -59,9 +59,10 @@ namespace Negosud_Plateforme
             this.tabPage_Commandes = new System.Windows.Forms.TabPage();
             this.label_Commandes = new System.Windows.Forms.Label();
             this.tabPage_Familles = new System.Windows.Forms.TabPage();
+            this.button_Modifier = new System.Windows.Forms.Button();
+            this.button_Suppr = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.button_Suppr = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Client)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Fournisseurs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Familles)).BeginInit();
@@ -85,7 +86,7 @@ namespace Negosud_Plateforme
             this.Btn_Ajout_Client.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.Btn_Ajout_Client.HoverTextColor = System.Drawing.Color.White;
             this.Btn_Ajout_Client.IsDerivedStyle = true;
-            this.Btn_Ajout_Client.Location = new System.Drawing.Point(572, 19);
+            this.Btn_Ajout_Client.Location = new System.Drawing.Point(730, 184);
             this.Btn_Ajout_Client.Name = "Btn_Ajout_Client";
             this.Btn_Ajout_Client.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.Btn_Ajout_Client.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
@@ -108,7 +109,7 @@ namespace Negosud_Plateforme
             this.dataGridView_Client.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Client.Location = new System.Drawing.Point(0, 170);
             this.dataGridView_Client.Name = "dataGridView_Client";
-            this.dataGridView_Client.Size = new System.Drawing.Size(1076, 506);
+            this.dataGridView_Client.Size = new System.Drawing.Size(646, 535);
             this.dataGridView_Client.TabIndex = 0;
             // 
             // Btn_Ajour_Fournisseur
@@ -156,7 +157,7 @@ namespace Negosud_Plateforme
             this.Btn_Ajour_Famille.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.Btn_Ajour_Famille.HoverTextColor = System.Drawing.Color.White;
             this.Btn_Ajour_Famille.IsDerivedStyle = true;
-            this.Btn_Ajour_Famille.Location = new System.Drawing.Point(469, 64);
+            this.Btn_Ajour_Famille.Location = new System.Drawing.Point(449, 155);
             this.Btn_Ajour_Famille.Name = "Btn_Ajour_Famille";
             this.Btn_Ajour_Famille.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.Btn_Ajour_Famille.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
@@ -179,6 +180,7 @@ namespace Negosud_Plateforme
             this.dataGridView_Familles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Familles.Location = new System.Drawing.Point(3, 141);
             this.dataGridView_Familles.Name = "dataGridView_Familles";
+            this.dataGridView_Familles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_Familles.Size = new System.Drawing.Size(336, 223);
             this.dataGridView_Familles.TabIndex = 1;
             // 
@@ -414,6 +416,7 @@ namespace Negosud_Plateforme
             // 
             // tabPage_Familles
             // 
+            this.tabPage_Familles.Controls.Add(this.button_Modifier);
             this.tabPage_Familles.Controls.Add(this.button_Suppr);
             this.tabPage_Familles.Controls.Add(this.label4);
             this.tabPage_Familles.Controls.Add(this.Btn_Ajour_Famille);
@@ -425,6 +428,32 @@ namespace Negosud_Plateforme
             this.tabPage_Familles.TabIndex = 4;
             this.tabPage_Familles.UseVisualStyleBackColor = true;
             this.tabPage_Familles.Click += new System.EventHandler(this.tabPage_Familles_Click);
+            // 
+            // button_Modifier
+            // 
+            this.button_Modifier.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.modifier;
+            this.button_Modifier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_Modifier.FlatAppearance.BorderSize = 0;
+            this.button_Modifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Modifier.Location = new System.Drawing.Point(481, 283);
+            this.button_Modifier.Name = "button_Modifier";
+            this.button_Modifier.Size = new System.Drawing.Size(57, 56);
+            this.button_Modifier.TabIndex = 17;
+            this.button_Modifier.UseVisualStyleBackColor = true;
+            this.button_Modifier.Click += new System.EventHandler(this.button_Modifier_Click);
+            // 
+            // button_Suppr
+            // 
+            this.button_Suppr.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.Delete;
+            this.button_Suppr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_Suppr.FlatAppearance.BorderSize = 0;
+            this.button_Suppr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Suppr.Location = new System.Drawing.Point(485, 232);
+            this.button_Suppr.Name = "button_Suppr";
+            this.button_Suppr.Size = new System.Drawing.Size(44, 39);
+            this.button_Suppr.TabIndex = 16;
+            this.button_Suppr.UseVisualStyleBackColor = true;
+            this.button_Suppr.Click += new System.EventHandler(this.button_Suppr_Click);
             // 
             // label4
             // 
@@ -445,19 +474,6 @@ namespace Negosud_Plateforme
             this.imageList1.Images.SetKeyName(2, "Client.png");
             this.imageList1.Images.SetKeyName(3, "commande.png");
             this.imageList1.Images.SetKeyName(4, "type.jpg");
-            // 
-            // button_Suppr
-            // 
-            this.button_Suppr.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.Delete;
-            this.button_Suppr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button_Suppr.FlatAppearance.BorderSize = 0;
-            this.button_Suppr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Suppr.Location = new System.Drawing.Point(505, 141);
-            this.button_Suppr.Name = "button_Suppr";
-            this.button_Suppr.Size = new System.Drawing.Size(44, 39);
-            this.button_Suppr.TabIndex = 16;
-            this.button_Suppr.UseVisualStyleBackColor = true;
-            this.button_Suppr.Click += new System.EventHandler(this.button_Suppr_Click);
             // 
             // Negosud
             // 
@@ -520,6 +536,7 @@ namespace Negosud_Plateforme
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.BindingSource fournisseurDtoBindingSource;
         private System.Windows.Forms.Button button_Suppr;
+        private System.Windows.Forms.Button button_Modifier;
     }
 }
 
