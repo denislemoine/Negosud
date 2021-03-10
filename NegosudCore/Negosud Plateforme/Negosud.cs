@@ -33,11 +33,6 @@ namespace Negosud_Plateforme
 
         }
 
-        private void Btn_Ajout_Produit_Click(object sender, EventArgs e)
-        {
-            ajoutProduit.Show();
-        }
-
 
         private void appel_Api(string url)
         {
@@ -161,6 +156,11 @@ namespace Negosud_Plateforme
         private void button_load_Click(object sender, EventArgs e)
         {
             appel_Api("http://localhost:58841/api/Produits");
+        }
+
+        private void Btn_Ajout_Produit_Click_1(object sender, EventArgs e)
+        {
+            this.ajoutProduit.Show();
         }
     }
 }

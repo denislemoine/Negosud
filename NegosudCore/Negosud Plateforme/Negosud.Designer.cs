@@ -58,6 +58,7 @@ namespace Negosud_Plateforme
             this.Btn_Ajout_Produit = new System.Windows.Forms.Button();
             this.button_load = new System.Windows.Forms.Button();
             this.button_Search = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Client)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Fournisseurs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Familles)).BeginInit();
@@ -202,6 +203,7 @@ namespace Negosud_Plateforme
             // 
             // tabPage_Produits
             // 
+            this.tabPage_Produits.Controls.Add(this.label3);
             this.tabPage_Produits.Controls.Add(this.button_Delete);
             this.tabPage_Produits.Controls.Add(this.Btn_Ajout_Produit);
             this.tabPage_Produits.Controls.Add(this.button_load);
@@ -387,6 +389,7 @@ namespace Negosud_Plateforme
             this.Btn_Ajout_Produit.Size = new System.Drawing.Size(44, 39);
             this.Btn_Ajout_Produit.TabIndex = 14;
             this.Btn_Ajout_Produit.UseVisualStyleBackColor = true;
+            this.Btn_Ajout_Produit.Click += new System.EventHandler(this.Btn_Ajout_Produit_Click_1);
             // 
             // button_load
             // 
@@ -412,6 +415,15 @@ namespace Negosud_Plateforme
             this.button_Search.Size = new System.Drawing.Size(37, 38);
             this.button_Search.TabIndex = 12;
             this.button_Search.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(565, 139);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "label3";
             // 
             // Negosud
             // 
@@ -468,6 +480,7 @@ namespace Negosud_Plateforme
         private System.Windows.Forms.Button button_load;
         private System.Windows.Forms.Button Btn_Ajout_Produit;
         private System.Windows.Forms.Button button_Delete;
+        private System.Windows.Forms.Label label3;
     }
 }
 
