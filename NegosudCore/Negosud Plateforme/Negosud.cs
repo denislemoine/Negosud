@@ -25,44 +25,7 @@ namespace Negosud_Plateforme
 
         }
 
-        private void clientToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            panel_Gestion_Client.Visible = true;
-            panel_Gestion_Produits.Visible = false;
-            panel_Gestion_Fournisseur.Visible = false;
-            panel_Gestion_Familles.Visible = false;
-            appel_Api("http://localhost:58841/api/Clients");
 
-        }
-        private void familleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            panel_Gestion_Client.Visible = false;
-            panel_Gestion_Produits.Visible = false;
-            panel_Gestion_Fournisseur.Visible = false;
-            panel_Gestion_Familles.Visible = true;
-            appel_Api("http://localhost:58841/api/Familles");
-        }
-        private void fournisseursToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            panel_Gestion_Client.Visible = false;
-            panel_Gestion_Produits.Visible = false;
-            panel_Gestion_Fournisseur.Visible = true;
-            panel_Gestion_Familles.Visible = false;
-            appel_Api("http://localhost:58841/api/Fournisseurs");
-        }
-        private void produitsToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            panel_Gestion_Client.Visible = false;
-            panel_Gestion_Produits.Visible = true;
-            panel_Gestion_Fournisseur.Visible = false;
-            panel_Gestion_Familles.Visible = false;
-            appel_Api("http://localhost:58841/api/Produits");
-        }
-
-        private void dataGridView_Client_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void Btn_Ajout_Client_Click(object sender, EventArgs e)
         {
@@ -78,6 +41,7 @@ namespace Negosud_Plateforme
 
         private void appel_Api(string url)
         {
+            ClientDto clientDto = new ClientDto();
 
             if (url == "http://localhost:58841/api/Clients")
             {
@@ -91,8 +55,11 @@ namespace Negosud_Plateforme
                     var arr = JsonConvert.DeserializeObject<List<ClientDto>>(s);
                     var list = new BindingList<ClientDto>(arr);
                     var data = new BindingSource(list, null);
-                    dataGridView_Client.DataSource = data;
-
+                   
+            
+                        dataGridView_Client.DataSource = data;
+                
+                    
                 }
                 else
                 {
@@ -167,6 +134,28 @@ namespace Negosud_Plateforme
         private void Btn_Ajour_Fournisseur_Click(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void tabPage_Fournisseurs_Click(object sender, EventArgs e)
+        {
+            appel_Api("http://localhost:58841/api/Fournisseurs");
+        }
+
+        private void tabPage_Produits_Click(object sender, EventArgs e)
+        {
+            appel_Api("http://localhost:58841/api/Produits");
+        }
+
+
+        private void tabPage_Clients_Click(object sender, EventArgs e)
+        {
+            appel_Api("http://localhost:58841/api/Clients");
+        }
+
+        private void tabPage_Familles_Click(object sender, EventArgs e)
+        {
+            appel_Api("http://localhost:58841/api/Familles");
         }
     }
 }

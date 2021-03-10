@@ -50,6 +50,8 @@ namespace Negosud_Plateforme
             this.Label_Prix = new MetroSet_UI.Controls.MetroSetLabel();
             this.textBox_Prix_Fournisseur = new System.Windows.Forms.TextBox();
             this.Label_Prix_Fournisseur = new MetroSet_UI.Controls.MetroSetLabel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtBox_Nom_Produit
@@ -317,11 +319,20 @@ namespace Negosud_Plateforme
             this.Label_Prix_Fournisseur.ThemeAuthor = "Narwin";
             this.Label_Prix_Fournisseur.ThemeName = "MetroLite";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(527, 106);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(438, 309);
+            this.dataGridView1.TabIndex = 27;
+            // 
             // AjoutProduit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(499, 450);
+            this.ClientSize = new System.Drawing.Size(1015, 650);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox_Prix_Fournisseur);
             this.Controls.Add(this.Label_Prix_Fournisseur);
             this.Controls.Add(this.textBox_Prix);
@@ -346,6 +357,7 @@ namespace Negosud_Plateforme
             this.Name = "AjoutProduit";
             this.Text = "AjoutProduit";
             this.Load += new System.EventHandler(this.AjoutProduit_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,5 +386,6 @@ namespace Negosud_Plateforme
         private MetroSet_UI.Controls.MetroSetLabel Label_Prix;
         private System.Windows.Forms.TextBox textBox_Prix_Fournisseur;
         private MetroSet_UI.Controls.MetroSetLabel Label_Prix_Fournisseur;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

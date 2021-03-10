@@ -19,6 +19,6 @@ namespace Negosud_Plateforme
 
     class Datalist_Fournisseur
     {
-        public List<ClientDto> Listfournisseur { get; set; }
+        public List<FournisseurDto> Listfournisseur { get; set; }
     }
 }

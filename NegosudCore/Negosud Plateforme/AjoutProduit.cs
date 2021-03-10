@@ -19,10 +19,15 @@ namespace Negosud_Plateforme
         private HttpWebRequest webRequest;
         private string nameProduit, millesimePorduit, descriptionProduit, domaineProduit,urlPhotoProduit, contenantProduit;
         private int prixProduit, prixFournisseurProduit;
+        public AjoutProduit()
+        {
+            InitializeComponent();
+        }
 
         private void AjoutProduit_Load(object sender, EventArgs e)
         {
             Lecture_Fournisseur("http://localhost:58841/api/Fournisseurs");
+ 
         }
 
         
@@ -66,10 +71,7 @@ namespace Negosud_Plateforme
             nameProduit = TxtBox_Nom_Produit.Text;
         }
 
-        public AjoutProduit()
-        {
-            InitializeComponent();
-        }
+       
 
 
         private void button_Ajout_Produits_Click(object sender, EventArgs e)
@@ -133,12 +135,13 @@ namespace Negosud_Plateforme
                 {
                     var reader = new StreamReader(webResponse.GetResponseStream());
                     string s = reader.ReadToEnd();
-                    var arr = JsonConvert.DeserializeObject<List<FournisseurDto>>(s);
-                    var list = new BindingList<FournisseurDto>(arr);
+                    var arr = JsonConvert.DeserializeObject<List<ComboFournisseurDto>>(s);
+                    var list = new BindingList<ComboFournisseurDto>(arr);
                     var data = new BindingSource(list, null);
-                    MessageBox.Show(data.ToString());
+                    comboBox_Fournisseur.ValueMember = "id";
+                    comboBox_Fournisseur.DisplayMember = "nom";                                                                         
+                   
                     comboBox_Fournisseur.DataSource = data;
-                    
 
                 }
                 else
