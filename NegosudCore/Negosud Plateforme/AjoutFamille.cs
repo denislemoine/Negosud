@@ -25,8 +25,7 @@ namespace Negosud_Plateforme
 
         private void button_Ajout_Produits_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(libeleFamille);
-
+        
             string url = "http://localhost:58841/api/Familles";
 
             string requestParams = JsonTester();
