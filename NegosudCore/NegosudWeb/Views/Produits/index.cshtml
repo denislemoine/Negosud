@@ -1,31 +1,199 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+	ViewBag.Title = "Catalogue";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+@section css {
+	<link href="@Url.Content("~/Assets/css/catalogue.css")" rel="stylesheet" />
+}
+
+@section scripts{
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="~/Assets/js/catalogue.js"></script>
+}
+
+@{
+	var produits = ViewBag.Produits;
+}
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+
+<div class="" id="wrapper">
+
+	<div class="cart-icon-top">
+	</div>
+
+	<div class="cart-icon-bottom">
+	</div>
+
+	<div id="checkout">
+		COMMANDER
+	</div>
+
+	<div id="sidebar">
+		<h3>Panier</h3><br />
+		<div id="cart">
+			<span class="empty">Panier vide.</span>
+		</div>
+
+		<h3>Types</h3>
+		<div class="checklist categories">
+			<ul>
+				<li><a href=""><span></span>New Arivals</a></li>
+				<li><a href=""><span></span>Accesories</a></li>
+				<li><a href=""><span></span>Bags</a></li>
+				<li><a href=""><span></span>Dressed</a></li>
+				<li><a href=""><span></span>Jackets</a></li>
+				<li><a href=""><span></span>jewelry</a></li>
+				<li><a href=""><span></span>Shoes</a></li>
+				<li><a href=""><span></span>Shirts</a></li>
+				<li><a href=""><span></span>Sweaters</a></li>
+				<li><a href=""><span></span>T-shirts</a></li>
+			</ul>
+		</div>
+
+		<h3>Maisons &amp; Familles</h3>
+		<div class="checklist categories">
+			<ul>
+				<li><a href=""><span></span>New Arivals</a></li>
+				<li><a href=""><span></span>Accesories</a></li>
+				<li><a href=""><span></span>Bags</a></li>
+				<li><a href=""><span></span>Dressed</a></li>
+				<li><a href=""><span></span>Jackets</a></li>
+				<li><a href=""><span></span>jewelry</a></li>
+				<li><a href=""><span></span>Shoes</a></li>
+				<li><a href=""><span></span>Shirts</a></li>
+				<li><a href=""><span></span>Sweaters</a></li>
+				<li><a href=""><span></span>T-shirts</a></li>
+			</ul>
+		</div>
+
+
+		<h3>MILLESIMES</h3>
+		<div class="checklist sizes">
+			<ul>
+				<li><a href=""><span></span>2021</a></li>
+				<li><a href=""><span></span>2020</a></li>
+				<li><a href=""><span></span>2019</a></li>
+				<li><a href=""><span></span>2018</a></li>
+				<li><a href=""><span></span>2017</a></li>
+				<li><a href=""><span></span>2016</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<div id="grid-selector">
+		<div id="grid-menu">
+			View:
+			<ul>
+				<li class="largeGrid"><a href=""></a></li>
+				<li class="smallGrid"><a class="active" href=""></a></li>
+			</ul>
+		</div>
+		1–9 sur 48 résultats
+	</div>
+
+	<div id="grid">
+
+
+		<p>@ViewBag.Produits</p>
+
+		<!--PRODUCT-->
+			<div class="product">
+				<div class="info-large">
+					<h4>title</h4>
+					<div class="sku">
+						PRODUCT SKU: <strong>89356</strong>
+					</div>
+
+					<div class="price-big">
+						€
+					</div>
+
+					<h3>COLORS</h3>
+					<div class="colors-large">
+						<ul>
+							<li><a href="" style="background:#222"><span></span></a></li>
+							<li><a href="" style="background:#6e8cd5"><span></span></a></li>
+							<li><a href="" style="background:#f56060"><span></span></a></li>
+							<li><a href="" style="background:#44c28d"><span></span></a></li>
+						</ul>
+					</div>
+
+					<h3>SIZE</h3>
+					<div class="sizes-large">
+						<span>XS</span>
+						<span>S</span>
+						<span>M</span>
+						<span>L</span>
+						<span>XL</span>
+						<span>XXL</span>
+					</div>
+
+					<button class="add-cart-large">Add To Cart</button>
+
+				</div>
+				<div class="make3D">
+					<div class="product-front">
+						<div class="shadow"></div>
+						<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1.jpg" alt="" />
+						<div class="image_overlay"></div>
+						<div class="add_to_cart">Add to cart</div>
+						<div class="view_gallery">View gallery</div>
+						<div class="stats">
+							<div class="stats-container">
+								<span class="product_price">$39</span>
+								<span class="product_name">FLUTED HEM DRESS</span>
+								<p>Summer dress</p>
+
+								<div class="product-options">
+									<strong>SIZES</strong>
+									<span>XS, S, M, L, XL, XXL</span>
+									<strong>COLORS</strong>
+									<div class="colors">
+										<div class="c-blue"><span></span></div>
+										<div class="c-red"><span></span></div>
+										<div class="c-white"><span></span></div>
+										<div class="c-green"><span></span></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="product-back">
+						<div class="shadow"></div>
+						<div class="carousel">
+							<ul class="carousel-container">
+								<li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1.jpg" alt="" /></li>
+								<li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2.jpg" alt="" /></li>
+								<li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/3.jpg" alt="" /></li>
+							</ul>
+							<div class="arrows-perspective">
+								<div class="carouselPrev">
+									<div class="y"></div>
+									<div class="x"></div>
+								</div>
+								<div class="carouselNext">
+									<div class="y"></div>
+									<div class="x"></div>
+								</div>
+							</div>
+						</div>
+						<div class="flip-back">
+							<div class="cy"></div>
+							<div class="cx"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!--END PRODUCT-->
+
+
+
+
+	</div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
