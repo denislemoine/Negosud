@@ -40,11 +40,17 @@ namespace Negosud_Plateforme
             this.dataGridView_Produits = new System.Windows.Forms.DataGridView();
             this.tabControl_Produit = new System.Windows.Forms.TabControl();
             this.tabPage_Produits = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button_Delete = new System.Windows.Forms.Button();
+            this.Btn_Ajout_Produit = new System.Windows.Forms.Button();
+            this.button_load = new System.Windows.Forms.Button();
+            this.button_Search = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.fournisseurDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textBox_produits_name = new System.Windows.Forms.TextBox();
             this.label_Produits = new System.Windows.Forms.Label();
             this.tabPage_Fournisseurs = new System.Windows.Forms.TabPage();
             this.label_Fournisseurs = new System.Windows.Forms.Label();
@@ -53,18 +59,16 @@ namespace Negosud_Plateforme
             this.tabPage_Commandes = new System.Windows.Forms.TabPage();
             this.label_Commandes = new System.Windows.Forms.Label();
             this.tabPage_Familles = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.button_Delete = new System.Windows.Forms.Button();
-            this.Btn_Ajout_Produit = new System.Windows.Forms.Button();
-            this.button_load = new System.Windows.Forms.Button();
-            this.button_Search = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.button_Suppr = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Client)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Fournisseurs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Familles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Produits)).BeginInit();
             this.tabControl_Produit.SuspendLayout();
             this.tabPage_Produits.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fournisseurDtoBindingSource)).BeginInit();
             this.tabPage_Fournisseurs.SuspendLayout();
             this.tabPage_Clients.SuspendLayout();
             this.tabPage_Commandes.SuspendLayout();
@@ -132,7 +136,6 @@ namespace Negosud_Plateforme
             this.Btn_Ajour_Fournisseur.Text = "Ajout Fournisseur";
             this.Btn_Ajour_Fournisseur.ThemeAuthor = "Narwin";
             this.Btn_Ajour_Fournisseur.ThemeName = "MetroDark";
-            this.Btn_Ajour_Fournisseur.Click += new System.EventHandler(this.Btn_Ajour_Fournisseur_Click);
             // 
             // dataGridView_Fournisseurs
             // 
@@ -153,7 +156,7 @@ namespace Negosud_Plateforme
             this.Btn_Ajour_Famille.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.Btn_Ajour_Famille.HoverTextColor = System.Drawing.Color.White;
             this.Btn_Ajour_Famille.IsDerivedStyle = true;
-            this.Btn_Ajour_Famille.Location = new System.Drawing.Point(482, 80);
+            this.Btn_Ajour_Famille.Location = new System.Drawing.Point(469, 64);
             this.Btn_Ajour_Famille.Name = "Btn_Ajour_Famille";
             this.Btn_Ajour_Famille.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.Btn_Ajour_Famille.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
@@ -168,14 +171,15 @@ namespace Negosud_Plateforme
             this.Btn_Ajour_Famille.Text = "Ajout Famille";
             this.Btn_Ajour_Famille.ThemeAuthor = "Narwin";
             this.Btn_Ajour_Famille.ThemeName = "MetroDark";
+            this.Btn_Ajour_Famille.Click += new System.EventHandler(this.Btn_Ajour_Famille_Click);
             // 
             // dataGridView_Familles
             // 
             this.dataGridView_Familles.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView_Familles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Familles.Location = new System.Drawing.Point(0, 170);
+            this.dataGridView_Familles.Location = new System.Drawing.Point(3, 141);
             this.dataGridView_Familles.Name = "dataGridView_Familles";
-            this.dataGridView_Familles.Size = new System.Drawing.Size(1076, 535);
+            this.dataGridView_Familles.Size = new System.Drawing.Size(336, 223);
             this.dataGridView_Familles.TabIndex = 1;
             // 
             // dataGridView_Produits
@@ -212,7 +216,7 @@ namespace Negosud_Plateforme
             this.tabPage_Produits.Controls.Add(this.label1);
             this.tabPage_Produits.Controls.Add(this.comboBox2);
             this.tabPage_Produits.Controls.Add(this.comboBox1);
-            this.tabPage_Produits.Controls.Add(this.textBox1);
+            this.tabPage_Produits.Controls.Add(this.textBox_produits_name);
             this.tabPage_Produits.Controls.Add(this.label_Produits);
             this.tabPage_Produits.Controls.Add(this.dataGridView_Produits);
             this.tabPage_Produits.ImageIndex = 0;
@@ -224,147 +228,14 @@ namespace Negosud_Plateforme
             this.tabPage_Produits.UseVisualStyleBackColor = true;
             this.tabPage_Produits.Click += new System.EventHandler(this.tabPage_Produits_Click);
             // 
-            // label2
+            // label3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana Pro Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(406, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 16);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Famille :";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana Pro Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(245, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 16);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Fournisseur :";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(409, 74);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 9;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(248, 73);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 8;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(54, 74);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(147, 20);
-            this.textBox1.TabIndex = 7;
-            // 
-            // label_Produits
-            // 
-            this.label_Produits.AutoSize = true;
-            this.label_Produits.Font = new System.Drawing.Font("Verdana Pro Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Produits.Location = new System.Drawing.Point(17, 15);
-            this.label_Produits.Name = "label_Produits";
-            this.label_Produits.Size = new System.Drawing.Size(94, 23);
-            this.label_Produits.TabIndex = 6;
-            this.label_Produits.Text = "Produits";
-            // 
-            // tabPage_Fournisseurs
-            // 
-            this.tabPage_Fournisseurs.Controls.Add(this.label_Fournisseurs);
-            this.tabPage_Fournisseurs.Controls.Add(this.Btn_Ajour_Fournisseur);
-            this.tabPage_Fournisseurs.Controls.Add(this.dataGridView_Fournisseurs);
-            this.tabPage_Fournisseurs.ImageIndex = 1;
-            this.tabPage_Fournisseurs.Location = new System.Drawing.Point(4, 55);
-            this.tabPage_Fournisseurs.Name = "tabPage_Fournisseurs";
-            this.tabPage_Fournisseurs.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Fournisseurs.Size = new System.Drawing.Size(1076, 705);
-            this.tabPage_Fournisseurs.TabIndex = 1;
-            this.tabPage_Fournisseurs.UseVisualStyleBackColor = true;
-            this.tabPage_Fournisseurs.Click += new System.EventHandler(this.tabPage_Fournisseurs_Click);
-            // 
-            // label_Fournisseurs
-            // 
-            this.label_Fournisseurs.AutoSize = true;
-            this.label_Fournisseurs.Font = new System.Drawing.Font("Verdana Pro Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Fournisseurs.Location = new System.Drawing.Point(7, 13);
-            this.label_Fournisseurs.Name = "label_Fournisseurs";
-            this.label_Fournisseurs.Size = new System.Drawing.Size(142, 23);
-            this.label_Fournisseurs.TabIndex = 7;
-            this.label_Fournisseurs.Text = "Fournisseurs";
-            // 
-            // tabPage_Clients
-            // 
-            this.tabPage_Clients.Controls.Add(this.label_Clients);
-            this.tabPage_Clients.Controls.Add(this.Btn_Ajout_Client);
-            this.tabPage_Clients.Controls.Add(this.dataGridView_Client);
-            this.tabPage_Clients.ImageIndex = 2;
-            this.tabPage_Clients.Location = new System.Drawing.Point(4, 55);
-            this.tabPage_Clients.Name = "tabPage_Clients";
-            this.tabPage_Clients.Size = new System.Drawing.Size(1076, 705);
-            this.tabPage_Clients.TabIndex = 2;
-            this.tabPage_Clients.UseVisualStyleBackColor = true;
-            this.tabPage_Clients.Click += new System.EventHandler(this.tabPage_Clients_Click);
-            // 
-            // label_Clients
-            // 
-            this.label_Clients.AutoSize = true;
-            this.label_Clients.Font = new System.Drawing.Font("Verdana Pro Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Clients.Location = new System.Drawing.Point(7, 19);
-            this.label_Clients.Name = "label_Clients";
-            this.label_Clients.Size = new System.Drawing.Size(80, 23);
-            this.label_Clients.TabIndex = 7;
-            this.label_Clients.Text = "Clients";
-            // 
-            // tabPage_Commandes
-            // 
-            this.tabPage_Commandes.Controls.Add(this.label_Commandes);
-            this.tabPage_Commandes.ImageIndex = 3;
-            this.tabPage_Commandes.Location = new System.Drawing.Point(4, 55);
-            this.tabPage_Commandes.Name = "tabPage_Commandes";
-            this.tabPage_Commandes.Size = new System.Drawing.Size(1076, 705);
-            this.tabPage_Commandes.TabIndex = 3;
-            this.tabPage_Commandes.UseVisualStyleBackColor = true;
-            // 
-            // label_Commandes
-            // 
-            this.label_Commandes.AutoSize = true;
-            this.label_Commandes.Font = new System.Drawing.Font("Verdana Pro Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Commandes.Location = new System.Drawing.Point(7, 15);
-            this.label_Commandes.Name = "label_Commandes";
-            this.label_Commandes.Size = new System.Drawing.Size(134, 23);
-            this.label_Commandes.TabIndex = 7;
-            this.label_Commandes.Text = "Commandes";
-            // 
-            // tabPage_Familles
-            // 
-            this.tabPage_Familles.Controls.Add(this.Btn_Ajour_Famille);
-            this.tabPage_Familles.Controls.Add(this.dataGridView_Familles);
-            this.tabPage_Familles.ImageIndex = 4;
-            this.tabPage_Familles.Location = new System.Drawing.Point(4, 55);
-            this.tabPage_Familles.Name = "tabPage_Familles";
-            this.tabPage_Familles.Size = new System.Drawing.Size(1076, 705);
-            this.tabPage_Familles.TabIndex = 4;
-            this.tabPage_Familles.UseVisualStyleBackColor = true;
-            this.tabPage_Familles.Click += new System.EventHandler(this.tabPage_Familles_Click);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "téléchargement.png");
-            this.imageList1.Images.SetKeyName(1, "Fournisseur.jpg");
-            this.imageList1.Images.SetKeyName(2, "Client.png");
-            this.imageList1.Images.SetKeyName(3, "commande.png");
-            this.imageList1.Images.SetKeyName(4, "type.jpg");
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(565, 139);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "label3";
             // 
             // button_Delete
             // 
@@ -416,14 +287,177 @@ namespace Negosud_Plateforme
             this.button_Search.TabIndex = 12;
             this.button_Search.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // label2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(565, 139);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "label3";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana Pro Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(406, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 16);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Famille :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Verdana Pro Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(245, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 16);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Fournisseur :";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(409, 74);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 9;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DataSource = this.fournisseurDtoBindingSource;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(248, 73);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 8;
+            // 
+            // fournisseurDtoBindingSource
+            // 
+            this.fournisseurDtoBindingSource.DataSource = typeof(Negosud_Plateforme.FournisseurDto);
+            // 
+            // textBox_produits_name
+            // 
+            this.textBox_produits_name.Location = new System.Drawing.Point(54, 74);
+            this.textBox_produits_name.Name = "textBox_produits_name";
+            this.textBox_produits_name.Size = new System.Drawing.Size(147, 20);
+            this.textBox_produits_name.TabIndex = 7;
+            // 
+            // label_Produits
+            // 
+            this.label_Produits.AutoSize = true;
+            this.label_Produits.Font = new System.Drawing.Font("Verdana Pro Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Produits.Location = new System.Drawing.Point(17, 15);
+            this.label_Produits.Name = "label_Produits";
+            this.label_Produits.Size = new System.Drawing.Size(94, 23);
+            this.label_Produits.TabIndex = 6;
+            this.label_Produits.Text = "Produits";
+            // 
+            // tabPage_Fournisseurs
+            // 
+            this.tabPage_Fournisseurs.Controls.Add(this.label_Fournisseurs);
+            this.tabPage_Fournisseurs.Controls.Add(this.Btn_Ajour_Fournisseur);
+            this.tabPage_Fournisseurs.Controls.Add(this.dataGridView_Fournisseurs);
+            this.tabPage_Fournisseurs.ImageIndex = 1;
+            this.tabPage_Fournisseurs.Location = new System.Drawing.Point(4, 55);
+            this.tabPage_Fournisseurs.Name = "tabPage_Fournisseurs";
+            this.tabPage_Fournisseurs.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_Fournisseurs.Size = new System.Drawing.Size(1274, 705);
+            this.tabPage_Fournisseurs.TabIndex = 1;
+            this.tabPage_Fournisseurs.UseVisualStyleBackColor = true;
+            this.tabPage_Fournisseurs.Click += new System.EventHandler(this.tabPage_Fournisseurs_Click);
+            // 
+            // label_Fournisseurs
+            // 
+            this.label_Fournisseurs.AutoSize = true;
+            this.label_Fournisseurs.Font = new System.Drawing.Font("Verdana Pro Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Fournisseurs.Location = new System.Drawing.Point(7, 13);
+            this.label_Fournisseurs.Name = "label_Fournisseurs";
+            this.label_Fournisseurs.Size = new System.Drawing.Size(142, 23);
+            this.label_Fournisseurs.TabIndex = 7;
+            this.label_Fournisseurs.Text = "Fournisseurs";
+            // 
+            // tabPage_Clients
+            // 
+            this.tabPage_Clients.Controls.Add(this.label_Clients);
+            this.tabPage_Clients.Controls.Add(this.Btn_Ajout_Client);
+            this.tabPage_Clients.Controls.Add(this.dataGridView_Client);
+            this.tabPage_Clients.ImageIndex = 2;
+            this.tabPage_Clients.Location = new System.Drawing.Point(4, 55);
+            this.tabPage_Clients.Name = "tabPage_Clients";
+            this.tabPage_Clients.Size = new System.Drawing.Size(1274, 705);
+            this.tabPage_Clients.TabIndex = 2;
+            this.tabPage_Clients.UseVisualStyleBackColor = true;
+            this.tabPage_Clients.Click += new System.EventHandler(this.tabPage_Clients_Click);
+            // 
+            // label_Clients
+            // 
+            this.label_Clients.AutoSize = true;
+            this.label_Clients.Font = new System.Drawing.Font("Verdana Pro Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Clients.Location = new System.Drawing.Point(7, 19);
+            this.label_Clients.Name = "label_Clients";
+            this.label_Clients.Size = new System.Drawing.Size(80, 23);
+            this.label_Clients.TabIndex = 7;
+            this.label_Clients.Text = "Clients";
+            // 
+            // tabPage_Commandes
+            // 
+            this.tabPage_Commandes.Controls.Add(this.label_Commandes);
+            this.tabPage_Commandes.ImageIndex = 3;
+            this.tabPage_Commandes.Location = new System.Drawing.Point(4, 55);
+            this.tabPage_Commandes.Name = "tabPage_Commandes";
+            this.tabPage_Commandes.Size = new System.Drawing.Size(1274, 705);
+            this.tabPage_Commandes.TabIndex = 3;
+            this.tabPage_Commandes.UseVisualStyleBackColor = true;
+            // 
+            // label_Commandes
+            // 
+            this.label_Commandes.AutoSize = true;
+            this.label_Commandes.Font = new System.Drawing.Font("Verdana Pro Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Commandes.Location = new System.Drawing.Point(7, 15);
+            this.label_Commandes.Name = "label_Commandes";
+            this.label_Commandes.Size = new System.Drawing.Size(134, 23);
+            this.label_Commandes.TabIndex = 7;
+            this.label_Commandes.Text = "Commandes";
+            // 
+            // tabPage_Familles
+            // 
+            this.tabPage_Familles.Controls.Add(this.button_Suppr);
+            this.tabPage_Familles.Controls.Add(this.label4);
+            this.tabPage_Familles.Controls.Add(this.Btn_Ajour_Famille);
+            this.tabPage_Familles.Controls.Add(this.dataGridView_Familles);
+            this.tabPage_Familles.ImageIndex = 4;
+            this.tabPage_Familles.Location = new System.Drawing.Point(4, 55);
+            this.tabPage_Familles.Name = "tabPage_Familles";
+            this.tabPage_Familles.Size = new System.Drawing.Size(1274, 705);
+            this.tabPage_Familles.TabIndex = 4;
+            this.tabPage_Familles.UseVisualStyleBackColor = true;
+            this.tabPage_Familles.Click += new System.EventHandler(this.tabPage_Familles_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Verdana Pro Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(22, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 23);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Famille";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "téléchargement.png");
+            this.imageList1.Images.SetKeyName(1, "Fournisseur.jpg");
+            this.imageList1.Images.SetKeyName(2, "Client.png");
+            this.imageList1.Images.SetKeyName(3, "commande.png");
+            this.imageList1.Images.SetKeyName(4, "type.jpg");
+            // 
+            // button_Suppr
+            // 
+            this.button_Suppr.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.Delete;
+            this.button_Suppr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_Suppr.FlatAppearance.BorderSize = 0;
+            this.button_Suppr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Suppr.Location = new System.Drawing.Point(505, 141);
+            this.button_Suppr.Name = "button_Suppr";
+            this.button_Suppr.Size = new System.Drawing.Size(44, 39);
+            this.button_Suppr.TabIndex = 16;
+            this.button_Suppr.UseVisualStyleBackColor = true;
+            this.button_Suppr.Click += new System.EventHandler(this.button_Suppr_Click);
             // 
             // Negosud
             // 
@@ -441,6 +475,7 @@ namespace Negosud_Plateforme
             this.tabControl_Produit.ResumeLayout(false);
             this.tabPage_Produits.ResumeLayout(false);
             this.tabPage_Produits.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fournisseurDtoBindingSource)).EndInit();
             this.tabPage_Fournisseurs.ResumeLayout(false);
             this.tabPage_Fournisseurs.PerformLayout();
             this.tabPage_Clients.ResumeLayout(false);
@@ -448,6 +483,7 @@ namespace Negosud_Plateforme
             this.tabPage_Commandes.ResumeLayout(false);
             this.tabPage_Commandes.PerformLayout();
             this.tabPage_Familles.ResumeLayout(false);
+            this.tabPage_Familles.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -473,7 +509,7 @@ namespace Negosud_Plateforme
         private System.Windows.Forms.Label label_Commandes;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_produits_name;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_Search;
@@ -481,6 +517,9 @@ namespace Negosud_Plateforme
         private System.Windows.Forms.Button Btn_Ajout_Produit;
         private System.Windows.Forms.Button button_Delete;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.BindingSource fournisseurDtoBindingSource;
+        private System.Windows.Forms.Button button_Suppr;
     }
 }
 

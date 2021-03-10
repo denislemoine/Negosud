@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace Negosud_Plateforme
 {
@@ -13,6 +14,9 @@ namespace Negosud_Plateforme
     {
         AjoutClient ajoutClient = new AjoutClient();
         AjoutProduit ajoutProduit = new AjoutProduit();
+        AjoutFamille ajoutFamille = new AjoutFamille();
+
+        public string CelluleProduitValue { get; private set; }
 
         public Negosud()
         {
@@ -29,7 +33,7 @@ namespace Negosud_Plateforme
 
         private void Btn_Ajout_Client_Click(object sender, EventArgs e)
         {
-            ajoutClient.Show();
+            this.ajoutClient.Show();
 
         }
 
@@ -126,11 +130,6 @@ namespace Negosud_Plateforme
 
         }
 
-        private void Btn_Ajour_Fournisseur_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void tabPage_Fournisseurs_Click(object sender, EventArgs e)
         {
@@ -161,6 +160,19 @@ namespace Negosud_Plateforme
         private void Btn_Ajout_Produit_Click_1(object sender, EventArgs e)
         {
             this.ajoutProduit.Show();
+        }
+
+        private void Btn_Ajour_Famille_Click(object sender, EventArgs e)
+        {
+            this.ajoutFamille.Show();
+        }
+
+        private void button_Suppr_Click(object sender, EventArgs e)
+        {
+            dataGridView_Familles.CurrentCell = dataGridView_Familles.Rows[1].Cells[0];
+            dataGridView_Familles.Rows[1].Selected = true;
+            MessageBox.Show(dataGridView_Familles.SelectedRows.ToString());
+
         }
     }
 }
