@@ -15,6 +15,7 @@ namespace Negosud_Plateforme
         AjoutClient ajoutClient = new AjoutClient();
         AjoutProduit ajoutProduit = new AjoutProduit();
         AjoutFamille ajoutFamille = new AjoutFamille();
+        AjoutFournisseur ajoutFournisseur = new AjoutFournisseur();
 
         public string CelluleProduitValue { get; private set; }
 
@@ -169,9 +170,12 @@ namespace Negosud_Plateforme
 
         private void button_Suppr_Click(object sender, EventArgs e)
         {
-           
-         
 
+        }
+
+        private void Btn_Ajour_Fournisseur_Click(object sender, EventArgs e)
+        {
+            this.ajoutFournisseur.Show();
         }
     }
 }
