@@ -18,7 +18,6 @@ namespace Negosud_Plateforme
         public string domaine { get; set; }
         public string urlPhoto { get; set; }
         public string contenant { get; set; }
-
         public bool isActive { get; set; }
         public bool commandeAuto { get; set; }
     }

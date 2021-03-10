@@ -16,7 +16,7 @@ namespace Negosud_Plateforme
     public partial class AjoutFamille : Form
     {
         private HttpWebRequest webRequest;
-        private string libeleFamille;
+        public string libeleFamille;
 
         public AjoutFamille()
         {
@@ -25,8 +25,7 @@ namespace Negosud_Plateforme
 
         private void button_Ajout_Produits_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(libeleFamille);
-
+        
             string url = "http://localhost:58841/api/Familles";
 
             string requestParams = JsonTester();

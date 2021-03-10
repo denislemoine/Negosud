@@ -33,6 +33,7 @@ namespace Negosud_Plateforme
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Negosud));
             this.Btn_Ajout_Client = new MetroSet_UI.Controls.MetroSetButton();
             this.dataGridView_Client = new System.Windows.Forms.DataGridView();
+            this.Btn_Ajour_Fournisseur = new MetroSet_UI.Controls.MetroSetButton();
             this.dataGridView_Fournisseurs = new System.Windows.Forms.DataGridView();
             this.Btn_Ajour_Famille = new MetroSet_UI.Controls.MetroSetButton();
             this.dataGridView_Familles = new System.Windows.Forms.DataGridView();
@@ -56,12 +57,15 @@ namespace Negosud_Plateforme
             this.tabPage_Clients = new System.Windows.Forms.TabPage();
             this.label_Clients = new System.Windows.Forms.Label();
             this.tabPage_Commandes = new System.Windows.Forms.TabPage();
+            this.Btn_Ajout_Commande = new MetroSet_UI.Controls.MetroSetButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label_Commandes = new System.Windows.Forms.Label();
             this.tabPage_Familles = new System.Windows.Forms.TabPage();
-            this.button_Suppr = new System.Windows.Forms.Button();
+            this.button_modif = new System.Windows.Forms.Button();
+            this.button_reload_Famille = new System.Windows.Forms.Button();
+            this.button_Suppr_Famille = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.Btn_Ajour_Fournisseur = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Client)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Fournisseurs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Familles)).BeginInit();
@@ -72,6 +76,7 @@ namespace Negosud_Plateforme
             this.tabPage_Fournisseurs.SuspendLayout();
             this.tabPage_Clients.SuspendLayout();
             this.tabPage_Commandes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage_Familles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,6 +116,33 @@ namespace Negosud_Plateforme
             this.dataGridView_Client.Size = new System.Drawing.Size(1076, 506);
             this.dataGridView_Client.TabIndex = 0;
             // 
+            // Btn_Ajour_Fournisseur
+            // 
+            this.Btn_Ajour_Fournisseur.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.Btn_Ajour_Fournisseur.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.Btn_Ajour_Fournisseur.DisabledForeColor = System.Drawing.Color.Gray;
+            this.Btn_Ajour_Fournisseur.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ajour_Fournisseur.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.Btn_Ajour_Fournisseur.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.Btn_Ajour_Fournisseur.HoverTextColor = System.Drawing.Color.White;
+            this.Btn_Ajour_Fournisseur.IsDerivedStyle = true;
+            this.Btn_Ajour_Fournisseur.Location = new System.Drawing.Point(448, 50);
+            this.Btn_Ajour_Fournisseur.Name = "Btn_Ajour_Fournisseur";
+            this.Btn_Ajour_Fournisseur.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.Btn_Ajour_Fournisseur.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.Btn_Ajour_Fournisseur.NormalTextColor = System.Drawing.Color.White;
+            this.Btn_Ajour_Fournisseur.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.Btn_Ajour_Fournisseur.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.Btn_Ajour_Fournisseur.PressTextColor = System.Drawing.Color.White;
+            this.Btn_Ajour_Fournisseur.Size = new System.Drawing.Size(118, 45);
+            this.Btn_Ajour_Fournisseur.Style = MetroSet_UI.Enums.Style.Custom;
+            this.Btn_Ajour_Fournisseur.StyleManager = null;
+            this.Btn_Ajour_Fournisseur.TabIndex = 2;
+            this.Btn_Ajour_Fournisseur.Text = "Ajout Fournisseur";
+            this.Btn_Ajour_Fournisseur.ThemeAuthor = "Narwin";
+            this.Btn_Ajour_Fournisseur.ThemeName = "MetroDark";
+            this.Btn_Ajour_Fournisseur.Click += new System.EventHandler(this.Btn_Ajour_Fournisseur_Click);
+            // 
             // dataGridView_Fournisseurs
             // 
             this.dataGridView_Fournisseurs.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
@@ -130,7 +162,7 @@ namespace Negosud_Plateforme
             this.Btn_Ajour_Famille.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.Btn_Ajour_Famille.HoverTextColor = System.Drawing.Color.White;
             this.Btn_Ajour_Famille.IsDerivedStyle = true;
-            this.Btn_Ajour_Famille.Location = new System.Drawing.Point(469, 64);
+            this.Btn_Ajour_Famille.Location = new System.Drawing.Point(447, 155);
             this.Btn_Ajour_Famille.Name = "Btn_Ajour_Famille";
             this.Btn_Ajour_Famille.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.Btn_Ajour_Famille.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
@@ -145,6 +177,7 @@ namespace Negosud_Plateforme
             this.Btn_Ajour_Famille.Text = "Ajout Famille";
             this.Btn_Ajour_Famille.ThemeAuthor = "Narwin";
             this.Btn_Ajour_Famille.ThemeName = "MetroDark";
+            this.Btn_Ajour_Famille.Click += new System.EventHandler(this.Btn_Ajour_Famille_Click);
             // 
             // dataGridView_Familles
             // 
@@ -263,7 +296,7 @@ namespace Negosud_Plateforme
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Verdana Pro Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(406, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 16);
@@ -273,10 +306,10 @@ namespace Negosud_Plateforme
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Verdana Pro Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(245, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 16);
+            this.label1.Size = new System.Drawing.Size(99, 16);
             this.label1.TabIndex = 10;
             this.label1.Text = "Fournisseur :";
             // 
@@ -311,17 +344,17 @@ namespace Negosud_Plateforme
             // label_Produits
             // 
             this.label_Produits.AutoSize = true;
-            this.label_Produits.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Produits.Font = new System.Drawing.Font("Verdana Pro Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Produits.Location = new System.Drawing.Point(17, 15);
             this.label_Produits.Name = "label_Produits";
-            this.label_Produits.Size = new System.Drawing.Size(86, 24);
+            this.label_Produits.Size = new System.Drawing.Size(94, 23);
             this.label_Produits.TabIndex = 6;
             this.label_Produits.Text = "Produits";
             // 
             // tabPage_Fournisseurs
             // 
-            this.tabPage_Fournisseurs.Controls.Add(this.Btn_Ajour_Fournisseur);
             this.tabPage_Fournisseurs.Controls.Add(this.label_Fournisseurs);
+            this.tabPage_Fournisseurs.Controls.Add(this.Btn_Ajour_Fournisseur);
             this.tabPage_Fournisseurs.Controls.Add(this.dataGridView_Fournisseurs);
             this.tabPage_Fournisseurs.ImageIndex = 1;
             this.tabPage_Fournisseurs.Location = new System.Drawing.Point(4, 55);
@@ -335,10 +368,10 @@ namespace Negosud_Plateforme
             // label_Fournisseurs
             // 
             this.label_Fournisseurs.AutoSize = true;
-            this.label_Fournisseurs.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Fournisseurs.Font = new System.Drawing.Font("Verdana Pro Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Fournisseurs.Location = new System.Drawing.Point(7, 13);
             this.label_Fournisseurs.Name = "label_Fournisseurs";
-            this.label_Fournisseurs.Size = new System.Drawing.Size(132, 24);
+            this.label_Fournisseurs.Size = new System.Drawing.Size(142, 23);
             this.label_Fournisseurs.TabIndex = 7;
             this.label_Fournisseurs.Text = "Fournisseurs";
             // 
@@ -358,15 +391,17 @@ namespace Negosud_Plateforme
             // label_Clients
             // 
             this.label_Clients.AutoSize = true;
-            this.label_Clients.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Clients.Font = new System.Drawing.Font("Verdana Pro Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Clients.Location = new System.Drawing.Point(7, 19);
             this.label_Clients.Name = "label_Clients";
-            this.label_Clients.Size = new System.Drawing.Size(73, 24);
+            this.label_Clients.Size = new System.Drawing.Size(80, 23);
             this.label_Clients.TabIndex = 7;
             this.label_Clients.Text = "Clients";
             // 
             // tabPage_Commandes
             // 
+            this.tabPage_Commandes.Controls.Add(this.Btn_Ajout_Commande);
+            this.tabPage_Commandes.Controls.Add(this.dataGridView1);
             this.tabPage_Commandes.Controls.Add(this.label_Commandes);
             this.tabPage_Commandes.ImageIndex = 3;
             this.tabPage_Commandes.Location = new System.Drawing.Point(4, 55);
@@ -374,20 +409,58 @@ namespace Negosud_Plateforme
             this.tabPage_Commandes.Size = new System.Drawing.Size(1274, 705);
             this.tabPage_Commandes.TabIndex = 3;
             this.tabPage_Commandes.UseVisualStyleBackColor = true;
+            this.tabPage_Commandes.Click += new System.EventHandler(this.tabPage_Commandes_Click);
+            // 
+            // Btn_Ajout_Commande
+            // 
+            this.Btn_Ajout_Commande.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.Btn_Ajout_Commande.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.Btn_Ajout_Commande.DisabledForeColor = System.Drawing.Color.Gray;
+            this.Btn_Ajout_Commande.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ajout_Commande.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.Btn_Ajout_Commande.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.Btn_Ajout_Commande.HoverTextColor = System.Drawing.Color.White;
+            this.Btn_Ajout_Commande.IsDerivedStyle = true;
+            this.Btn_Ajout_Commande.Location = new System.Drawing.Point(32, 87);
+            this.Btn_Ajout_Commande.Name = "Btn_Ajout_Commande";
+            this.Btn_Ajout_Commande.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.Btn_Ajout_Commande.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.Btn_Ajout_Commande.NormalTextColor = System.Drawing.Color.White;
+            this.Btn_Ajout_Commande.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.Btn_Ajout_Commande.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.Btn_Ajout_Commande.PressTextColor = System.Drawing.Color.White;
+            this.Btn_Ajout_Commande.Size = new System.Drawing.Size(118, 45);
+            this.Btn_Ajout_Commande.Style = MetroSet_UI.Enums.Style.Custom;
+            this.Btn_Ajout_Commande.StyleManager = null;
+            this.Btn_Ajout_Commande.TabIndex = 9;
+            this.Btn_Ajout_Commande.Text = "Ajout Commande";
+            this.Btn_Ajout_Commande.ThemeAuthor = "Narwin";
+            this.Btn_Ajout_Commande.ThemeName = "MetroDark";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 210);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1274, 495);
+            this.dataGridView1.TabIndex = 8;
             // 
             // label_Commandes
             // 
             this.label_Commandes.AutoSize = true;
-            this.label_Commandes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Commandes.Font = new System.Drawing.Font("Verdana Pro Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Commandes.Location = new System.Drawing.Point(7, 15);
             this.label_Commandes.Name = "label_Commandes";
-            this.label_Commandes.Size = new System.Drawing.Size(127, 24);
+            this.label_Commandes.Size = new System.Drawing.Size(134, 23);
             this.label_Commandes.TabIndex = 7;
             this.label_Commandes.Text = "Commandes";
             // 
             // tabPage_Familles
             // 
-            this.tabPage_Familles.Controls.Add(this.button_Suppr);
+            this.tabPage_Familles.Controls.Add(this.button_modif);
+            this.tabPage_Familles.Controls.Add(this.button_reload_Famille);
+            this.tabPage_Familles.Controls.Add(this.button_Suppr_Famille);
             this.tabPage_Familles.Controls.Add(this.label4);
             this.tabPage_Familles.Controls.Add(this.Btn_Ajour_Famille);
             this.tabPage_Familles.Controls.Add(this.dataGridView_Familles);
@@ -399,26 +472,52 @@ namespace Negosud_Plateforme
             this.tabPage_Familles.UseVisualStyleBackColor = true;
             this.tabPage_Familles.Click += new System.EventHandler(this.tabPage_Familles_Click);
             // 
-            // button_Suppr
+            // button_modif
             // 
-            this.button_Suppr.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.Delete;
-            this.button_Suppr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button_Suppr.FlatAppearance.BorderSize = 0;
-            this.button_Suppr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Suppr.Location = new System.Drawing.Point(505, 141);
-            this.button_Suppr.Name = "button_Suppr";
-            this.button_Suppr.Size = new System.Drawing.Size(44, 39);
-            this.button_Suppr.TabIndex = 16;
-            this.button_Suppr.UseVisualStyleBackColor = true;
-            this.button_Suppr.Click += new System.EventHandler(this.button_Suppr_Click);
+            this.button_modif.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.modifier;
+            this.button_modif.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_modif.FlatAppearance.BorderSize = 0;
+            this.button_modif.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_modif.Location = new System.Drawing.Point(480, 337);
+            this.button_modif.Name = "button_modif";
+            this.button_modif.Size = new System.Drawing.Size(58, 52);
+            this.button_modif.TabIndex = 18;
+            this.button_modif.UseVisualStyleBackColor = true;
+            this.button_modif.Click += new System.EventHandler(this.button_modif_Click);
+            // 
+            // button_reload_Famille
+            // 
+            this.button_reload_Famille.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.loading;
+            this.button_reload_Famille.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_reload_Famille.FlatAppearance.BorderSize = 0;
+            this.button_reload_Famille.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_reload_Famille.Location = new System.Drawing.Point(488, 283);
+            this.button_reload_Famille.Name = "button_reload_Famille";
+            this.button_reload_Famille.Size = new System.Drawing.Size(40, 38);
+            this.button_reload_Famille.TabIndex = 17;
+            this.button_reload_Famille.UseVisualStyleBackColor = true;
+            this.button_reload_Famille.Click += new System.EventHandler(this.button_reload_Famille_Click);
+            // 
+            // button_Suppr_Famille
+            // 
+            this.button_Suppr_Famille.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.Delete;
+            this.button_Suppr_Famille.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_Suppr_Famille.FlatAppearance.BorderSize = 0;
+            this.button_Suppr_Famille.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Suppr_Famille.Location = new System.Drawing.Point(484, 220);
+            this.button_Suppr_Famille.Name = "button_Suppr_Famille";
+            this.button_Suppr_Famille.Size = new System.Drawing.Size(44, 39);
+            this.button_Suppr_Famille.TabIndex = 16;
+            this.button_Suppr_Famille.UseVisualStyleBackColor = true;
+            this.button_Suppr_Famille.Click += new System.EventHandler(this.button_Suppr_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Verdana Pro Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(22, 18);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 24);
+            this.label4.Size = new System.Drawing.Size(83, 23);
             this.label4.TabIndex = 7;
             this.label4.Text = "Famille";
             // 
@@ -431,19 +530,6 @@ namespace Negosud_Plateforme
             this.imageList1.Images.SetKeyName(2, "Client.png");
             this.imageList1.Images.SetKeyName(3, "commande.png");
             this.imageList1.Images.SetKeyName(4, "type.jpg");
-            // 
-            // Btn_Ajour_Fournisseur
-            // 
-            this.Btn_Ajour_Fournisseur.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.add;
-            this.Btn_Ajour_Fournisseur.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Btn_Ajour_Fournisseur.FlatAppearance.BorderSize = 0;
-            this.Btn_Ajour_Fournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Ajour_Fournisseur.Location = new System.Drawing.Point(588, 71);
-            this.Btn_Ajour_Fournisseur.Name = "Btn_Ajour_Fournisseur";
-            this.Btn_Ajour_Fournisseur.Size = new System.Drawing.Size(46, 38);
-            this.Btn_Ajour_Fournisseur.TabIndex = 15;
-            this.Btn_Ajour_Fournisseur.UseVisualStyleBackColor = true;
-            this.Btn_Ajour_Fournisseur.Click += new System.EventHandler(this.Btn_Ajour_Fournisseur_Click);
             // 
             // Negosud
             // 
@@ -468,6 +554,7 @@ namespace Negosud_Plateforme
             this.tabPage_Clients.PerformLayout();
             this.tabPage_Commandes.ResumeLayout(false);
             this.tabPage_Commandes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage_Familles.ResumeLayout(false);
             this.tabPage_Familles.PerformLayout();
             this.ResumeLayout(false);
@@ -478,6 +565,7 @@ namespace Negosud_Plateforme
         private System.Windows.Forms.DataGridView dataGridView_Client;
         private MetroSet_UI.Controls.MetroSetButton Btn_Ajout_Client;
         private System.Windows.Forms.DataGridView dataGridView_Produits;
+        private MetroSet_UI.Controls.MetroSetButton Btn_Ajour_Fournisseur;
         private System.Windows.Forms.DataGridView dataGridView_Fournisseurs;
         private MetroSet_UI.Controls.MetroSetButton Btn_Ajour_Famille;
         private System.Windows.Forms.DataGridView dataGridView_Familles;
@@ -504,8 +592,11 @@ namespace Negosud_Plateforme
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.BindingSource fournisseurDtoBindingSource;
-        private System.Windows.Forms.Button button_Suppr;
-        private System.Windows.Forms.Button Btn_Ajour_Fournisseur;
+        private System.Windows.Forms.Button button_Suppr_Famille;
+        private System.Windows.Forms.Button button_reload_Famille;
+        private System.Windows.Forms.Button button_modif;
+        private MetroSet_UI.Controls.MetroSetButton Btn_Ajout_Commande;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
