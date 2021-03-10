@@ -16,7 +16,7 @@ namespace Negosud_Plateforme
     public partial class AjoutFamille : Form
     {
         private HttpWebRequest webRequest;
-        private string libeleFamille;
+        public string libeleFamille;
 
         public AjoutFamille()
         {
