@@ -157,5 +157,10 @@ namespace Negosud_Plateforme
         {
             appel_Api("http://localhost:58841/api/Familles");
         }
+
+        private void button_load_Click(object sender, EventArgs e)
+        {
+            appel_Api("http://localhost:58841/api/Produits");
+        }
     }
 }
