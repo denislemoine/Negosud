@@ -96,9 +96,6 @@
 
 	<div id="grid">
 
-
-		<p>@ViewBag.Produits</p>
-
 		@foreach (var item in ViewBag.Produits)
 		{
 			<!--PRODUCT-->
@@ -115,10 +112,10 @@
 
 					<h3>Famille</h3>
 					<div class="colors-large">
-						<p>Rouge,Rose,Blanc(pas encore definit)</p>
+						<p>Rouge, Rose, Blanc (pas encore definit)</p>
 					</div>
 
-					<h3>SIZE</h3>
+					<h3>TAILLE</h3>
 					<div class="sizes-large">
 						<p>@item.Contenant</p>
 					</div>
@@ -131,20 +128,15 @@
 						<div class="shadow"></div>
 						<img src="@item.UrlPhoto" alt="" />
 						<div class="image_overlay"></div>
-						<div class="add_to_cart">Add to cart</div>
-						<div class="view_gallery">View gallery</div>
+						<div class="add_to_cart">AJOUTER AU PANIER</div>
 						<div class="stats">
 							<div class="stats-container">
 								<span class="product_price">@item.Prix €</span>
 								<span class="product_name">@item.Nom</span>
-								<p>Summer dress</p>
 
 								<div class="product-options">
-									<strong>SIZES</strong>
+									<strong>TAILLE</strong>
 									<span>@item.Contenant</span>
-									<strong>COLORS</strong>
-									<div class="colors">
-									</div>
 								</div>
 							</div>
 						</div>
