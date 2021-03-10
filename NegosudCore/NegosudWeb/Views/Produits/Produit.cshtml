@@ -1,0 +1,75 @@
+﻿@section css {
+	<link href="@Url.Content("~/Assets/css/singleProduct.css")" rel="stylesheet" />
+}
+
+@section scripts{
+
+}
+
+@{
+	var produit = ViewBag.Produit;
+}
+
+@{
+	ViewBag.Title = produit.Nom;
+}
+
+<main>
+	<div class="container">
+		<div class="grid second-nav">
+			<div class="column-xs-12">
+				<nav>
+					<ol class="breadcrumb-list">
+						<li class="breadcrumb-item"><a href="/">Negosud</a></li>
+						<li class="breadcrumb-item"><a href="/produits">Catalogue</a></li>
+						<li class="breadcrumb-item active">@produit.Nom</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+		<div class="grid product">
+			<div class="column-xs-12 column-md-7">
+				<div class="product-gallery">
+					<div class="product-image">
+						<img class="active" src="@produit.UrlPhoto">
+					</div>
+					<ul class="image-list">
+						<li class="image-item"><img src="@produit.UrlPhoto"></li>
+						<li class="image-item"><img src="@produit.UrlPhoto"></li>
+						<li class="image-item"><img src="@produit.UrlPhoto"></li>
+					</ul>
+				</div>
+			</div>
+			<div class="column-xs-12 column-md-5">
+				<h1>@produit.Nom</h1>
+				<h2>@produit.Prix€</h2>
+				<div class="description">
+					<p>@produit.Description</p>
+				</div>
+				<button class="add-to-cart">Ajouter au Panier</button>
+			</div>
+		</div>
+		<div class="grid related-products">
+			<div class="column-xs-12">
+				<h3>Vous pourriez également être intérressé</h3>
+			</div>
+			<div class="column-xs-12 column-md-4">
+				<img src="@produit.UrlPhoto">
+				<h4>@produit.Nom</h4>
+				<p class="price">@produit.Prix</p>
+			</div>
+			<div class="column-xs-12 column-md-4">
+				<img src="@produit.UrlPhoto">
+				<h4>@produit.Nom</h4>
+				<p class="price">@produit.Prix</p>
+			</div>
+			<div class="column-xs-12 column-md-4">
+				<img src="@produit.UrlPhoto">
+				<h4>@produit.Nom</h4>
+				<p class="price">@produit.Prix€</p>
+			</div>
+		</div>
+	</div>
+</main>
+
+
