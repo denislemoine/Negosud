@@ -53,6 +53,8 @@ namespace Negosud_Plateforme
             this.dataGridView_Familles.Columns["IsActive"].Visible = false;
             appel_Api("http://localhost:58841/api/Produits");
             this.dataGridView_Produits.Columns["IsActive"].Visible = false;
+
+            // Initialisation des combox avec l'api
             apiComboBOx("http://localhost:58841/api/Familles");
             apiComboBOx("http://localhost:58841/api/Fournisseurs");
         }
