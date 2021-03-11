@@ -27,7 +27,8 @@ namespace Negosud_Plateforme
         private void AjoutProduit_Load(object sender, EventArgs e)
         {
             Lecture_Fournisseur("http://localhost:58841/api/Fournisseurs");
- 
+            Lecture_Famille("http://localhost:58841/api/Familles");
+
         }
 
         
@@ -127,7 +128,6 @@ namespace Negosud_Plateforme
         {
             if (url == "http://localhost:58841/api/Fournisseurs")
             {
-
                 var webRequest = (HttpWebRequest)WebRequest.Create(url);
                 var webResponse = (HttpWebResponse)webRequest.GetResponse();
 
@@ -135,13 +135,37 @@ namespace Negosud_Plateforme
                 {
                     var reader = new StreamReader(webResponse.GetResponseStream());
                     string s = reader.ReadToEnd();
-                    var arr = JsonConvert.DeserializeObject<List<ComboFournisseurDto>>(s);
-                    var list = new BindingList<ComboFournisseurDto>(arr);
+                    var arr = JsonConvert.DeserializeObject<List<FournisseurDto>>(s);
+                    var list = new BindingList<FournisseurDto>(arr);
                     var data = new BindingSource(list, null);
-                    comboBox_Fournisseur.ValueMember = "id";
-                    comboBox_Fournisseur.DisplayMember = "nom";                                                                         
-                   
-                    comboBox_Fournisseur.DataSource = data;
+                    comboBox_Fournisseur.DataSource = data.DataSource;
+                    comboBox_Fournisseur.DisplayMember = "nomEntreprise";
+                    comboBox_Fournisseur.ValueMember = "nomEntreprise";
+
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
+                }
+            }
+        }
+        public void Lecture_Famille(string url)
+        {
+            if (url == "http://localhost:58841/api/Familles")
+            {
+                var webRequest = (HttpWebRequest)WebRequest.Create(url);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+                if ((webResponse.StatusCode == HttpStatusCode.OK))
+                {
+                    var reader = new StreamReader(webResponse.GetResponseStream());
+                    string s = reader.ReadToEnd();
+                    var arr = JsonConvert.DeserializeObject<List<FamilleDto>>(s);
+                    var list = new BindingList<FamilleDto>(arr);
+                    var data = new BindingSource(list, null);
+                    comboBox_Famille.DataSource = data.DataSource;
+                    comboBox_Famille.DisplayMember = "libelle";
+                    comboBox_Famille.ValueMember = "libelle";
 
                 }
                 else
@@ -152,3 +176,4 @@ namespace Negosud_Plateforme
         }
     }
 }
+
