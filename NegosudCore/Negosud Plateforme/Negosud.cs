@@ -33,6 +33,7 @@ namespace Negosud_Plateforme
         private string idClient, nameClient, EmailClient, AdresseClient, TelClient;
         string idFournisseur, nomFournisseur, nomContact, adresseFournisseur, telFournisseur, mailFournisseur;
 
+        string idStock,quantiteStockCommande, quantiteStock, idProduitStock;
 
         public string CelluleProduitValue { get; private set; }
 
@@ -53,6 +54,7 @@ namespace Negosud_Plateforme
             appel_Api("http://localhost:58841/api/Familles");
             this.dataGridView_Familles.Columns["IsActive"].Visible = false;
             appel_Api("http://localhost:58841/api/CommandeInternes");
+            appel_Api("http://localhost:58841/api/Stocks");
 
 
             // Initialisation des combox avec l'api
@@ -225,6 +227,28 @@ namespace Negosud_Plateforme
                 {
                     MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
                 }
+
+            }
+            else if (url == "http://localhost:58841/api/Stocks")
+            {
+                var webRequest = (HttpWebRequest)WebRequest.Create(url);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+                if ((webResponse.StatusCode == HttpStatusCode.OK))
+                {
+                    var reader = new StreamReader(webResponse.GetResponseStream());
+                    string s = reader.ReadToEnd();
+                    var arr = JsonConvert.DeserializeObject<List<StockDto>>(s);
+                    var list = new BindingList<StockDto>(arr);
+                    var data = new BindingSource(list, null);
+                    dataGridView_Stock.DataSource = data;
+
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
+                }
+
             }
 
 
@@ -268,6 +292,14 @@ namespace Negosud_Plateforme
         {
             this.ajoutCommande.Show();
         }
+
+        private void button_reload_Stock_Click(object sender, EventArgs e)
+        {
+            appel_Api("http://localhost:58841/api/Stocks");
+        }
+
+        
+
         // -------------------------------------------------------------------------------------------------//
         // Button avec fonction Supprimer
         // -------------------------------------------------------------------------------------------------//
@@ -304,6 +336,33 @@ namespace Negosud_Plateforme
             }
             MessageBox.Show("Vous avez suppprimé " + nomFournisseur);
             appel_Api("http://localhost:58841/api/Fournisseurs");
+        }
+
+        private void button_Search_Click(object sender, EventArgs e)
+        {
+            if (comboBox2.Items.ToString() != null)
+            {
+                var webRequest = (HttpWebRequest)WebRequest.Create("http://localhost:58841/api/Familles");
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+                if ((webResponse.StatusCode == HttpStatusCode.OK))
+                {
+                    var reader = new StreamReader(webResponse.GetResponseStream());
+                    string s = reader.ReadToEnd();
+                    var arr = JsonConvert.DeserializeObject<List<ClientDto>>(s);
+                    var list = new BindingList<ClientDto>(arr);
+                    var data = new BindingSource(list, null);
+
+
+                    dataGridView_Client.DataSource = data;
+
+
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
+                }
+            }
         }
 
         private void button_Suppr_Client_Click(object sender, EventArgs e)
@@ -555,8 +614,37 @@ namespace Negosud_Plateforme
                 requestStream.Write(byteArray, 0, byteArray.Length);
             }
         }
-     
-       
+        private void button_Modifie_Stock_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Stock.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView_Stock.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dataGridView_Stock.Rows[selectedrowindex];
+
+                idStock = Convert.ToString(selectedRow.Cells["id"].Value);
+                idProduitStock = Convert.ToString(selectedRow.Cells["idProduit"].Value);
+                quantiteStock = Convert.ToString(selectedRow.Cells["quantite"].Value);
+                quantiteStockCommande = Convert.ToString(selectedRow.Cells["quantiteCommande"].Value);
+               
+            }
+
+            string url = "http://localhost:58841/api/Stocks/" + idStock;
+            string requestParams = JsonStockModif();
+
+            webRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            webRequest.Method = "PUT";
+            webRequest.ContentType = "application/json";
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(requestParams);
+            webRequest.ContentLength = byteArray.Length;
+            using (Stream requestStream = webRequest.GetRequestStream())
+            {
+                requestStream.Write(byteArray, 0, byteArray.Length);
+            }
+        }
+
         // -------------------------------------------------------------------------------------------------//
         // Json pour les fonctions supprimmer
         // -------------------------------------------------------------------------------------------------//
@@ -681,7 +769,7 @@ namespace Negosud_Plateforme
             var jsonData = new ProduitDto()
             {
                 id = Convert.ToInt64(id),
-                idFamille = Convert.ToInt64(id),
+                idFamille = Convert.ToInt64(idFamille),
                 nom = nameProduit,
                 millesime = millesimePorduit,
                 prix = Convert.ToInt32(prixProduit),
@@ -708,6 +796,22 @@ namespace Negosud_Plateforme
                 Id = Convert.ToInt64(id),
                 libelle = libel,
                 isActive = bool.Parse(IsActiv),
+
+            };
+
+            var result = ser.Serialize(jsonData);
+            return result;
+        }
+        public string JsonStockModif()
+        {
+            JavaScriptSerializer ser = new JavaScriptSerializer();
+
+            var jsonData = new StockDto()
+            {
+                id = Convert.ToInt64(idStock),
+                idProduit = Convert.ToInt64(idProduitStock) ,
+                quantite = Convert.ToInt32(quantiteStock),
+                quantiteCommande = Convert.ToInt32(quantiteStockCommande),
 
             };
 

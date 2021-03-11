@@ -72,6 +72,10 @@ namespace Negosud_Plateforme
             this.button_reload_Famille = new System.Windows.Forms.Button();
             this.button_Suppr_Famille = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.tabPage_Stock = new System.Windows.Forms.TabPage();
+            this.button_Modifie_Stock = new System.Windows.Forms.Button();
+            this.button_reload_Stock = new System.Windows.Forms.Button();
+            this.dataGridView_Stock = new System.Windows.Forms.DataGridView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Client)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Fournisseurs)).BeginInit();
@@ -85,6 +89,8 @@ namespace Negosud_Plateforme
             this.tabPage_Commandes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Commandes)).BeginInit();
             this.tabPage_Familles.SuspendLayout();
+            this.tabPage_Stock.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Stock)).BeginInit();
             this.SuspendLayout();
             // 
             // Btn_Ajout_Client
@@ -184,6 +190,7 @@ namespace Negosud_Plateforme
             this.tabControl_Produit.Controls.Add(this.tabPage_Clients);
             this.tabControl_Produit.Controls.Add(this.tabPage_Commandes);
             this.tabControl_Produit.Controls.Add(this.tabPage_Familles);
+            this.tabControl_Produit.Controls.Add(this.tabPage_Stock);
             this.tabControl_Produit.ImageList = this.imageList1;
             this.tabControl_Produit.Location = new System.Drawing.Point(1, 0);
             this.tabControl_Produit.Name = "tabControl_Produit";
@@ -193,6 +200,7 @@ namespace Negosud_Plateforme
             // 
             // tabPage_Produits
             // 
+            this.tabPage_Produits.BackColor = System.Drawing.Color.White;
             this.tabPage_Produits.Controls.Add(this.button_modif_Produit);
             this.tabPage_Produits.Controls.Add(this.label3);
             this.tabPage_Produits.Controls.Add(this.button_Delete_Produit);
@@ -212,7 +220,6 @@ namespace Negosud_Plateforme
             this.tabPage_Produits.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_Produits.Size = new System.Drawing.Size(1274, 705);
             this.tabPage_Produits.TabIndex = 0;
-            this.tabPage_Produits.UseVisualStyleBackColor = true;
             // 
             // button_modif_Produit
             // 
@@ -286,6 +293,7 @@ namespace Negosud_Plateforme
             this.button_Search.Size = new System.Drawing.Size(37, 38);
             this.button_Search.TabIndex = 12;
             this.button_Search.UseVisualStyleBackColor = true;
+            this.button_Search.Click += new System.EventHandler(this.button_Search_Click);
             // 
             // label2
             // 
@@ -609,6 +617,54 @@ namespace Negosud_Plateforme
             this.label4.TabIndex = 7;
             this.label4.Text = "Famille";
             // 
+            // tabPage_Stock
+            // 
+            this.tabPage_Stock.Controls.Add(this.button_Modifie_Stock);
+            this.tabPage_Stock.Controls.Add(this.button_reload_Stock);
+            this.tabPage_Stock.Controls.Add(this.dataGridView_Stock);
+            this.tabPage_Stock.ImageIndex = 5;
+            this.tabPage_Stock.Location = new System.Drawing.Point(4, 55);
+            this.tabPage_Stock.Name = "tabPage_Stock";
+            this.tabPage_Stock.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_Stock.Size = new System.Drawing.Size(1274, 705);
+            this.tabPage_Stock.TabIndex = 5;
+            this.tabPage_Stock.UseVisualStyleBackColor = true;
+            // 
+            // button_Modifie_Stock
+            // 
+            this.button_Modifie_Stock.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.modifier;
+            this.button_Modifie_Stock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_Modifie_Stock.FlatAppearance.BorderSize = 0;
+            this.button_Modifie_Stock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Modifie_Stock.Location = new System.Drawing.Point(574, 45);
+            this.button_Modifie_Stock.Name = "button_Modifie_Stock";
+            this.button_Modifie_Stock.Size = new System.Drawing.Size(71, 68);
+            this.button_Modifie_Stock.TabIndex = 23;
+            this.button_Modifie_Stock.UseVisualStyleBackColor = true;
+            this.button_Modifie_Stock.Click += new System.EventHandler(this.button_Modifie_Stock_Click);
+            // 
+            // button_reload_Stock
+            // 
+            this.button_reload_Stock.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.loading;
+            this.button_reload_Stock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_reload_Stock.FlatAppearance.BorderSize = 0;
+            this.button_reload_Stock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_reload_Stock.Location = new System.Drawing.Point(516, 61);
+            this.button_reload_Stock.Name = "button_reload_Stock";
+            this.button_reload_Stock.Size = new System.Drawing.Size(40, 38);
+            this.button_reload_Stock.TabIndex = 22;
+            this.button_reload_Stock.UseVisualStyleBackColor = true;
+            this.button_reload_Stock.Click += new System.EventHandler(this.button_reload_Stock_Click);
+            // 
+            // dataGridView_Stock
+            // 
+            this.dataGridView_Stock.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridView_Stock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Stock.Location = new System.Drawing.Point(30, 150);
+            this.dataGridView_Stock.Name = "dataGridView_Stock";
+            this.dataGridView_Stock.Size = new System.Drawing.Size(613, 223);
+            this.dataGridView_Stock.TabIndex = 19;
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -618,11 +674,13 @@ namespace Negosud_Plateforme
             this.imageList1.Images.SetKeyName(2, "Client.png");
             this.imageList1.Images.SetKeyName(3, "commande.png");
             this.imageList1.Images.SetKeyName(4, "type.jpg");
+            this.imageList1.Images.SetKeyName(5, "stock.png");
             // 
             // Negosud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1281, 761);
             this.Controls.Add(this.tabControl_Produit);
             this.Name = "Negosud";
@@ -645,6 +703,8 @@ namespace Negosud_Plateforme
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Commandes)).EndInit();
             this.tabPage_Familles.ResumeLayout(false);
             this.tabPage_Familles.PerformLayout();
+            this.tabPage_Stock.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Stock)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -692,6 +752,10 @@ namespace Negosud_Plateforme
         private System.Windows.Forms.Button button_reloadFournisseur;
         private System.Windows.Forms.Button btn_suppr_fournisseur;
         private System.Windows.Forms.Button btn_edit_fournisseur;
+        private System.Windows.Forms.TabPage tabPage_Stock;
+        private System.Windows.Forms.Button button_Modifie_Stock;
+        private System.Windows.Forms.Button button_reload_Stock;
+        private System.Windows.Forms.DataGridView dataGridView_Stock;
     }
 }
 
