@@ -7,6 +7,7 @@ namespace NegosudWeb.Models
 {
     public class ProductItems
     {
+        //
         public long Id { get; set; }
         public long IdFamille { get; set; }
         public string Nom { get; set; }
@@ -19,7 +20,9 @@ namespace NegosudWeb.Models
         public string Contenant { get; set; }
         public bool IsActive { get; set; }
         public bool CommandeAuto { get; set; }
+        //
         public string Famille { get; set; }
+        public int Quantite { get; set; }
 
     }
 }
