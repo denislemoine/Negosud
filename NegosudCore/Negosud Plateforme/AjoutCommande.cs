@@ -19,7 +19,7 @@ namespace Negosud_Plateforme
         string produitSelect;
         int quantite;
         int Prix, prixTotale;
-        long idSelect, idFournisseurSelect, maxId;
+        long idSelect, idFournisseurSelect, maxId, i;
         Dictionary<string, int> listSelect = new Dictionary<string, int>();
 
         private HttpWebRequest webRequest;
@@ -107,8 +107,8 @@ namespace Negosud_Plateforme
 
         private void button_Terminer_Commande_Click(object sender, EventArgs e)
         {
-            string url = "";
-             url = "http://localhost:58841/api/CommandesInternes";
+   
+             string url = "http://localhost:58841/api/CommandeInternes";
 
             string requestParams = JsonTCommandeInterne();
 
@@ -124,28 +124,27 @@ namespace Negosud_Plateforme
                 requestStream.Write(byteArray, 0, byteArray.Length);
             }
 
-            MessageBox.Show("Post passer");
-
-            //AppelApiId();
-
+           
+            AppelApiId();
 
 
-            //    url = "http://localhost:58841/api/CommandesInterneProduit";
 
-            //requestParams = JsonTCommandeInterneProduit();
+            url = "http://localhost:58841/api/CommandeInterneProduits";
 
-            //webRequest = (HttpWebRequest)WebRequest.Create(url);
+            requestParams = JsonTCommandeInterneProduit();
 
-            //webRequest.Method = "POST";
-            //webRequest.ContentType = "application/json";
+            webRequest = (HttpWebRequest)WebRequest.Create(url);
 
-            //byte[] byteArrayy = Encoding.UTF8.GetBytes(requestParams);
-            //webRequest.ContentLength = byteArrayy.Length;
-            //using (Stream requestStream = webRequest.GetRequestStream())
-            //{
-            //    requestStream.Write(byteArrayy, 0, byteArrayy.Length);
-            //}
-            //this.Close();
+            webRequest.Method = "POST";
+            webRequest.ContentType = "application/json";
+
+            byte[] byteArrayy = Encoding.UTF8.GetBytes(requestParams);
+            webRequest.ContentLength = byteArrayy.Length;
+            using (Stream requestStream = webRequest.GetRequestStream())
+            {
+                requestStream.Write(byteArrayy, 0, byteArrayy.Length);
+            }
+            
 
 
         }
@@ -153,15 +152,19 @@ namespace Negosud_Plateforme
         {
             JavaScriptSerializer ser = new JavaScriptSerializer();
 
+            DateTime myDateTime = DateTime.Now;
+            string sqlFormattedDate = myDateTime.ToString("yyyy-MM-ddTHH:mm:ss.fff");
+
             var jsonData = new CommandeInterneDto()
             {
+                id = 0,
+                prixTotal = prixTotale,
+                dateCommande = sqlFormattedDate,
+                isActive = true,
+                status = "En cours",
 
-                    prixTotal = prixTotale,
-                    status = "En cours",
-                    dateCommande = DateTime.Now,
-                    isActive = true,
-   
-             };
+            };
+
             var result = ser.Serialize(jsonData);
             return result;
         }
@@ -172,7 +175,7 @@ namespace Negosud_Plateforme
             var jsonData = new CommandeInterneProduitDto()
             {
 
-                idCommandeInterne = 0 , 
+                idCommandeInterne = i, 
                 idProduit = idSelect,
                 quantite = quantite,
 
@@ -183,7 +186,7 @@ namespace Negosud_Plateforme
 
         public void AppelApiId()
         {
-           string url = "http://localhost:58841/api/CommandesInternes";
+           string url = "http://localhost:58841/api/CommandeInternes";
 
             var webRequest = (HttpWebRequest)WebRequest.Create(url);
             var webResponse = (HttpWebResponse)webRequest.GetResponse();
@@ -198,11 +201,14 @@ namespace Negosud_Plateforme
                 var maxId = from r in arr
                             orderby r.id
                             select r;
+                i = 1;
+
                 foreach (var std in maxId)
                 {
-                    MessageBox.Show(std.ToString());
+                    i++;
+                    
                 }
-
+                MessageBox.Show(i.ToString());
             }
             else
             {

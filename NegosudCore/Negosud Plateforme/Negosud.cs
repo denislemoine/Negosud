@@ -52,8 +52,8 @@ namespace Negosud_Plateforme
             this.dataGridView_Client.Columns["IsActive"].Visible = false;
             appel_Api("http://localhost:58841/api/Familles");
             this.dataGridView_Familles.Columns["IsActive"].Visible = false;
-            appel_Api("http://localhost:58841/api/Produits");
-            this.dataGridView_Produits.Columns["IsActive"].Visible = false;
+            appel_Api("http://localhost:58841/api/CommandeInternes");
+
 
             // Initialisation des combox avec l'api
             apiComboBOx("http://localhost:58841/api/Familles");
@@ -206,7 +206,7 @@ namespace Negosud_Plateforme
                     MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
                 }
             }
-            else if (url == "http://localhost:58841/api/Commandes")
+            else if (url == "http://localhost:58841/api/CommandeInternes")
             {
                 var webRequest = (HttpWebRequest)WebRequest.Create(url);
                 var webResponse = (HttpWebResponse)webRequest.GetResponse();
@@ -251,10 +251,7 @@ namespace Negosud_Plateforme
             this.appel_Api("http://localhost:58841/api/Familles");
         }
 
-        private void tabPage_Commandes_Click(object sender, EventArgs e)
-        {
-            this.appel_Api("http://localhost:58841/api/Commandes");
-        }
+
         // Boutton reload Fournisseurs
         private void button1_Click(object sender, EventArgs e)
         {
@@ -534,7 +531,7 @@ namespace Negosud_Plateforme
                 nameProduit = Convert.ToString(selectedRow.Cells["nom"].Value);
                 millesimePorduit = Convert.ToString(selectedRow.Cells["millesime"].Value);
                 prixProduit = Convert.ToString(selectedRow.Cells["prix"].Value);
-                prixFournisseurProduit = Convert.ToString(selectedRow.Cells["prix"].Value);
+                prixFournisseurProduit = Convert.ToString(selectedRow.Cells["prixFournisseur"].Value);
                 descriptionProduit = Convert.ToString(selectedRow.Cells["description"].Value);
                 domaineProduit = Convert.ToString(selectedRow.Cells["domaine"].Value);
                 urlPhotoProduit = Convert.ToString(selectedRow.Cells["urlPhoto"].Value);

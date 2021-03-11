@@ -131,20 +131,25 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Constant.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\FournisseursController.cs" />
     <Compile Include="Controllers\ProduitsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Famille.cs" />
+    <Compile Include="Models\Fournisseur.cs" />
     <Compile Include="Models\ProductItems.cs" />
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\contact.css" />
+    <Content Include="Assets\css\fournisseurs.css" />
     <Content Include="Assets\css\home.css" />
     <Content Include="Assets\css\singleProduct.css" />
     <Content Include="Assets\img\background1.jpg" />
     <Content Include="Assets\img\background2.jpg" />
+    <Content Include="Assets\js\contact.js" />
     <Content Include="Assets\js\home.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -184,6 +189,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Produits\Index.cshtml" />
     <Content Include="Views\Produits\Produit.cshtml" />
+    <Content Include="Views\Fournisseurs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

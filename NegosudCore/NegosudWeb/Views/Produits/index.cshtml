@@ -127,6 +127,14 @@
 								<div class="product-options">
 									<strong>@item.Famille</strong>
 									<span>@item.Contenant</span>
+									<span id="totalPrice" ></span>
+									<script>
+										function totalPrice() {
+											let total = (parseFloat((@item.Prix+"").replace(",", ".")) * 6).toFixed(2);
+											document.getElementById("totalPrice").innerHTML = total.toString() + "€ / Carton";
+										}
+										totalPrice();
+									</script>
 								</div>
 							</div>
 						</div>

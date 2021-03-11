@@ -27,6 +27,6 @@ namespace Negosud_Plateforme
 
     class Datalist_Produits
     {
-        public List<ClientDto> Listproduit { get; set; }
+        public List<ProduitDto> Listproduit { get; set; }
     }
 }

@@ -53,6 +53,8 @@ namespace Negosud_Plateforme
             this.textBox_produits_name = new System.Windows.Forms.TextBox();
             this.label_Produits = new System.Windows.Forms.Label();
             this.tabPage_Fournisseurs = new System.Windows.Forms.TabPage();
+            this.btn_edit_fournisseur = new System.Windows.Forms.Button();
+            this.btn_suppr_fournisseur = new System.Windows.Forms.Button();
             this.button_reloadFournisseur = new System.Windows.Forms.Button();
             this.Btn_Ajour_Fournisseur = new System.Windows.Forms.Button();
             this.label_Fournisseurs = new System.Windows.Forms.Label();
@@ -71,8 +73,6 @@ namespace Negosud_Plateforme
             this.button_Suppr_Famille = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.btn_suppr_fournisseur = new System.Windows.Forms.Button();
-            this.btn_edit_fournisseur = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Client)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Fournisseurs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Familles)).BeginInit();
@@ -361,6 +361,32 @@ namespace Negosud_Plateforme
             this.tabPage_Fournisseurs.TabIndex = 1;
             this.tabPage_Fournisseurs.UseVisualStyleBackColor = true;
             // 
+            // btn_edit_fournisseur
+            // 
+            this.btn_edit_fournisseur.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.modifier;
+            this.btn_edit_fournisseur.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_edit_fournisseur.FlatAppearance.BorderSize = 0;
+            this.btn_edit_fournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_fournisseur.Location = new System.Drawing.Point(1017, 86);
+            this.btn_edit_fournisseur.Name = "btn_edit_fournisseur";
+            this.btn_edit_fournisseur.Size = new System.Drawing.Size(58, 52);
+            this.btn_edit_fournisseur.TabIndex = 20;
+            this.btn_edit_fournisseur.UseVisualStyleBackColor = true;
+            this.btn_edit_fournisseur.Click += new System.EventHandler(this.btn_edit_fournisseur_Click);
+            // 
+            // btn_suppr_fournisseur
+            // 
+            this.btn_suppr_fournisseur.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.Delete;
+            this.btn_suppr_fournisseur.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_suppr_fournisseur.FlatAppearance.BorderSize = 0;
+            this.btn_suppr_fournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_suppr_fournisseur.Location = new System.Drawing.Point(967, 93);
+            this.btn_suppr_fournisseur.Name = "btn_suppr_fournisseur";
+            this.btn_suppr_fournisseur.Size = new System.Drawing.Size(44, 39);
+            this.btn_suppr_fournisseur.TabIndex = 17;
+            this.btn_suppr_fournisseur.UseVisualStyleBackColor = true;
+            this.btn_suppr_fournisseur.Click += new System.EventHandler(this.btn_suppr_fournisseur_Click);
+            // 
             // button_reloadFournisseur
             // 
             this.button_reloadFournisseur.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.loading;
@@ -472,7 +498,6 @@ namespace Negosud_Plateforme
             this.tabPage_Commandes.Size = new System.Drawing.Size(1274, 705);
             this.tabPage_Commandes.TabIndex = 3;
             this.tabPage_Commandes.UseVisualStyleBackColor = true;
-            this.tabPage_Commandes.Click += new System.EventHandler(this.tabPage_Commandes_Click);
             // 
             // Btn_Ajout_Commande
             // 
@@ -507,7 +532,7 @@ namespace Negosud_Plateforme
             this.dataGridView_Commandes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Commandes.Location = new System.Drawing.Point(3, 170);
             this.dataGridView_Commandes.Name = "dataGridView_Commandes";
-            this.dataGridView_Commandes.Size = new System.Drawing.Size(524, 532);
+            this.dataGridView_Commandes.Size = new System.Drawing.Size(675, 532);
             this.dataGridView_Commandes.TabIndex = 8;
             // 
             // label_Commandes
@@ -593,32 +618,6 @@ namespace Negosud_Plateforme
             this.imageList1.Images.SetKeyName(2, "Client.png");
             this.imageList1.Images.SetKeyName(3, "commande.png");
             this.imageList1.Images.SetKeyName(4, "type.jpg");
-            // 
-            // btn_suppr_fournisseur
-            // 
-            this.btn_suppr_fournisseur.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.Delete;
-            this.btn_suppr_fournisseur.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_suppr_fournisseur.FlatAppearance.BorderSize = 0;
-            this.btn_suppr_fournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_suppr_fournisseur.Location = new System.Drawing.Point(967, 93);
-            this.btn_suppr_fournisseur.Name = "btn_suppr_fournisseur";
-            this.btn_suppr_fournisseur.Size = new System.Drawing.Size(44, 39);
-            this.btn_suppr_fournisseur.TabIndex = 17;
-            this.btn_suppr_fournisseur.UseVisualStyleBackColor = true;
-            this.btn_suppr_fournisseur.Click += new System.EventHandler(this.btn_suppr_fournisseur_Click);
-            // 
-            // btn_edit_fournisseur
-            // 
-            this.btn_edit_fournisseur.BackgroundImage = global::Negosud_Plateforme.Properties.Resources.modifier;
-            this.btn_edit_fournisseur.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_edit_fournisseur.FlatAppearance.BorderSize = 0;
-            this.btn_edit_fournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_edit_fournisseur.Location = new System.Drawing.Point(1017, 86);
-            this.btn_edit_fournisseur.Name = "btn_edit_fournisseur";
-            this.btn_edit_fournisseur.Size = new System.Drawing.Size(58, 52);
-            this.btn_edit_fournisseur.TabIndex = 20;
-            this.btn_edit_fournisseur.UseVisualStyleBackColor = true;
-            this.btn_edit_fournisseur.Click += new System.EventHandler(this.btn_edit_fournisseur_Click);
             // 
             // Negosud
             // 

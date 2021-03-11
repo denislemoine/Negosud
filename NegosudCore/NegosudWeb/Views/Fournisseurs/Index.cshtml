@@ -1,0 +1,16 @@
+﻿@{
+	ViewBag.Title = "Fournisseurs";
+}
+
+@section css {
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet" />
+	<link href="@Url.Content("~/Assets/css/fournisseurs.css")" rel="stylesheet" />
+}
+
+@section scripts{
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+}
+
+@{
+	var fournisseurs = ViewBag.Fournisseurs;
+}

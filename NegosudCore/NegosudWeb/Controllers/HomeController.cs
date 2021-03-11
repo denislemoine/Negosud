@@ -13,5 +13,10 @@ namespace NegosudWeb.Controllers
             return View();
         }
 
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
     }
 }
