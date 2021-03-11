@@ -31,6 +31,7 @@ namespace Negosud_Plateforme
         String prixProduit, prixFournisseurProduit;
 
         private string idClient, nameClient, EmailClient, AdresseClient, TelClient;
+        string idFournisseur, nomFournisseur, nomContact, adresseFournisseur, telFournisseur, mailFournisseur;
 
 
         public string CelluleProduitValue { get; private set; }
@@ -259,16 +260,8 @@ namespace Negosud_Plateforme
         {
             this.appel_Api("http://localhost:58841/api/Fournisseurs");
         }
-        // Boutton suppression Fournisseurs
-        private void btn_suppr_fournisseur_Click(object sender, EventArgs e)
-        {
-
-        }
-        // Boutton editer Fournisseurs
-        private void btn_edit_fournisseur_Click(object sender, EventArgs e)
-        {
-
-        }
+       
+       
         // Boutton ajout Fournisseurs
         private void Btn_Ajour_Fournisseur_Click_1(object sender, EventArgs e)
         {
@@ -281,6 +274,40 @@ namespace Negosud_Plateforme
         // -------------------------------------------------------------------------------------------------//
         // Button avec fonction Supprimer
         // -------------------------------------------------------------------------------------------------//
+        // Boutton suppression Fournisseurs
+        private void btn_suppr_fournisseur_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Fournisseurs.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView_Fournisseurs.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dataGridView_Fournisseurs.Rows[selectedrowindex];
+
+                idFournisseur = Convert.ToString(selectedRow.Cells["Id"].Value);
+                nomFournisseur = Convert.ToString(selectedRow.Cells["nomEntreprise"].Value);
+                nomContact = Convert.ToString(selectedRow.Cells["nomContact"].Value);
+                adresseFournisseur = Convert.ToString(selectedRow.Cells["adresse"].Value);
+                mailFournisseur = Convert.ToString(selectedRow.Cells["Mail"].Value);
+                telFournisseur = Convert.ToString(selectedRow.Cells["tel"].Value);
+                IsActiv = Convert.ToString(selectedRow.Cells["IsActive"].Value);
+            }
+
+            string url = "http://localhost:58841/api/Fournisseurs/" + idFournisseur;
+            string requestParams = JsonFournisseurSuppr();
+
+            webRequest = (HttpWebRequest)WebRequest.Create(url);
+            webRequest.Method = "PUT";
+            webRequest.ContentType = "application/json";
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(requestParams);
+            webRequest.ContentLength = byteArray.Length;
+            using (Stream requestStream = webRequest.GetRequestStream())
+            {
+                requestStream.Write(byteArray, 0, byteArray.Length);
+            }
+            MessageBox.Show("Vous avez suppprimé " + nomFournisseur);
+            appel_Api("http://localhost:58841/api/Fournisseurs");
+        }
 
         private void button_Suppr_Client_Click(object sender, EventArgs e)
         {
@@ -399,7 +426,38 @@ namespace Negosud_Plateforme
         // -------------------------------------------------------------------------------------------------//
         // Button avec fonction modifier
         // -------------------------------------------------------------------------------------------------//
+        // Boutton editer Fournisseurs
+        private void btn_edit_fournisseur_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Fournisseurs.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView_Fournisseurs.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataGridView_Fournisseurs.Rows[selectedrowindex];
 
+                idFournisseur = Convert.ToString(selectedRow.Cells["Id"].Value);
+                nomFournisseur = Convert.ToString(selectedRow.Cells["nomEntreprise"].Value);
+                nomContact = Convert.ToString(selectedRow.Cells["nomContact"].Value);
+                adresseFournisseur = Convert.ToString(selectedRow.Cells["adresse"].Value);
+                mailFournisseur = Convert.ToString(selectedRow.Cells["mail"].Value);
+                telFournisseur = Convert.ToString(selectedRow.Cells["tel"].Value);
+                IsActiv = Convert.ToString(selectedRow.Cells["IsActive"].Value);
+            }
+
+            string url = "http://localhost:58841/api/Fournisseurs/" + idFournisseur;
+            string requestParams = JsonFournisseurModif();
+
+            webRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            webRequest.Method = "PUT";
+            webRequest.ContentType = "application/json";
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(requestParams);
+            webRequest.ContentLength = byteArray.Length;
+            using (Stream requestStream = webRequest.GetRequestStream())
+            {
+                requestStream.Write(byteArray, 0, byteArray.Length);
+            }
+        }
         private void button_Modif_Client_Click(object sender, EventArgs e)
         {
             if (dataGridView_Client.SelectedCells.Count > 0)
@@ -562,9 +620,44 @@ namespace Negosud_Plateforme
             var result = ser.Serialize(jsonData);
             return result;
         }
+        public string JsonFournisseurSuppr()
+        {
+            JavaScriptSerializer ser = new JavaScriptSerializer();
+            var jsonData = new FournisseurDto()
+            {
+                Id = Convert.ToInt64(idFournisseur),
+                nomEntreprise = nomFournisseur,
+                nomContact = nomContact,
+                mail = mailFournisseur,
+                adresse = adresseFournisseur,
+                tel = telFournisseur,
+                isActive = bool.Parse("false"),
+            };
+
+            var result = ser.Serialize(jsonData);
+            return result;
+        }
         // -------------------------------------------------------------------------------------------------//
         // Json pour les fonctions Modifier
         // -------------------------------------------------------------------------------------------------//
+        public string JsonFournisseurModif()
+        {
+            JavaScriptSerializer ser = new JavaScriptSerializer();
+
+            var jsonData = new FournisseurDto()
+            {
+                Id = Convert.ToInt64(idFournisseur),
+                nomEntreprise = nomFournisseur,
+                nomContact = nomContact,
+                mail = mailFournisseur,
+                adresse = adresseFournisseur,
+                tel = telFournisseur,
+                isActive = bool.Parse(IsActiv),
+            };
+
+            var result = ser.Serialize(jsonData);
+            return result;
+        }
         public string JsonClientModif()
         {
             JavaScriptSerializer ser = new JavaScriptSerializer();
