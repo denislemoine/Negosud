@@ -90,6 +90,7 @@
     <Compile Include="CommandeInterneDto.cs" />
     <Compile Include="FamilleDto.cs" />
     <Compile Include="FournisseurDto.cs" />
+    <Compile Include="LigneCommandeInterneDto.cs" />
     <Compile Include="Negosud.cs">
       <SubType>Form</SubType>
     </Compile>

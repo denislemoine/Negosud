@@ -214,8 +214,8 @@ namespace Negosud_Plateforme
                 {
                     var reader = new StreamReader(webResponse.GetResponseStream());
                     string s = reader.ReadToEnd();
-                    var arr = JsonConvert.DeserializeObject<List<CommandeDto>>(s);
-                    var list = new BindingList<CommandeDto>(arr);
+                    var arr = JsonConvert.DeserializeObject<List<CommandeInterneDto>>(s);
+                    var list = new BindingList<CommandeInterneDto>(arr);
                     var data = new BindingSource(list, null);
                     dataGridView_Commandes.DataSource = data;
 
