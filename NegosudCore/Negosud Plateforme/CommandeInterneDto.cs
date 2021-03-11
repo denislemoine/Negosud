@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Negosud_Plateforme
 {
-    class CommandeDto
-    {
+    class CommandeInterneDto
+     {
         public long id { get; set; }
-        public float prixTotal { get; set; }
+        public long prixTotal { get; set; }
         public bool isActive { get; set; }
         public string status { get; set; }
 
-      
+
     }
 
 
-    class Datalist_Commande
+    class Datalist_Commande_Interne
     {
-        public List<CommandeDto> Listcommande{ get; set; }
+        public List<CommandeInterneDto> ListcommandeInterne { get; set; }
     }
 }

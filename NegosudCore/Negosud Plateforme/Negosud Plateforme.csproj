@@ -87,6 +87,7 @@
     <Compile Include="ClientDto.cs" />
     <Compile Include="ComboFournisseurDto.cs" />
     <Compile Include="CommandeDto.cs" />
+    <Compile Include="CommandeInterneDto.cs" />
     <Compile Include="FamilleDto.cs" />
     <Compile Include="FournisseurDto.cs" />
     <Compile Include="Negosud.cs">
@@ -100,6 +101,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AjoutClient.resx">
       <DependentUpon>AjoutClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AjoutCommande.resx">
+      <DependentUpon>AjoutCommande.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AjoutFamille.resx">
       <DependentUpon>AjoutFamille.cs</DependentUpon>

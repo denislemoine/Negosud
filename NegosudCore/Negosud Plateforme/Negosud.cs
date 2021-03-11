@@ -144,10 +144,10 @@ namespace Negosud_Plateforme
                 {
                     var reader = new StreamReader(webResponse.GetResponseStream());
                     string s = reader.ReadToEnd();
-                    var arr = JsonConvert.DeserializeObject<List<FournisseurDto>>(s);
-                    var list = new BindingList<FournisseurDto>(arr);
+                    var arr = JsonConvert.DeserializeObject<List<CommandeDto>>(s);
+                    var list = new BindingList<CommandeDto>(arr);
                     var data = new BindingSource(list, null);
-                    dataGridView_Fournisseurs.DataSource = data;
+                    dataGridView_Commandes.DataSource = data;
 
                 }
                 else
@@ -302,7 +302,7 @@ namespace Negosud_Plateforme
 
         private void tabPage_Commandes_Click(object sender, EventArgs e)
         {
-
+            this.appel_Api("http://localhost:58841/api/Commandes");
         }
 
         private void Btn_Ajour_Fournisseur_Click(object sender, EventArgs e)

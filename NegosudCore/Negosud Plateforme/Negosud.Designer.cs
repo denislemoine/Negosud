@@ -58,7 +58,7 @@ namespace Negosud_Plateforme
             this.label_Clients = new System.Windows.Forms.Label();
             this.tabPage_Commandes = new System.Windows.Forms.TabPage();
             this.Btn_Ajout_Commande = new MetroSet_UI.Controls.MetroSetButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView_Commandes = new System.Windows.Forms.DataGridView();
             this.label_Commandes = new System.Windows.Forms.Label();
             this.tabPage_Familles = new System.Windows.Forms.TabPage();
             this.button_modif = new System.Windows.Forms.Button();
@@ -76,7 +76,7 @@ namespace Negosud_Plateforme
             this.tabPage_Fournisseurs.SuspendLayout();
             this.tabPage_Clients.SuspendLayout();
             this.tabPage_Commandes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Commandes)).BeginInit();
             this.tabPage_Familles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -401,7 +401,7 @@ namespace Negosud_Plateforme
             // tabPage_Commandes
             // 
             this.tabPage_Commandes.Controls.Add(this.Btn_Ajout_Commande);
-            this.tabPage_Commandes.Controls.Add(this.dataGridView1);
+            this.tabPage_Commandes.Controls.Add(this.dataGridView_Commandes);
             this.tabPage_Commandes.Controls.Add(this.label_Commandes);
             this.tabPage_Commandes.ImageIndex = 3;
             this.tabPage_Commandes.Location = new System.Drawing.Point(4, 55);
@@ -437,14 +437,14 @@ namespace Negosud_Plateforme
             this.Btn_Ajout_Commande.ThemeAuthor = "Narwin";
             this.Btn_Ajout_Commande.ThemeName = "MetroDark";
             // 
-            // dataGridView1
+            // dataGridView_Commandes
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 210);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1274, 495);
-            this.dataGridView1.TabIndex = 8;
+            this.dataGridView_Commandes.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridView_Commandes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Commandes.Location = new System.Drawing.Point(3, 170);
+            this.dataGridView_Commandes.Name = "dataGridView_Commandes";
+            this.dataGridView_Commandes.Size = new System.Drawing.Size(524, 532);
+            this.dataGridView_Commandes.TabIndex = 8;
             // 
             // label_Commandes
             // 
@@ -554,7 +554,7 @@ namespace Negosud_Plateforme
             this.tabPage_Clients.PerformLayout();
             this.tabPage_Commandes.ResumeLayout(false);
             this.tabPage_Commandes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Commandes)).EndInit();
             this.tabPage_Familles.ResumeLayout(false);
             this.tabPage_Familles.PerformLayout();
             this.ResumeLayout(false);
@@ -596,7 +596,7 @@ namespace Negosud_Plateforme
         private System.Windows.Forms.Button button_reload_Famille;
         private System.Windows.Forms.Button button_modif;
         private MetroSet_UI.Controls.MetroSetButton Btn_Ajout_Commande;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView_Commandes;
     }
 }
 
