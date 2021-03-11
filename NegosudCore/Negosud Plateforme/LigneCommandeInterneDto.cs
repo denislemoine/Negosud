@@ -10,7 +10,6 @@ namespace Negosud_Plateforme
     {
         public long idProduit { get; set; }
         public long quantite { get; set; }
-
         public long prixTotal { get; set; }
 
     }

@@ -100,7 +100,6 @@ namespace Negosud_Plateforme
        
         private void button_Ajout_Commande_Click(object sender, EventArgs e)
         {
-
             listSelect.Add(produitSelect.ToString() + " x" + quantite.ToString(), prixTotale) ; 
             listSelectCmd.Add(idSelect, quantite); 
           
@@ -109,13 +108,12 @@ namespace Negosud_Plateforme
 
         private void button_Terminer_Commande_Click(object sender, EventArgs e)
         {
-   
+            // On créer une commande
             string url = "http://localhost:58841/api/CommandeInternes";
 
             prixtotaux = 0;
             foreach (KeyValuePair<string, int> entry in listSelect)
             {
-                // do something with entry.Value or entry.Key
                 var prixLoop = entry.Value;
                 prixtotaux += prixLoop;
             }
@@ -123,7 +121,6 @@ namespace Negosud_Plateforme
             string requestParams = JsonTCommandeInterne();
 
             webRequest = (HttpWebRequest)WebRequest.Create(url);
-
             webRequest.Method = "POST";
             webRequest.ContentType = "application/json";
 
@@ -135,28 +132,78 @@ namespace Negosud_Plateforme
             }
 
             AppelApiId();
-            foreach (KeyValuePair<long, int> entry in listSelectCmd)
+            // on rucupère la liste des produits et leurs stocks
+            url = "http://localhost:58841/api/Stocks";
+            webRequest = (HttpWebRequest)WebRequest.Create(url);
+            var webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+            if ((webResponse.StatusCode == HttpStatusCode.OK))
             {
-                // do something with entry.Value or entry.Key
-                var idSelectLoop = entry.Key;
-                var quantiteLoop = entry.Value;
+                var reader = new StreamReader(webResponse.GetResponseStream());
+                string s = reader.ReadToEnd();
+                var arr = JsonConvert.DeserializeObject<List<StockDto>>(s);
 
-                url = "http://localhost:58841/api/CommandeInterneProduits";
-
-                requestParams = JsonTCommandeInterneProduit(idSelectLoop, quantiteLoop);
-
-                webRequest = (HttpWebRequest)WebRequest.Create(url);
-
-                webRequest.Method = "POST";
-                webRequest.ContentType = "application/json";
-
-                byte[] byteArrayy = Encoding.UTF8.GetBytes(requestParams);
-                webRequest.ContentLength = byteArrayy.Length;
-                using (Stream requestStream = webRequest.GetRequestStream())
+                // Pour chaque Article dans la commande
+                foreach (KeyValuePair<long, int> entry in listSelectCmd)
                 {
-                    requestStream.Write(byteArrayy, 0, byteArrayy.Length);
+                    url = "http://localhost:58841/api/CommandeInterneProduits";
+                    var idSelectLoop = entry.Key;
+                    var quantiteLoop = entry.Value;
+                    var allStockId = from r in arr
+                                orderby r.id
+                                select r;
+
+                    // On ajoute un le produit a la commande
+                    requestParams = JsonTCommandeInterneProduit(idSelectLoop, quantiteLoop);
+                    webRequest = (HttpWebRequest)WebRequest.Create(url);
+                    webRequest.Method = "POST";
+                    webRequest.ContentType = "application/json";
+
+                    byte[] byteArrayy = Encoding.UTF8.GetBytes(requestParams);
+                    webRequest.ContentLength = byteArrayy.Length;
+                    using (Stream requestStream = webRequest.GetRequestStream())
+                    {
+                        requestStream.Write(byteArrayy, 0, byteArrayy.Length);
+                    }
+
+                    // Mise a jours du stock commandé sur le produit
+                    foreach (var std in allStockId)
+                    {
+                        if (std.idProduit == idSelectLoop)
+                        {
+                            var idStock = std.id;
+                            url = "http://localhost:58841/api/Stocks/" + idStock.ToString();
+                            JavaScriptSerializer ser = new JavaScriptSerializer();
+                            var jsonData = new StockDto()
+                            {
+                                id = idStock,
+                                idProduit = idSelectLoop,
+                                quantite = std.quantite,
+                                quantiteCommande = quantiteLoop+std.quantiteCommande,
+
+                            };
+                            requestParams = ser.Serialize(jsonData);
+
+                            webRequest = (HttpWebRequest)WebRequest.Create(url);
+                            webRequest.Method = "PUT";
+                            webRequest.ContentType = "application/json";
+
+                            byte[] byteArray2 = Encoding.UTF8.GetBytes(requestParams);
+                            webRequest.ContentLength = byteArray2.Length;
+                            using (Stream requestStream = webRequest.GetRequestStream())
+                            {
+                                requestStream.Write(byteArray2, 0, byteArray2.Length);
+                            }
+                        }
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
+            }
+            // On ferme le formulaire de commande
+            this.Close();
         }
         public string JsonTCommandeInterne()
         {

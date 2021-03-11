@@ -15,7 +15,6 @@ namespace Negosud_Plateforme
 
     }
 
-
     class Datalist_Commande_Interne_Produit
     {
         public List<CommandeInterneProduitDto> ListcommandeInterneProduit { get; set; }

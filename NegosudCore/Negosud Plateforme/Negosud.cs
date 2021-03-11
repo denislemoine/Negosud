@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Web.Script.Serialization;
+using System.Linq;
 
 namespace Negosud_Plateforme
 {
@@ -28,7 +29,9 @@ namespace Negosud_Plateforme
 
         string idFamille;
         string nameProduit, millesimePorduit, descriptionProduit, domaineProduit, urlPhotoProduit, contenantProduit;
-        String prixProduit, prixFournisseurProduit;
+        string prixProduit, prixFournisseurProduit;
+
+        string idCommandeFournisseur, prixTotalCommande, dateCommandeEdit, statusCommande;
 
         private string idClient, nameClient, EmailClient, AdresseClient, TelClient;
         string idFournisseur, nomFournisseur, nomContact, adresseFournisseur, telFournisseur, mailFournisseur;
@@ -299,7 +302,10 @@ namespace Negosud_Plateforme
             appel_Api("http://localhost:58841/api/Stocks");
         }
 
-        
+        private void btn_reload_commandFournisseur_Click(object sender, EventArgs e)
+        {
+            appel_Api("http://localhost:58841/api/CommandeInternes");
+        }
 
         // -------------------------------------------------------------------------------------------------//
         // Button avec fonction Supprimer
@@ -646,6 +652,103 @@ namespace Negosud_Plateforme
             }
         }
 
+        private void btn_edit_commandeFournisseur_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Commandes.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView_Commandes.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dataGridView_Commandes.Rows[selectedrowindex];
+
+                idCommandeFournisseur = Convert.ToString(selectedRow.Cells["id"].Value);
+                prixTotalCommande = Convert.ToString(selectedRow.Cells["prixTotal"].Value);
+                dateCommandeEdit = Convert.ToString(selectedRow.Cells["dateCommande"].Value);
+                statusCommande = Convert.ToString(selectedRow.Cells["status"].Value);
+            }
+
+            string url = "http://localhost:58841/api/commandeInternes/" + idCommandeFournisseur;
+            string requestParams = JsonCommandeModif();
+
+            webRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            webRequest.Method = "PUT";
+            webRequest.ContentType = "application/json";
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(requestParams);
+            webRequest.ContentLength = byteArray.Length;
+            using (Stream requestStream = webRequest.GetRequestStream())
+            {
+                requestStream.Write(byteArray, 0, byteArray.Length);
+            }
+
+            if(statusCommande == "Livré")
+            {
+                // on rucupère la liste des produits et leurs stocks
+                url = "http://localhost:58841/api/Stocks";
+                webRequest = (HttpWebRequest)WebRequest.Create(url);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+                if ((webResponse.StatusCode == HttpStatusCode.OK))
+                {
+                    var reader = new StreamReader(webResponse.GetResponseStream());
+                    string s = reader.ReadToEnd();
+                    var arrStock = JsonConvert.DeserializeObject<List<StockDto>>(s);
+
+                    var allStockId = from r in arrStock
+                                     orderby r.id
+                                     select r;
+                    url = "http://localhost:58841/api/CommandeInterneProduits/";
+                    webRequest = (HttpWebRequest)WebRequest.Create(url);
+                    webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+                    if ((webResponse.StatusCode == HttpStatusCode.OK))
+                    {
+                        reader = new StreamReader(webResponse.GetResponseStream());
+                        s = reader.ReadToEnd();
+                        var arrProduitCommande = JsonConvert.DeserializeObject<List<CommandeInterneProduitDto>>(s);
+
+                        var allCommandeInterneProduitsId = from r in arrProduitCommande
+                                                           orderby r.idCommandeInterne
+                                                           select r;
+
+                        // Mise a jours du stock commandé sur le produit
+                        foreach (var stdStock in allStockId)
+                        {
+                            foreach (var stdCommande in allCommandeInterneProduitsId)
+                            {
+                                if (stdStock.idProduit == stdCommande.idProduit && stdCommande.idCommandeInterne.ToString() == idCommandeFournisseur)
+                                {
+                                    var idStock = stdStock.id;
+                                    url = "http://localhost:58841/api/Stocks/" + idStock.ToString();
+                                    JavaScriptSerializer ser = new JavaScriptSerializer();
+                                    var jsonData = new StockDto()
+                                    {
+                                        id = idStock,
+                                        idProduit = stdCommande.idProduit,
+                                        quantite = stdStock.quantite + stdCommande.quantite,
+                                        quantiteCommande = stdStock.quantiteCommande - stdCommande.quantite,
+
+                                    };
+                                    requestParams = ser.Serialize(jsonData);
+
+                                    webRequest = (HttpWebRequest)WebRequest.Create(url);
+                                    webRequest.Method = "PUT";
+                                    webRequest.ContentType = "application/json";
+
+                                    byte[] byteArray2 = Encoding.UTF8.GetBytes(requestParams);
+                                    webRequest.ContentLength = byteArray2.Length;
+                                    using (Stream requestStream = webRequest.GetRequestStream())
+                                    {
+                                        requestStream.Write(byteArray2, 0, byteArray2.Length);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         // -------------------------------------------------------------------------------------------------//
         // Json pour les fonctions supprimmer
         // -------------------------------------------------------------------------------------------------//
@@ -819,6 +922,21 @@ namespace Negosud_Plateforme
             var result = ser.Serialize(jsonData);
             return result;
         }
+        public string JsonCommandeModif()
+        {
+            JavaScriptSerializer ser = new JavaScriptSerializer();
 
+            var jsonData = new CommandeInterneDto()
+            {
+                id = Convert.ToInt64(idCommandeFournisseur),
+                prixTotal = Convert.ToInt32(prixTotalCommande),
+                dateCommande = dateCommandeEdit,
+                status = statusCommande,
+                isActive = true
+            };
+
+            var result = ser.Serialize(jsonData);
+            return result;
+        }
     }
 }

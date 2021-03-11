@@ -12,13 +12,11 @@ namespace Negosud_Plateforme
         public long idProduit { get; set; }
         public int quantite { get; set; }
         public int quantiteCommande { get; set; }
-     
-
     }
 
 
     class Datalist_Stock
     {
-        public List<CommandeInterneDto> ListStock { get; set; }
+        public List<StockDto> ListStock { get; set; }
     }
 }
