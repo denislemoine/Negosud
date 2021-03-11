@@ -8,7 +8,7 @@
 }
 
 @section scripts{
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 	<script src="~/Assets/js/catalogue.js"></script>
 }
 
@@ -16,6 +16,7 @@
 	var produits = ViewBag.Produits;
 }
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 
 <div class="" id="wrapper">
@@ -95,7 +96,7 @@
 						PRODUCT SKU: <strong>89356</strong>
 					</div>
 
-					<div class="price-big">
+					<div class="price-big price-@item.Nom">
 						@item.Prix €
 					</div>
 
@@ -109,7 +110,7 @@
 						<p>@item.Contenant</p>
 					</div>
 
-					<button class="add-cart-large">Ajouter au panier</button>
+					<button type="button" onclick="location.href='/produits/produit/@item.Id';" class="add-cart-large">Consulter</button>
 
 				</div>
 				<div class="make3D">
@@ -117,8 +118,8 @@
 						<div class="shadow"></div>
 						<img src="@item.UrlPhoto" alt="" />
 						<div class="image_overlay"></div>
-						<div class="add_to_cart">Ajouter au panier</div>
-						<a class="view_gallery" href="/produits/produit/@item.Id" >Consulter</a>
+						<div id="addCart-@item.Id" class="add_to_cart">Ajouter au panier</div>
+						<a class="view_gallery" href="/produits/produit/@item.Id">Consulter</a>
 						<div class="stats">
 							<div class="stats-container">
 								<span class="product_price">@item.Prix € /unité</span>
@@ -127,7 +128,7 @@
 								<div class="product-options">
 									<strong>@item.Famille</strong>
 									<span>@item.Contenant</span>
-									<span id="totalPrice" ></span>
+									<span id="totalPrice"></span>
 									<script>
 										function totalPrice() {
 											let total = (parseFloat((@item.Prix+"").replace(",", ".")) * 6).toFixed(2);
@@ -166,10 +167,82 @@
 					</div>
 				</div>
 			</div>
+			<script>
+				$("#addCart-@item.Id").click(function () {
+					let newCart = [];
+					let newProduct = {
+						nom: "@item.Nom",
+						urlPhoto: "@item.UrlPhoto",
+						idProduit: @item.Id,
+						quantite: 1,
+						prix: "@item.Prix",
+					};
+
+					let actualCart = JSON.parse(localStorage.getItem("cart"));
+
+					if (actualCart == null) {
+						newCart.push(newProduct);
+						localStorage.setItem("cart", JSON.stringify(newCart) );
+					} else {
+						actualCart.push(newProduct);
+						localStorage.setItem("cart", JSON.stringify(actualCart) );
+					}
+
+					let cartJson = JSON.parse(localStorage.getItem("cart"));
+					document.getElementById("cartCounter").innerHTML = cartJson.length;
+				});
+			</script>
 			<!--END PRODUCT-->
 		}
 
+		<script>
 
+			$('.add_to_cart').click(function () {
+				var productCard = $(this).parent();
+				var position = productCard.offset();
+				var productImage = $(productCard).find('img').get(0).src;
+				var productName = $(productCard).find('.product_name').get(0).innerHTML;
+
+				$("body").append('<div class="floating-cart"></div>');
+				var cart = $('div.floating-cart');
+				productCard.clone().appendTo(cart);
+				$(cart).css({ 'top': position.top + 'px', "left": position.left + 'px' }).fadeIn("slow").addClass('moveToCart');
+				setTimeout(function () { $("body").addClass("MakeFloatingCart"); }, 800);
+				setTimeout(function () {
+					$('div.floating-cart').remove();
+					$("body").removeClass("MakeFloatingCart");
+
+					let cartItem = "<div class='cart-item'><div class='img-wrap'><img src='"
+						+ productImage + "' alt='' /></div><span>" + productName
+						+ "</span><strong>" + $('.price-' + productName).text()
+						+ "</strong><div class='cart-item-border'></div><div class='delete-item'></div></div>";
+
+					$("#cart .empty").hide();
+					$("#cart").append(cartItem);
+					$("#checkout").fadeIn(500);
+
+					$("#cart .cart-item").last()
+						.addClass("flash")
+						.find(".delete-item").click(function () {
+
+							console.log("removed article");
+
+							$(this).parent().fadeOut(300, function () {
+								$(this).remove();
+								if ($("#cart .cart-item").size() == 0) {
+									$("#cart .empty").fadeIn(500);
+									$("#checkout").fadeOut(500);
+								}
+							})
+						});
+					setTimeout(function () {
+						$("#cart .cart-item").last().removeClass("flash");
+					}, 10);
+
+				}, 1000);
+			});
+
+		</script>
 
 
 

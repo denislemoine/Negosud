@@ -146,9 +146,12 @@
     <Content Include="Assets\css\contact.css" />
     <Content Include="Assets\css\fournisseurs.css" />
     <Content Include="Assets\css\home.css" />
+    <Content Include="Assets\css\singleFournisseur.css" />
     <Content Include="Assets\css\singleProduct.css" />
     <Content Include="Assets\img\background1.jpg" />
     <Content Include="Assets\img\background2.jpg" />
+    <Content Include="Assets\img\profil.png" />
+    <Content Include="Assets\js\cart.js" />
     <Content Include="Assets\js\contact.js" />
     <Content Include="Assets\js\home.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -190,6 +193,7 @@
     <Content Include="Views\Produits\Index.cshtml" />
     <Content Include="Views\Produits\Produit.cshtml" />
     <Content Include="Views\Fournisseurs\Index.cshtml" />
+    <Content Include="Views\Fournisseurs\Fournisseur.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
