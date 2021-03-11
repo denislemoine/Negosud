@@ -53,6 +53,7 @@ namespace Negosud_Plateforme
             appel_Api("http://localhost:58841/api/Familles");
             this.dataGridView_Familles.Columns["IsActive"].Visible = false;
             appel_Api("http://localhost:58841/api/CommandeInternes");
+            this.dataGridView_Commandes.Columns["IsActive"].Visible = false;
 
 
             // Initialisation des combox avec l'api
