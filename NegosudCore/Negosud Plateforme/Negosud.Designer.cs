@@ -499,6 +499,7 @@ namespace Negosud_Plateforme
             this.Btn_Ajout_Commande.Text = "Ajout Commande";
             this.Btn_Ajout_Commande.ThemeAuthor = "Narwin";
             this.Btn_Ajout_Commande.ThemeName = "MetroDark";
+            this.Btn_Ajout_Commande.Click += new System.EventHandler(this.Btn_Ajout_Commande_Click);
             // 
             // dataGridView_Commandes
             // 

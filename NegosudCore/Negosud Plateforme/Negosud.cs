@@ -18,6 +18,7 @@ namespace Negosud_Plateforme
         AjoutProduit ajoutProduit = new AjoutProduit();
         AjoutFamille ajoutFamille = new AjoutFamille();
         AjoutFournisseur ajoutFournisseur = new AjoutFournisseur();
+        AjoutCommande ajoutCommande = new AjoutCommande();
 
         private HttpWebRequest webRequest;
 
@@ -52,6 +53,8 @@ namespace Negosud_Plateforme
             this.dataGridView_Familles.Columns["IsActive"].Visible = false;
             appel_Api("http://localhost:58841/api/Produits");
             this.dataGridView_Produits.Columns["IsActive"].Visible = false;
+
+            // Initialisation des combox avec l'api
             apiComboBOx("http://localhost:58841/api/Familles");
             apiComboBOx("http://localhost:58841/api/Fournisseurs");
         }
@@ -270,6 +273,10 @@ namespace Negosud_Plateforme
         private void Btn_Ajour_Fournisseur_Click_1(object sender, EventArgs e)
         {
             this.ajoutFournisseur.Show();
+        }   
+        private void Btn_Ajout_Commande_Click(object sender, EventArgs e)
+        {
+            this.ajoutCommande.Show();
         }
         // -------------------------------------------------------------------------------------------------//
         // Button avec fonction Supprimer
@@ -307,7 +314,10 @@ namespace Negosud_Plateforme
             {
                 requestStream.Write(byteArray, 0, byteArray.Length);
             }
+            MessageBox.Show("Vous avez suppprimé " + nameClient);
+            appel_Api("http://localhost:58841/api/Clients");
         }
+
 
         private void button_Delete_Click(object sender, EventArgs e)
         {
@@ -346,6 +356,9 @@ namespace Negosud_Plateforme
             {
                 requestStream.Write(byteArray, 0, byteArray.Length);
             }
+
+            MessageBox.Show("Vous avez suppprimé " + nameProduit);
+            appel_Api("http://localhost:58841/api/Produits");
         }
         private void button_Suppr_Click(object sender, EventArgs e)
         {
@@ -378,6 +391,8 @@ namespace Negosud_Plateforme
                 requestStream.Write(byteArray, 0, byteArray.Length);
             }
 
+            MessageBox.Show("Vous avez suppprimé " + libel);
+            appel_Api("http://localhost:58841/api/Familles");
         }
 
 
@@ -448,7 +463,6 @@ namespace Negosud_Plateforme
             }
 
         }
-
         private void button_modif_Produit_Click(object sender, EventArgs e)
         {
             if (dataGridView_Produits.SelectedCells.Count > 0)
