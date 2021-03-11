@@ -1,17 +1,111 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+	ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+@section css {
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet" />
+	<link href="@Url.Content("~/Assets/css/contact.css")" rel="stylesheet" />
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+}
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+
+
+@section scripts{
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+	<script src="~/Assets/js/contact.js"></script>
+}
+
+<div id='browser'>
+	<div id='browser-bar'>
+		<div class='circles'>Negosud</div>
+		<p>Contactez-nous</p>
+		<span class='arrow entypo-resize-full'></span>
+	</div>
+	<div id='content'>
+		<div id='left'>
+			<div id='map'>
+				<p>Siège Social</p>
+				<div class='map-locator'>
+					<div class='tooltip'>
+						<ul>
+							<li>
+								<span class='entypo-location'></span>
+								<span class='selectedLocation'>Israel</span>
+							</li>
+							<li>
+								<span class='entypo-mail'></span>
+								<a href='#'>johndoe@gmail.com</a>
+							</li>
+							<li>
+								<span class='entypo-phone'></span>
+								(+33) 07 55 44 33 22
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class='zoom'></div>
+			</div>
+			<ul id='location-bar'>
+				<li>
+					<a class='location' data-location='Israel' href='https://f.cl.ly/items/452R3S1440221Z3m372j/israel.png'>France</a>
+				</li>
+				<li>
+					<a class='location' data-location='USA' href='https://f.cl.ly/items/0n0o01382l0p1u271D43/usa.png'>Etats-Unis</a>
+				</li>
+				<li>
+					<a class='location' data-location='The Netherlands' href='https://f.cl.ly/items/0g0l283X3h1T3H270V0A/netherlands.png'>Allemagne</a>
+				</li>
+				<li>
+					<a class='location' data-location='Singapore' href='https://f.cl.ly/items/1i2Y262H020X141R3h0k/singapore.png'>Italie</a>
+				</li>
+			</ul>
+		</div>
+		<div id='right'>
+			<p>Réseaux Sociaux</p>
+			<div id='social'>
+				<a class='social'>
+					<span class='entypo-facebook'></span>
+				</a>
+				<a class='social'>
+					<span class='entypo-twitter'></span>
+				</a>
+				<a class='social'>
+					<span class='entypo-linkedin'></span>
+				</a>
+				<a class='social'>
+					<span class='entypo-gplus'></span>
+				</a>
+				<a class='social'>
+					<span class='entypo-instagrem'></span>
+				</a>
+			</div>
+			<form>
+				<p>Formulaire de Contact</p>
+				<input placeholder='Nom' type='email'>
+				<input placeholder='Email' type='email'>
+				<input placeholder='Objet' type='text'>
+				<textarea placeholder='Message' rows='4'></textarea>
+				<input placeholder='Send' type='submit'>
+			</form>
+			<p>Informations</p>
+			<p class='other entypo-mail'>
+				<a href='#'>admin@negosud.com</a>
+			</p>
+			<p class='other entypo-phone'>(+33) 07 55 44 33 22</p>
+		</div>
+	</div>
+</div>
+
+<script>
+	// TO MAKE THE MAP APPEAR YOU MUST
+	// ADD YOUR ACCESS TOKEN FROM
+	// https://account.mapbox.com
+	mapboxgl.accessToken = 'pk.eyJ1IjoiemFyZW5mciIsImEiOiJja200ejkwZGkwOWVhMzB0cGE3bGc2Y2pzIn0.Td1kLZV4-UevzMmMsJbM_Q';
+	var map = new mapboxgl.Map({
+		container: 'map', // container id
+		style: 'mapbox://styles/mapbox/streets-v11', // style URL
+		center: [-74.5, 40], // starting position [lng, lat]
+		zoom: 9 // starting zoom
+	});
+</script>
