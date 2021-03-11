@@ -127,7 +127,7 @@ namespace Negosud_Plateforme
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(181, 107);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(164, 20);
             this.numericUpDown1.TabIndex = 28;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
@@ -135,7 +135,7 @@ namespace Negosud_Plateforme
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(181, 222);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(164, 20);
             this.dateTimePicker1.TabIndex = 29;
             // 
             // Label_Date
@@ -175,6 +175,7 @@ namespace Negosud_Plateforme
             this.button_Terminer_Commande.TabIndex = 32;
             this.button_Terminer_Commande.Text = "Finaliser Commande";
             this.button_Terminer_Commande.UseVisualStyleBackColor = false;
+            this.button_Terminer_Commande.Click += new System.EventHandler(this.button_Terminer_Commande_Click);
             // 
             // AjoutCommande
             // 

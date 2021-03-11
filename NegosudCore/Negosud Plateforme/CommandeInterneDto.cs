@@ -11,6 +11,7 @@ namespace Negosud_Plateforme
         public long id { get; set; }
         public long prixTotal { get; set; }
         public bool isActive { get; set; }
+        public DateTime dateCommande { get; set; }
         public string status { get; set; }
 
     }
