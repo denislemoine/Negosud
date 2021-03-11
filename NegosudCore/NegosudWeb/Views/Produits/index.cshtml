@@ -96,67 +96,48 @@
 
 	<div id="grid">
 
-
-		<p>@ViewBag.Produits</p>
-
-		<!--PRODUCT-->
+		@foreach (var item in ViewBag.Produits)
+		{
+			<!--PRODUCT-->
 			<div class="product">
 				<div class="info-large">
-					<h4>title</h4>
+					<h4>@item.Nom</h4>
 					<div class="sku">
 						PRODUCT SKU: <strong>89356</strong>
 					</div>
 
 					<div class="price-big">
-						€
+						@item.Prix €
 					</div>
 
-					<h3>COLORS</h3>
+					<h3>Famille</h3>
 					<div class="colors-large">
-						<ul>
-							<li><a href="" style="background:#222"><span></span></a></li>
-							<li><a href="" style="background:#6e8cd5"><span></span></a></li>
-							<li><a href="" style="background:#f56060"><span></span></a></li>
-							<li><a href="" style="background:#44c28d"><span></span></a></li>
-						</ul>
+						<p>Rouge, Rose, Blanc (pas encore definit)</p>
 					</div>
 
-					<h3>SIZE</h3>
+					<h3>TAILLE</h3>
 					<div class="sizes-large">
-						<span>XS</span>
-						<span>S</span>
-						<span>M</span>
-						<span>L</span>
-						<span>XL</span>
-						<span>XXL</span>
+						<p>@item.Contenant</p>
 					</div>
 
-					<button class="add-cart-large">Add To Cart</button>
+					<button class="add-cart-large">Ajouter au panier</button>
 
 				</div>
 				<div class="make3D">
 					<div class="product-front">
 						<div class="shadow"></div>
-						<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1.jpg" alt="" />
+						<img src="@item.UrlPhoto" alt="" />
 						<div class="image_overlay"></div>
-						<div class="add_to_cart">Add to cart</div>
-						<div class="view_gallery">View gallery</div>
+						<div class="add_to_cart">AJOUTER AU PANIER</div>
+						<a class="view_gallery" href="/produits/produit/@item.Id" >CONSULTER</a>
 						<div class="stats">
 							<div class="stats-container">
-								<span class="product_price">$39</span>
-								<span class="product_name">FLUTED HEM DRESS</span>
-								<p>Summer dress</p>
+								<span class="product_price">@item.Prix €</span>
+								<span class="product_name">@item.Nom</span>
 
 								<div class="product-options">
-									<strong>SIZES</strong>
-									<span>XS, S, M, L, XL, XXL</span>
-									<strong>COLORS</strong>
-									<div class="colors">
-										<div class="c-blue"><span></span></div>
-										<div class="c-red"><span></span></div>
-										<div class="c-white"><span></span></div>
-										<div class="c-green"><span></span></div>
-									</div>
+									<strong>TAILLE</strong>
+									<span>@item.Contenant</span>
 								</div>
 							</div>
 						</div>
@@ -188,7 +169,9 @@
 					</div>
 				</div>
 			</div>
-		<!--END PRODUCT-->
+			<!--END PRODUCT-->
+		}
+
 
 
 

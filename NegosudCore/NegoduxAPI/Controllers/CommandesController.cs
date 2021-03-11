@@ -25,7 +25,7 @@ namespace NegoduxAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Commande>>> GetCommande()
         {
-            return await _context.Commande.ToListAsync();
+            return await _context.Commande.Where(result => result.IsActive == true).ToListAsync();
         }
 
         // GET: api/Commandes/5

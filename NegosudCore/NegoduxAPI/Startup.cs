@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using NegoduxAPI.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace NegoduxAPI
 {
