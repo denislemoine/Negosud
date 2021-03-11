@@ -25,26 +25,15 @@ namespace NegosudWeb.Controllers
                 response = await httpClient.GetAsync(requestUrl);
             }
 
+            //Create Array with JSON
             var content = await response.Content.ReadAsStringAsync();
             JArray product = JArray.Parse(content);
-            List<ProductItems> listProduct = product.ToObject<List<ProductItems>>();
 
-            List<Famille> listFamille = await Famille();
+            //Complete ProductItems Object
+            List<ProductItems> listProduct = await InfosAllProducts(product.ToObject<List<ProductItems>>());
 
-            for (int i = 0; i < listProduct.Count; i++)
-            {
-                for (int j = 0; j < listFamille.Count; j++)
-                {
-                    if(listProduct[i].IdFamille == listFamille[j].Id)
-                    {
-                        listProduct[i].Famille = listFamille[j].Libelle;
-                        j = listFamille.Count;
-                    }
-                }
-            }
-
+            //Sending data to view
             ViewBag.Produits = listProduct;
-
 
             return View();
         }
@@ -62,7 +51,7 @@ namespace NegosudWeb.Controllers
             }
 
             var content = await response.Content.ReadAsStringAsync();
-            ProductItems product = JsonConvert.DeserializeObject<ProductItems>(content);
+            ProductItems product = await InfoProduct(JsonConvert.DeserializeObject<ProductItems>(content));
 
             ViewBag.Produit = product;
 
@@ -82,6 +71,69 @@ namespace NegosudWeb.Controllers
             List<Famille> listFamille = famille.ToObject<List<Famille>>();
             return listFamille;
 
+        }
+        [HttpGet]
+        public async Task<List<Stock>> Stock()
+        {
+            string requestUrl = Constant.ApiUrl + "Stocks/";
+            HttpResponseMessage response;
+            using (var httpClient = new HttpClient())
+            {
+                response = await httpClient.GetAsync(requestUrl);
+            }
+            var content = await response.Content.ReadAsStringAsync();
+            JArray stock = JArray.Parse(content);
+            List<Stock> listStock = stock.ToObject<List<Stock>>();
+            return listStock;
+        }
+        public async Task<List<ProductItems>> InfosAllProducts(List<ProductItems> listProduct)
+        {
+            List<Famille> listFamille = await Famille();
+            List<Stock> listStock = await Stock();
+
+            for (int i = 0; i < listProduct.Count; i++)
+            {
+                for (int j = 0; j < listFamille.Count; j++)
+                {
+                    if (listProduct[i].IdFamille == listFamille[j].Id)
+                    {
+                        listProduct[i].Famille = listFamille[j].Libelle;
+                        j = listFamille.Count;
+                    }
+                }
+                for (int j = 0; j < listStock.Count; j++)
+                {
+                    if (listProduct[i].Id == listStock[j].IdProduit)
+                    {
+                        listProduct[i].Quantite = listStock[j].Quantite;
+                        j=listFamille.Count;
+                    }
+                }
+            }
+            return listProduct;
+        }
+        public async Task<ProductItems> InfoProduct(ProductItems product)
+        {
+            List<Famille> listFamille = await Famille();
+            List<Stock> listStock = await Stock();
+
+            for (int j = 0; j < listFamille.Count; j++)
+            {
+                if (product.IdFamille == listFamille[j].Id)
+                {
+                    product.Famille = listFamille[j].Libelle;
+                    j = listFamille.Count;
+                }
+            }
+            for (int j = 0; j < listStock.Count; j++)
+            {
+                if (product.Id == listStock[j].IdProduit)
+                {
+                    product.Quantite = listStock[j].Quantite;
+                    j = listFamille.Count;
+                }
+            }
+            return product;
         }
 
 

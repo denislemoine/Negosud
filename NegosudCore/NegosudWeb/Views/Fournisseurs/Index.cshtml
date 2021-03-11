@@ -1,0 +1,38 @@
+﻿@{
+	ViewBag.Title = "Fournisseurs";
+}
+
+@section css {
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet" />
+	<link href="@Url.Content("~/Assets/css/fournisseurs.css")" rel="stylesheet" />
+}
+
+@section scripts{
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+}
+
+@{
+	var fournisseurs = ViewBag.Fournisseurs;
+}
+
+<div class="container-fluid d-flex col-12">
+	<div class="grid ml-5">
+
+
+		@foreach (var item in ViewBag.Fournisseurs) {
+
+		<!-- FOURNISSEUR-->
+		<div class="grid__item">
+			<div class="card">
+				<img class="card__img" src="~/Assets/img/background2.jpg" alt="Snowy Mountains">
+				<div class="card__content">
+					<h1 class="card__header">@item.NomEntreprise</h1>
+					<p class="card__text">Ce fournisseur propose la vente de produits pour particulier. <strong>Contactez-le</strong> dès maintenant. </p>
+					<a style="text-decoration: none!important;" href="/fournisseurs/fournisseur/@item.Id" class="card__btn">Contacter <span>&rarr;</span></a>
+				</div>
+			</div>
+		</div>
+		}
+
+	</div>
+</div>

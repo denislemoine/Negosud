@@ -18,9 +18,10 @@ namespace Negosud_Plateforme
     {
         string produitSelect;
         int quantite;
-        int Prix, prixTotale;
+        int Prix, prixTotale, prixtotaux;
         long idSelect, idFournisseurSelect, maxId, i;
         Dictionary<string, int> listSelect = new Dictionary<string, int>();
+        Dictionary<long, int> listSelectCmd = new Dictionary<long, int>();
 
         private HttpWebRequest webRequest;
 
@@ -101,6 +102,7 @@ namespace Negosud_Plateforme
         {
 
             listSelect.Add(produitSelect.ToString() + " x" + quantite.ToString(), prixTotale) ; 
+            listSelectCmd.Add(idSelect, quantite); 
           
             dataGridView1.DataSource = (from d in listSelect orderby d.Value select new { d.Key, d.Value }).ToList();
         }
@@ -108,7 +110,15 @@ namespace Negosud_Plateforme
         private void button_Terminer_Commande_Click(object sender, EventArgs e)
         {
    
-             string url = "http://localhost:58841/api/CommandeInternes";
+            string url = "http://localhost:58841/api/CommandeInternes";
+
+            prixtotaux = 0;
+            foreach (KeyValuePair<string, int> entry in listSelect)
+            {
+                // do something with entry.Value or entry.Key
+                var prixLoop = entry.Value;
+                prixtotaux += prixLoop;
+            }
 
             string requestParams = JsonTCommandeInterne();
 
@@ -124,29 +134,29 @@ namespace Negosud_Plateforme
                 requestStream.Write(byteArray, 0, byteArray.Length);
             }
 
-           
             AppelApiId();
-
-
-
-            url = "http://localhost:58841/api/CommandeInterneProduits";
-
-            requestParams = JsonTCommandeInterneProduit();
-
-            webRequest = (HttpWebRequest)WebRequest.Create(url);
-
-            webRequest.Method = "POST";
-            webRequest.ContentType = "application/json";
-
-            byte[] byteArrayy = Encoding.UTF8.GetBytes(requestParams);
-            webRequest.ContentLength = byteArrayy.Length;
-            using (Stream requestStream = webRequest.GetRequestStream())
+            foreach (KeyValuePair<long, int> entry in listSelectCmd)
             {
-                requestStream.Write(byteArrayy, 0, byteArrayy.Length);
+                // do something with entry.Value or entry.Key
+                var idSelectLoop = entry.Key;
+                var quantiteLoop = entry.Value;
+
+                url = "http://localhost:58841/api/CommandeInterneProduits";
+
+                requestParams = JsonTCommandeInterneProduit(idSelectLoop, quantiteLoop);
+
+                webRequest = (HttpWebRequest)WebRequest.Create(url);
+
+                webRequest.Method = "POST";
+                webRequest.ContentType = "application/json";
+
+                byte[] byteArrayy = Encoding.UTF8.GetBytes(requestParams);
+                webRequest.ContentLength = byteArrayy.Length;
+                using (Stream requestStream = webRequest.GetRequestStream())
+                {
+                    requestStream.Write(byteArrayy, 0, byteArrayy.Length);
+                }
             }
-            
-
-
         }
         public string JsonTCommandeInterne()
         {
@@ -158,7 +168,7 @@ namespace Negosud_Plateforme
             var jsonData = new CommandeInterneDto()
             {
                 id = 0,
-                prixTotal = prixTotale,
+                prixTotal = prixtotaux,
                 dateCommande = sqlFormattedDate,
                 isActive = true,
                 status = "En cours",
@@ -168,7 +178,7 @@ namespace Negosud_Plateforme
             var result = ser.Serialize(jsonData);
             return result;
         }
-        public string JsonTCommandeInterneProduit()
+        public string JsonTCommandeInterneProduit(long idSelect, int quantite)
         {
             JavaScriptSerializer ser = new JavaScriptSerializer();
 
