@@ -88,6 +88,7 @@
     <Compile Include="ComboFournisseurDto.cs" />
     <Compile Include="CommandeDto.cs" />
     <Compile Include="CommandeInterneDto.cs" />
+    <Compile Include="CommandeInterneProduitDto.cs" />
     <Compile Include="FamilleDto.cs" />
     <Compile Include="FournisseurDto.cs" />
     <Compile Include="LigneCommandeInterneDto.cs" />
@@ -98,6 +99,7 @@
       <DependentUpon>Negosud.cs</DependentUpon>
     </Compile>
     <Compile Include="ProduitDto.cs" />
+    <Compile Include="ProduitFournisseurDto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AjoutClient.resx">
