@@ -26,8 +26,29 @@ namespace NegosudWeb.Controllers
             }
 
             var content = await response.Content.ReadAsStringAsync();
-            JArray product2 = JArray.Parse(content);
-            List<ProductItems> listProduct = product2.ToObject<List<ProductItems>>();
+            JArray product = JArray.Parse(content);
+            List<ProductItems> listProduct = product.ToObject<List<ProductItems>>();
+
+            requestUrl = Constant.ApiUrl + "Familles/";
+            using (var httpClient = new HttpClient())
+            {
+                response = await httpClient.GetAsync(requestUrl);
+            }
+            content = await response.Content.ReadAsStringAsync();
+            JArray famille = JArray.Parse(content);
+            List<Famille> listFamille = famille.ToObject<List<Famille>>();
+
+            for (int i = 0; i < listProduct.Count; i++)
+            {
+                for (int j = 0; j < listFamille.Count; j++)
+                {
+                    if(listProduct[i].IdFamille == listFamille[j].Id)
+                    {
+                        listProduct[i].Famille = listFamille[j].Libelle;
+                        j = listFamille.Count;
+                    }
+                }
+            }
 
             ViewBag.Produits = listProduct;
 
