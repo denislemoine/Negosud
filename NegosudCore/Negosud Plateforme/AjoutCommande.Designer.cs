@@ -29,24 +29,15 @@ namespace Negosud_Plateforme
         /// </summary>
         private void InitializeComponent()
         {
-            this.TxtBox_Quantite_Commande = new System.Windows.Forms.TextBox();
             this.Label_Quantite_Commande = new MetroSet_UI.Controls.MetroSetLabel();
             this.button_Ajout_Commande = new System.Windows.Forms.Button();
             this.Label_Nom_Produit_Commande = new MetroSet_UI.Controls.MetroSetLabel();
             this.comboBox_Produits_Commande = new System.Windows.Forms.ComboBox();
             this.Label_Prix_Total = new MetroSet_UI.Controls.MetroSetLabel();
             this.textBox_Prix_Total = new System.Windows.Forms.TextBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // TxtBox_Quantite_Commande
-            // 
-            this.TxtBox_Quantite_Commande.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtBox_Quantite_Commande.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBox_Quantite_Commande.Location = new System.Drawing.Point(181, 102);
-            this.TxtBox_Quantite_Commande.MaxLength = 20;
-            this.TxtBox_Quantite_Commande.Name = "TxtBox_Quantite_Commande";
-            this.TxtBox_Quantite_Commande.Size = new System.Drawing.Size(164, 26);
-            this.TxtBox_Quantite_Commande.TabIndex = 9;
             // 
             // Label_Quantite_Commande
             // 
@@ -106,9 +97,9 @@ namespace Negosud_Plateforme
             // 
             this.Label_Prix_Total.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_Prix_Total.IsDerivedStyle = true;
-            this.Label_Prix_Total.Location = new System.Drawing.Point(63, 160);
+            this.Label_Prix_Total.Location = new System.Drawing.Point(53, 160);
             this.Label_Prix_Total.Name = "Label_Prix_Total";
-            this.Label_Prix_Total.Size = new System.Drawing.Size(84, 23);
+            this.Label_Prix_Total.Size = new System.Drawing.Size(94, 23);
             this.Label_Prix_Total.Style = MetroSet_UI.Enums.Style.Light;
             this.Label_Prix_Total.StyleManager = null;
             this.Label_Prix_Total.TabIndex = 26;
@@ -126,34 +117,41 @@ namespace Negosud_Plateforme
             this.textBox_Prix_Total.Size = new System.Drawing.Size(164, 26);
             this.textBox_Prix_Total.TabIndex = 27;
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(181, 107);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown1.TabIndex = 28;
+            // 
             // AjoutCommande
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 526);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.textBox_Prix_Total);
             this.Controls.Add(this.Label_Prix_Total);
             this.Controls.Add(this.comboBox_Produits_Commande);
             this.Controls.Add(this.Label_Nom_Produit_Commande);
             this.Controls.Add(this.button_Ajout_Commande);
-            this.Controls.Add(this.TxtBox_Quantite_Commande);
             this.Controls.Add(this.Label_Quantite_Commande);
             this.Name = "AjoutCommande";
             this.Text = "AjoutCommande";
             this.Load += new System.EventHandler(this.AjoutCommande_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox TxtBox_Quantite_Commande;
         private MetroSet_UI.Controls.MetroSetLabel Label_Quantite_Commande;
         private System.Windows.Forms.Button button_Ajout_Commande;
         private MetroSet_UI.Controls.MetroSetLabel Label_Nom_Produit_Commande;
         private System.Windows.Forms.ComboBox comboBox_Produits_Commande;
         private MetroSet_UI.Controls.MetroSetLabel Label_Prix_Total;
         private System.Windows.Forms.TextBox textBox_Prix_Total;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
