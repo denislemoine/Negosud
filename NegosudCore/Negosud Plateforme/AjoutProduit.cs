@@ -17,8 +17,10 @@ namespace Negosud_Plateforme
     public partial class AjoutProduit : Form
     {
         private HttpWebRequest webRequest;
+        private long idProduit, id;
         private string nameProduit, millesimePorduit, descriptionProduit, domaineProduit,urlPhotoProduit, contenantProduit;
         private int prixProduit, prixFournisseurProduit;
+        int i;
         public AjoutProduit()
         {
             InitializeComponent();
@@ -94,10 +96,77 @@ namespace Negosud_Plateforme
                 requestStream.Write(byteArray, 0, byteArray.Length);
             }
 
+           
+           
+                 url = "http://localhost:58841/api/Produits";
+
+                 webRequest = (HttpWebRequest)WebRequest.Create(url);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+                if ((webResponse.StatusCode == HttpStatusCode.OK))
+                {
+
+                    var reader = new StreamReader(webResponse.GetResponseStream());
+                    string s = reader.ReadToEnd();
+                    var arr = JsonConvert.DeserializeObject<List<CommandeInterneDto>>(s);
+
+                    var maxId = from r in arr
+                                orderby r.id
+                                select r;
+                    i = 1;
+
+                    foreach (var std in maxId)
+                    {
+                        i++;
+
+                    }
+
+                 url = "http://localhost:58841/api/Stocks";
+
+                 requestParams = JsonStock();
+
+                webRequest = (HttpWebRequest)WebRequest.Create(url);
+
+                webRequest.Method = "POST";
+                webRequest.ContentType = "application/json";
+
+                byte[] byteArrayy = Encoding.UTF8.GetBytes(requestParams);
+                webRequest.ContentLength = byteArrayy.Length;
+                using (Stream requestStream = webRequest.GetRequestStream())
+                {
+                    requestStream.Write(byteArrayy, 0, byteArrayy.Length);
+                }
+
+            }
+                else
+                {
+                    MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
+                }
+
+          
 
             this.Close();
 
 
+        }
+        public string JsonStock()
+        {
+            JavaScriptSerializer ser = new JavaScriptSerializer();
+
+            var jsonData = new StockDto()
+            {
+
+                
+                idProduit = i,
+                quantite = 1,
+                quantiteCommande = 0,
+                
+
+            };
+
+
+            var result = ser.Serialize(jsonData);
+            return result;
         }
         public string JsonTester()
         {

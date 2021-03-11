@@ -203,7 +203,7 @@ namespace Negosud_Plateforme
 
             if ((webResponse.StatusCode == HttpStatusCode.OK))
             {
-                MessageBox.Show("ok");
+             
                 var reader = new StreamReader(webResponse.GetResponseStream());
                 string s = reader.ReadToEnd();
                 var arr = JsonConvert.DeserializeObject<List<CommandeInterneDto>>(s);
@@ -218,7 +218,6 @@ namespace Negosud_Plateforme
                     i++;
                     
                 }
-                MessageBox.Show(i.ToString());
             }
             else
             {
