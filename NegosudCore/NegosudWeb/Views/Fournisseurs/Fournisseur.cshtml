@@ -1,0 +1,70 @@
+﻿@{
+	ViewBag.Title = "Fournisseurs";
+}
+
+@section css {
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald" rel="stylesheet" />
+	<link href="@Url.Content("~/Assets/css/singleFournisseur.css")" rel="stylesheet" />
+}
+
+@section scripts{
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+}
+
+@{
+	var fournisseur = ViewBag.Fournisseur;
+}
+
+<aside class="profile-card">
+	<header>
+		<!-- here’s the avatar -->
+		<a target="_blank" href="#">
+			<img src="~/Assets/img/profil.png" class="hoverZoomLink">
+		</a>
+
+		<!-- the username -->
+		<h1>
+			@fournisseur.NomContact
+		</h1>
+
+		<!-- and role or location -->
+		<h2>
+			@fournisseur.NomEntreprise
+		</h2>
+
+	</header>
+
+	<!-- bit of a bio; who are you? -->
+	<div class="profile-bio">
+
+		<p>@fournisseur.Adresse</p>
+		<p>@fournisseur.Tel</p>
+		<p>@fournisseur.Mail</p>
+
+	</div>
+
+	<!-- some social links to show off -->
+	<ul class="profile-social-links">
+		<li>
+			<a target="_blank" href="https://www.facebook.com/creativedonut">
+				<i class="fa fa-facebook"></i>
+			</a>
+		</li>
+		<li>
+			<a target="_blank" href="https://twitter.com/dropyourbass">
+				<i class="fa fa-twitter"></i>
+			</a>
+		</li>
+		<li>
+			<a target="_blank" href="https://github.com/vipulsaxena">
+				<i class="fa fa-github"></i>
+			</a>
+		</li>
+		<li>
+			<a target="_blank" href="https://www.behance.net/vipulsaxena">
+
+				<i class="fa fa-behance"></i>
+			</a>
+		</li>
+	</ul>
+</aside>
