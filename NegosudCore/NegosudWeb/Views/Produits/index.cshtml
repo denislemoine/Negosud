@@ -27,7 +27,7 @@
 	<div class="cart-icon-bottom">
 	</div>
 
-	<div id="checkout">
+	<div id="checkout" onmousedown="location.href='/panier'" style="cursor: pointer;">
 		COMMANDER
 	</div>
 
@@ -194,6 +194,28 @@
 			</script>
 			<!--END PRODUCT-->
 		}
+
+		<script>
+
+
+			let listCart = JSON.parse(localStorage.getItem("cart"));
+
+			if (listCart) {
+				listCart.forEach((item) => {
+
+					let cartItem = "<div class='cart-item'><div class='img-wrap'><img src='"
+						+ item.urlPhoto + "' alt='' /></div><span>" + item.nom
+						+ "</span><strong>" + item.prix
+						+ "</strong><div class='cart-item-border'></div><div class='delete-item'></div></div>";
+
+					$("#cart .empty").hide();
+					$("#cart").append(cartItem);
+					$("#checkout").fadeIn(500);
+				})
+			}
+
+
+		</script>
 
 		<script>
 
