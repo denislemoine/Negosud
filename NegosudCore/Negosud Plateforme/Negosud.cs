@@ -23,7 +23,14 @@ namespace Negosud_Plateforme
 
         string id;
         string libel;
-        string IsActiv;
+        string IsActiv, commandeAuto;
+
+        string idFamille;
+        string nameProduit, millesimePorduit, descriptionProduit, domaineProduit, urlPhotoProduit, contenantProduit;
+        String prixProduit, prixFournisseurProduit;
+
+        private string idClient, nameClient, EmailClient, AdresseClient, TelClient;
+
 
         public string CelluleProduitValue { get; private set; }
 
@@ -34,19 +41,78 @@ namespace Negosud_Plateforme
 
         private void Negosud_Load(object sender, EventArgs e)
         {
-
-
+            // Fonction qui fait appel à L'api, pour afficher les données dans les datagridview correspondantes
+            appel_Api("http://localhost:58841/api/Fournisseurs");
+            this.dataGridView_Fournisseurs.Columns["IsActive"].Visible = false;
+            appel_Api("http://localhost:58841/api/Produits");
+            this.dataGridView_Produits.Columns["IsActive"].Visible = false;
+            appel_Api("http://localhost:58841/api/Clients");
+            this.dataGridView_Client.Columns["IsActive"].Visible = false;
+            appel_Api("http://localhost:58841/api/Familles");
+            this.dataGridView_Familles.Columns["IsActive"].Visible = false;
+            appel_Api("http://localhost:58841/api/Produits");
+            this.dataGridView_Produits.Columns["IsActive"].Visible = false;
+            apiComboBOx("http://localhost:58841/api/Familles");
+            apiComboBOx("http://localhost:58841/api/Fournisseurs");
         }
+            
 
-
-
-        private void Btn_Ajout_Client_Click(object sender, EventArgs e)
+        private void button_Reload_Client_Click(object sender, EventArgs e)
         {
-            this.ajoutClient.Show();
-           
+
+        }
+        private void button_load_Click(object sender, EventArgs e)
+        {
+
         }
 
+        private void apiComboBOx(string url)
+        {
+            if (url == "http://localhost:58841/api/Familles")
+            {
+                    var webRequest = (HttpWebRequest)WebRequest.Create(url);
+                    var webResponse = (HttpWebResponse)webRequest.GetResponse();
 
+                    if ((webResponse.StatusCode == HttpStatusCode.OK))
+                    {
+                        var reader = new StreamReader(webResponse.GetResponseStream());
+                        string s = reader.ReadToEnd();
+                        var arr = JsonConvert.DeserializeObject<List<FamilleDto>>(s);
+                        var list = new BindingList<FamilleDto>(arr);
+                        var data = new BindingSource(list, null);
+                        comboBox2.DataSource = data.DataSource;
+                        comboBox2.DisplayMember = "libelle";
+                        comboBox2.ValueMember = "libelle";
+
+                    }
+                    else
+                    {
+                        MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
+                    }
+            }
+            else if (url == "http://localhost:58841/api/Fournisseurs")
+            {
+                var webRequest = (HttpWebRequest)WebRequest.Create(url);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+                if ((webResponse.StatusCode == HttpStatusCode.OK))
+                {
+                    var reader = new StreamReader(webResponse.GetResponseStream());
+                    string s = reader.ReadToEnd();
+                    var arr = JsonConvert.DeserializeObject<List<FournisseurDto>>(s);
+                    var list = new BindingList<FournisseurDto>(arr);
+                    var data = new BindingSource(list, null);
+                    comboBox1.DataSource = data.DataSource;
+                    comboBox1.DisplayMember = "nomEntreprise";
+                    comboBox1.ValueMember = "nomEntreprise";
+
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
+                }
+            }
+        }
         private void appel_Api(string url)
         {
             ClientDto clientDto = new ClientDto();
@@ -66,7 +132,7 @@ namespace Negosud_Plateforme
                    
             
                         dataGridView_Client.DataSource = data;
-                
+                  
                     
                 }
                 else
@@ -159,35 +225,10 @@ namespace Negosud_Plateforme
 
         }
 
-
-        private void tabPage_Fournisseurs_Click(object sender, EventArgs e)
+        private void Btn_Ajout_Client_Click(object sender, EventArgs e)
         {
-            appel_Api("http://localhost:58841/api/Fournisseurs");
-            this.dataGridView_Fournisseurs.Columns["IsActive"].Visible = false;
-        }
-
-        private void tabPage_Produits_Click(object sender, EventArgs e)
-        {
-            appel_Api("http://localhost:58841/api/Produits");
-            this.dataGridView_Produits.Columns["IsActive"].Visible = false;
-        }
-
-
-        private void tabPage_Clients_Click(object sender, EventArgs e)
-        {
-            appel_Api("http://localhost:58841/api/Clients");
-            this.dataGridView_Client.Columns["IsActive"].Visible = false;
-        }
-
-        private void tabPage_Familles_Click(object sender, EventArgs e)
-        {
-            appel_Api("http://localhost:58841/api/Familles");
-            this.dataGridView_Familles.Columns["IsActive"].Visible = false;
-        }
-
-        private void button_load_Click(object sender, EventArgs e)
-        {
-            appel_Api("http://localhost:58841/api/Produits");
+            this.ajoutClient.Show();
+           
         }
 
         private void Btn_Ajout_Produit_Click_1(object sender, EventArgs e)
@@ -200,9 +241,99 @@ namespace Negosud_Plateforme
             this.ajoutFamille.Show();
         }
 
+        private void button_reload_Famille_Click(object sender, EventArgs e)
+        {
+            this.appel_Api("http://localhost:58841/api/Familles");
+        }
+
+        private void tabPage_Commandes_Click(object sender, EventArgs e)
+        {
+            this.appel_Api("http://localhost:58841/api/Commandes");
+        }
+
+        private void Btn_Ajour_Fournisseur_Click(object sender, EventArgs e)
+        {
+            this.ajoutFournisseur.Show();
+        }
+        // -------------------------------------------------------------------------------------------------//
+        // Button avec fonction Supprimer
+        // -------------------------------------------------------------------------------------------------//
+
+        private void button_Suppr_Client_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Client.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView_Client.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dataGridView_Client.Rows[selectedrowindex];
+
+                idClient = Convert.ToString(selectedRow.Cells["Id"].Value);
+                nameClient = Convert.ToString(selectedRow.Cells["nom"].Value);
+                EmailClient = Convert.ToString(selectedRow.Cells["mail"].Value);
+                AdresseClient = Convert.ToString(selectedRow.Cells["adresse"].Value);
+                TelClient = Convert.ToString(selectedRow.Cells["tel"].Value);
+                IsActiv = Convert.ToString(selectedRow.Cells["IsActive"].Value);
+
+
+            }
+
+            string url = "http://localhost:58841/api/Clients/" + idClient;
+            string requestParams = JsonClientSuppr();
+
+            webRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            webRequest.Method = "PUT";
+            webRequest.ContentType = "application/json";
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(requestParams);
+            webRequest.ContentLength = byteArray.Length;
+            using (Stream requestStream = webRequest.GetRequestStream())
+            {
+                requestStream.Write(byteArray, 0, byteArray.Length);
+            }
+        }
+
+
+        private void button_Delete_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Produits.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView_Produits.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dataGridView_Produits.Rows[selectedrowindex];
+
+                id = Convert.ToString(selectedRow.Cells["Id"].Value);
+                idFamille = Convert.ToString(selectedRow.Cells["idFamille"].Value);
+                nameProduit = Convert.ToString(selectedRow.Cells["nom"].Value);
+                millesimePorduit = Convert.ToString(selectedRow.Cells["millesime"].Value);
+                prixProduit = Convert.ToString(selectedRow.Cells["prix"].Value);
+                prixFournisseurProduit = Convert.ToString(selectedRow.Cells["prix"].Value);
+                descriptionProduit = Convert.ToString(selectedRow.Cells["description"].Value);
+                domaineProduit = Convert.ToString(selectedRow.Cells["domaine"].Value);
+                urlPhotoProduit = Convert.ToString(selectedRow.Cells["urlPhoto"].Value);
+                contenantProduit = Convert.ToString(selectedRow.Cells["contenant"].Value);
+                IsActiv = Convert.ToString(selectedRow.Cells["IsActive"].Value);
+                commandeAuto = Convert.ToString(selectedRow.Cells["commandeAuto"].Value);
+            }
+
+            string url = "http://localhost:58841/api/Produits/" + id;
+
+            string requestParams = JsonProduitsSuppr();
+
+            webRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            webRequest.Method = "PUT";
+            webRequest.ContentType = "application/json";
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(requestParams);
+            webRequest.ContentLength = byteArray.Length;
+            using (Stream requestStream = webRequest.GetRequestStream())
+            {
+                requestStream.Write(byteArray, 0, byteArray.Length);
+            }
+        }
         private void button_Suppr_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(IsActiv);
 
             if (dataGridView_Familles.SelectedCells.Count > 0)
             {
@@ -234,6 +365,44 @@ namespace Negosud_Plateforme
 
         }
 
+
+        // -------------------------------------------------------------------------------------------------//
+        // Button avec fonction modifier
+        // -------------------------------------------------------------------------------------------------//
+
+        private void button_Modif_Client_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Client.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView_Client.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dataGridView_Client.Rows[selectedrowindex];
+
+                idClient = Convert.ToString(selectedRow.Cells["Id"].Value);
+                nameClient = Convert.ToString(selectedRow.Cells["nom"].Value);
+                EmailClient = Convert.ToString(selectedRow.Cells["mail"].Value);
+                AdresseClient = Convert.ToString(selectedRow.Cells["adresse"].Value);
+                TelClient = Convert.ToString(selectedRow.Cells["tel"].Value);
+                IsActiv = Convert.ToString(selectedRow.Cells["IsActive"].Value);
+
+
+            }
+
+            string url = "http://localhost:58841/api/Clients/" + idClient;
+            string requestParams = JsonClientModif();
+
+            webRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            webRequest.Method = "PUT";
+            webRequest.ContentType = "application/json";
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(requestParams);
+            webRequest.ContentLength = byteArray.Length;
+            using (Stream requestStream = webRequest.GetRequestStream())
+            {
+                requestStream.Write(byteArray, 0, byteArray.Length);
+            }
+        }
         private void button_modif_Click(object sender, EventArgs e)
         {
             if (dataGridView_Familles.SelectedCells.Count > 0)
@@ -264,15 +433,85 @@ namespace Negosud_Plateforme
             }
 
         }
-        public string JsonFamilleModif()
+
+        private void button_modif_Produit_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Produits.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView_Produits.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dataGridView_Produits.Rows[selectedrowindex];
+
+                id = Convert.ToString(selectedRow.Cells["Id"].Value);
+                idFamille = Convert.ToString(selectedRow.Cells["idFamille"].Value);
+                nameProduit = Convert.ToString(selectedRow.Cells["nom"].Value);
+                millesimePorduit = Convert.ToString(selectedRow.Cells["millesime"].Value);
+                prixProduit = Convert.ToString(selectedRow.Cells["prix"].Value);
+                prixFournisseurProduit = Convert.ToString(selectedRow.Cells["prix"].Value);
+                descriptionProduit = Convert.ToString(selectedRow.Cells["description"].Value);
+                domaineProduit = Convert.ToString(selectedRow.Cells["domaine"].Value);
+                urlPhotoProduit = Convert.ToString(selectedRow.Cells["urlPhoto"].Value);
+                contenantProduit = Convert.ToString(selectedRow.Cells["contenant"].Value);
+                IsActiv = Convert.ToString(selectedRow.Cells["IsActive"].Value);
+                commandeAuto = Convert.ToString(selectedRow.Cells["commandeAuto"].Value);
+            }
+
+            string url = "http://localhost:58841/api/Produits/" + id;
+            string requestParams = JsonProduitsModif();
+
+            webRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            webRequest.Method = "PUT";
+            webRequest.ContentType = "application/json";
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(requestParams);
+            webRequest.ContentLength = byteArray.Length;
+            using (Stream requestStream = webRequest.GetRequestStream())
+            {
+                requestStream.Write(byteArray, 0, byteArray.Length);
+            }
+        }
+     
+       
+        // -------------------------------------------------------------------------------------------------//
+        // Json pour les fonctions supprimmer
+        // -------------------------------------------------------------------------------------------------//
+
+        public string JsonClientSuppr()
         {
             JavaScriptSerializer ser = new JavaScriptSerializer();
 
-            var jsonData = new FamilleDto()
+            var jsonData = new ClientDto()
             {
-                Id = Convert.ToInt64(id),
-                libelle = libel,
-                isActive = bool.Parse(IsActiv),
+                Id = Convert.ToInt64(idClient),
+                nom = nameClient,
+                mail = EmailClient,
+                Adresse = AdresseClient,
+                tel = TelClient,
+                isActive = bool.Parse("false"),
+            };
+
+            var result = ser.Serialize(jsonData);
+            return result;
+        }
+        public string JsonProduitsSuppr()
+        {
+            JavaScriptSerializer ser = new JavaScriptSerializer();
+
+            var jsonData = new ProduitDto()
+            {
+                id = Convert.ToInt64(id),
+                idFamille = Convert.ToInt64(id),
+                nom = nameProduit,
+                millesime = millesimePorduit,
+                prix = Convert.ToInt32(prixProduit),
+                prixFournisseur = Convert.ToInt32(prixFournisseurProduit),
+                description = descriptionProduit,
+                domaine = domaineProduit,
+                urlPhoto = urlPhotoProduit,
+                contenant = contenantProduit,
+                isActive = bool.Parse("false"),
+                commandeAuto = bool.Parse(commandeAuto),
 
             };
 
@@ -294,20 +533,66 @@ namespace Negosud_Plateforme
             var result = ser.Serialize(jsonData);
             return result;
         }
-
-        private void button_reload_Famille_Click(object sender, EventArgs e)
+        // -------------------------------------------------------------------------------------------------//
+        // Json pour les fonctions Modifier
+        // -------------------------------------------------------------------------------------------------//
+        public string JsonClientModif()
         {
-            this.appel_Api("http://localhost:58841/api/Familles");
+            JavaScriptSerializer ser = new JavaScriptSerializer();
+
+            var jsonData = new ClientDto()
+            {
+                Id = Convert.ToInt64(idClient),
+                nom = nameClient,
+                mail = EmailClient,
+                Adresse = AdresseClient,
+                tel = TelClient,
+                isActive = bool.Parse(IsActiv),
+            };
+
+            var result = ser.Serialize(jsonData);
+            return result;
+        }
+        public string JsonProduitsModif()
+        {
+            JavaScriptSerializer ser = new JavaScriptSerializer();
+
+            var jsonData = new ProduitDto()
+            {
+                id = Convert.ToInt64(id),
+                idFamille = Convert.ToInt64(id),
+                nom = nameProduit,
+                millesime = millesimePorduit,
+                prix = Convert.ToInt32(prixProduit),
+                prixFournisseur = Convert.ToInt32(prixFournisseurProduit),
+                description = descriptionProduit,
+                domaine = domaineProduit,
+                urlPhoto = urlPhotoProduit,
+                contenant = contenantProduit,
+
+                isActive = bool.Parse(IsActiv),
+                commandeAuto = bool.Parse(commandeAuto),
+
+            };
+
+            var result = ser.Serialize(jsonData);
+            return result;
+        }
+        public string JsonFamilleModif()
+        {
+            JavaScriptSerializer ser = new JavaScriptSerializer();
+
+            var jsonData = new FamilleDto()
+            {
+                Id = Convert.ToInt64(id),
+                libelle = libel,
+                isActive = bool.Parse(IsActiv),
+
+            };
+
+            var result = ser.Serialize(jsonData);
+            return result;
         }
 
-        private void tabPage_Commandes_Click(object sender, EventArgs e)
-        {
-            this.appel_Api("http://localhost:58841/api/Commandes");
-        }
-
-        private void Btn_Ajour_Fournisseur_Click(object sender, EventArgs e)
-        {
-            this.ajoutFournisseur.Show();
-        }
     }
 }
