@@ -251,8 +251,23 @@ namespace Negosud_Plateforme
         {
             this.appel_Api("http://localhost:58841/api/Commandes");
         }
+        // Boutton reload Fournisseurs
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.appel_Api("http://localhost:58841/api/Fournisseurs");
+        }
+        // Boutton suppression Fournisseurs
+        private void btn_suppr_fournisseur_Click(object sender, EventArgs e)
+        {
 
-        private void Btn_Ajour_Fournisseur_Click(object sender, EventArgs e)
+        }
+        // Boutton editer Fournisseurs
+        private void btn_edit_fournisseur_Click(object sender, EventArgs e)
+        {
+
+        }
+        // Boutton ajout Fournisseurs
+        private void Btn_Ajour_Fournisseur_Click_1(object sender, EventArgs e)
         {
             this.ajoutFournisseur.Show();
         }
@@ -293,7 +308,6 @@ namespace Negosud_Plateforme
                 requestStream.Write(byteArray, 0, byteArray.Length);
             }
         }
-
 
         private void button_Delete_Click(object sender, EventArgs e)
         {
