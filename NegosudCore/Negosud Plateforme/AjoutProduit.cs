@@ -17,10 +17,11 @@ namespace Negosud_Plateforme
     public partial class AjoutProduit : Form
     {
         private HttpWebRequest webRequest;
-        private long idProduit, id;
+        private long idProduit, id, idFamily;
         private string nameProduit, millesimePorduit, descriptionProduit, domaineProduit,urlPhotoProduit, contenantProduit;
         private int prixProduit, prixFournisseurProduit;
         int i;
+        string familleSelect;
         public AjoutProduit()
         {
             InitializeComponent();
@@ -79,7 +80,28 @@ namespace Negosud_Plateforme
 
         private void button_Ajout_Produits_Click(object sender, EventArgs e)
         {
+            var webRequest = (HttpWebRequest)WebRequest.Create("http://localhost:58841/api/Familles");
+            var webResponse = (HttpWebResponse)webRequest.GetResponse();
 
+            if ((webResponse.StatusCode == HttpStatusCode.OK))
+            {
+                var reader = new StreamReader(webResponse.GetResponseStream());
+                string s = reader.ReadToEnd();
+                var arr = JsonConvert.DeserializeObject<List<FamilleDto>>(s);
+
+
+                familleSelect = comboBox_Famille.GetItemText(comboBox_Famille.SelectedItem);
+
+                if (familleSelect != "")
+                {
+                    idFamily = arr.FirstOrDefault(x => x.libelle == familleSelect).Id;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show(string.Format("Status code == {0}", webResponse.StatusCode));
+            }
             string url = "http://localhost:58841/api/Produits";
 
             string requestParams = JsonTester();
@@ -95,13 +117,10 @@ namespace Negosud_Plateforme
             {
                 requestStream.Write(byteArray, 0, byteArray.Length);
             }
-
-           
-           
                  url = "http://localhost:58841/api/Produits";
 
                  webRequest = (HttpWebRequest)WebRequest.Create(url);
-                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+                 webResponse = (HttpWebResponse)webRequest.GetResponse();
 
                 if ((webResponse.StatusCode == HttpStatusCode.OK))
                 {
@@ -146,8 +165,6 @@ namespace Negosud_Plateforme
           
 
             this.Close();
-
-
         }
         public string JsonStock()
         {
@@ -158,7 +175,7 @@ namespace Negosud_Plateforme
 
                 
                 idProduit = i,
-                quantite = 1,
+                quantite = 0,
                 quantiteCommande = 0,
                 
 
@@ -178,6 +195,7 @@ namespace Negosud_Plateforme
                 nom = nameProduit,
                 millesime = millesimePorduit,
                 prix = prixProduit,
+                idFamille = idFamily,
                 prixFournisseur = prixFournisseurProduit,
                 description = descriptionProduit,
                 domaine = domaineProduit,
