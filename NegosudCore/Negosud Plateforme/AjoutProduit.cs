@@ -108,7 +108,7 @@ namespace Negosud_Plateforme
 
                     var reader = new StreamReader(webResponse.GetResponseStream());
                     string s = reader.ReadToEnd();
-                    var arr = JsonConvert.DeserializeObject<List<CommandeInterneDto>>(s);
+                    var arr = JsonConvert.DeserializeObject<List<ProduitDto>>(s);
 
                     var maxId = from r in arr
                                 orderby r.id
