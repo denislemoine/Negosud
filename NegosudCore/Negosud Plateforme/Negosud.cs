@@ -30,6 +30,7 @@ namespace Negosud_Plateforme
         string idFamille;
         string nameProduit, millesimePorduit, descriptionProduit, domaineProduit, urlPhotoProduit, contenantProduit;
         string prixProduit, prixFournisseurProduit;
+        string oldStatus;
 
         string idCommandeFournisseur, prixTotalCommande, dateCommandeEdit, statusCommande;
 
@@ -667,6 +668,18 @@ namespace Negosud_Plateforme
             }
 
             string url = "http://localhost:58841/api/commandeInternes/" + idCommandeFournisseur;
+            webRequest = (HttpWebRequest)WebRequest.Create(url);
+            var webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+            if ((webResponse.StatusCode == HttpStatusCode.OK))
+            {
+                var reader = new StreamReader(webResponse.GetResponseStream());
+                string s = reader.ReadToEnd();
+                var arrStock = JsonConvert.DeserializeObject<CommandeInterneDto>(s);
+                oldStatus = arrStock.status;
+            }
+
+            url = "http://localhost:58841/api/commandeInternes/" + idCommandeFournisseur;
             string requestParams = JsonCommandeModif();
 
             webRequest = (HttpWebRequest)WebRequest.Create(url);
@@ -681,12 +694,12 @@ namespace Negosud_Plateforme
                 requestStream.Write(byteArray, 0, byteArray.Length);
             }
 
-            if(statusCommande == "Livré")
+            if(statusCommande == "Livré" && oldStatus != "Livré")
             {
                 // on rucupère la liste des produits et leurs stocks
                 url = "http://localhost:58841/api/Stocks";
                 webRequest = (HttpWebRequest)WebRequest.Create(url);
-                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+                webResponse = (HttpWebResponse)webRequest.GetResponse();
 
                 if ((webResponse.StatusCode == HttpStatusCode.OK))
                 {
